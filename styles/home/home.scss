@@ -1,0 +1,78 @@
+.featured-product {
+    display: flex;
+}
+
+.sign-up-banner {
+    background-color: $PRIMARY_COLOR;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    margin: 2rem auto 1rem;
+    border-radius: $BORDER_RADIUS;
+    max-width: 768px;
+
+    h2 {
+        font-size: 1.75rem;
+        font-weight: 500;
+    }
+
+    button {
+        margin-top: 1rem;
+    }
+}
+.homepage-banner {
+    background-color: $PRIMARY_COLOR;
+    color: white;
+    text-align: center;
+    padding: 3rem 0;
+    margin: 0 auto 2rem;
+
+    h2 {
+        font-size: 1.75rem;
+        font-weight: 500;
+    }
+
+    button {
+        margin-top: 1rem;
+    }
+}
+
+.homepage-banner {
+    width: 100%;
+    object-fit: contain;
+    overflow: hidden;
+}
+
+.outer-featured-product-container {
+    background: rgb(230, 230, 230);
+    border-radius: $BORDER_RADIUS;
+    margin: 1rem;
+    padding: 1rem;
+
+    
+}
+
+.product-container, .featured-product{
+    display: flex;
+    gap: 1rem;
+}
+.heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h2{
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
+    margin-bottom: 1rem;
+}
+
+.outer-product-container{
+    margin: 1rem 2rem;
+}
+
+.loadmore-btn-container {
+    margin: 2rem;
+    display: flex;
+    justify-content: center;
+}

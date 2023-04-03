@@ -1,0 +1,145 @@
+$LOADER_SIZE : 5px;
+
+.dot-flashing {
+    position: relative;
+    width: $LOADER_SIZE;
+    height: $LOADER_SIZE;
+    border-radius: 5px;
+    background-color: $PRIMARY_COLOR;
+    color: $PRIMARY_COLOR;
+    animation: dot-flashing 1s infinite linear alternate;
+    animation-delay: 0.5s;
+
+    &::before,
+    &::after {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        top: 0;
+    }
+
+    &::before {
+        left: -10px;
+        width: $LOADER_SIZE;
+        height: $LOADER_SIZE;
+        border-radius: 5px;
+        background-color: $PRIMARY_COLOR;
+        color: $PRIMARY_COLOR;
+        animation: dot-flashing 1s infinite alternate;
+        animation-delay: 0s;
+    }
+
+    &::after {
+        left: 10px;
+        width: $LOADER_SIZE;
+        height: $LOADER_SIZE;
+        border-radius: 5px;
+        background-color: $PRIMARY_COLOR;
+        color: $PRIMARY_COLOR;
+        animation: dot-flashing 1s infinite alternate;
+        animation-delay: 1s;
+    }
+}
+
+@keyframes dot-flashing {
+    0% {
+        background-color: $PRIMARY_COLOR;
+    }
+
+    50%,
+    100% {
+        background-color: rgba(152, 128, 255, 0.2);
+    }
+}
+
+
+
+
+.loading-container {
+    display: flex;
+    align-items: center;
+
+    .dot-flashing {
+        margin: 0 1.5rem 0 .5rem;
+    }
+}
+
+
+
+.dot-bricks {
+    position: relative;
+    top: 8px;
+    left: -9999px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: $PRIMARY_COLOR;
+    color: $PRIMARY_COLOR;
+    box-shadow: 9991px -16px 0 0 $PRIMARY_COLOR, 9991px 0 0 0 $PRIMARY_COLOR, 10007px 0 0 0 $PRIMARY_COLOR;
+    animation: dot-bricks 2s infinite ease;
+}
+
+@keyframes dot-bricks {
+    0% {
+        box-shadow: 9991px -16px 0 0 $PRIMARY_COLOR, 9991px 0 0 0 $PRIMARY_COLOR, 10007px 0 0 0 $PRIMARY_COLOR;
+    }
+
+    8.333% {
+        box-shadow: 10007px -16px 0 0 $PRIMARY_COLOR, 9991px 0 0 0 $PRIMARY_COLOR, 10007px 0 0 0 $PRIMARY_COLOR;
+    }
+
+    16.667% {
+        box-shadow: 10007px -16px 0 0 $PRIMARY_COLOR, 9991px -16px 0 0 $PRIMARY_COLOR, 10007px 0 0 0 $PRIMARY_COLOR;
+    }
+
+    25% {
+        box-shadow: 10007px -16px 0 0 $PRIMARY_COLOR, 9991px -16px 0 0 $PRIMARY_COLOR, 9991px 0 0 0 $PRIMARY_COLOR;
+    }
+
+    33.333% {
+        box-shadow: 10007px 0 0 0 $PRIMARY_COLOR, 9991px -16px 0 0 $PRIMARY_COLOR, 9991px 0 0 0 $PRIMARY_COLOR;
+    }
+
+    41.667% {
+        box-shadow: 10007px 0 0 0 $PRIMARY_COLOR, 10007px -16px 0 0 $PRIMARY_COLOR, 9991px 0 0 0 $PRIMARY_COLOR;
+    }
+
+    50% {
+        box-shadow: 10007px 0 0 0 $PRIMARY_COLOR, 10007px -16px 0 0 $PRIMARY_COLOR, 9991px -16px 0 0 $PRIMARY_COLOR;
+    }
+
+    58.333% {
+        box-shadow: 9991px 0 0 0 $PRIMARY_COLOR, 10007px -16px 0 0 $PRIMARY_COLOR, 9991px -16px 0 0 $PRIMARY_COLOR;
+    }
+
+    66.666% {
+        box-shadow: 9991px 0 0 0 $PRIMARY_COLOR, 10007px 0 0 0 $PRIMARY_COLOR, 9991px -16px 0 0 $PRIMARY_COLOR;
+    }
+
+    75% {
+        box-shadow: 9991px 0 0 0 $PRIMARY_COLOR, 10007px 0 0 0 $PRIMARY_COLOR, 10007px -16px 0 0 $PRIMARY_COLOR;
+    }
+
+    83.333% {
+        box-shadow: 9991px -16px 0 0 $PRIMARY_COLOR, 10007px 0 0 0 $PRIMARY_COLOR, 10007px -16px 0 0 $PRIMARY_COLOR;
+    }
+
+    91.667% {
+        box-shadow: 9991px -16px 0 0 $PRIMARY_COLOR, 9991px 0 0 0 $PRIMARY_COLOR, 10007px -16px 0 0 $PRIMARY_COLOR;
+    }
+
+    100% {
+        box-shadow: 9991px -16px 0 0 $PRIMARY_COLOR, 9991px 0 0 0 $PRIMARY_COLOR, 10007px 0 0 0 $PRIMARY_COLOR;
+    }
+}
+
+.full-page-loader {
+    width: 100%;
+    height: 100%;
+    background: #ffffff52;
+    position: fixed;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

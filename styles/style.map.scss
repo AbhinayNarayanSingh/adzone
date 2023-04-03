@@ -1,0 +1,124 @@
+$PRIMARY_COLOR : #373373;
+$BLACK : #1e1e1e;
+$YELLOW : rgb(255, 187, 0);
+$SKELTON_GREY : #bbbbbb;
+
+$BORDER_RADIUS : .25rem;
+
+$CARD_BOX_SHADOW : rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+// layout
+@import "./layout/navbar.scss";
+@import "./layout/footer.scss";
+@import "./layout/drawer.scss";
+@import "./layout/dialog.scss";
+
+// page
+@import "./home/home.scss";
+@import "./hoc/cards.scss";
+@import "./page/register.scss";
+
+@import "./grid.scss";
+@import "./loading-animation.scss";
+
+.test-class {
+    width: 30%;
+    aspect-ratio: 1 / 1;
+    position: relative;
+
+    img {
+        object-fit: cover;
+    }
+}
+
+button {
+    cursor: pointer;
+}
+.btn {
+    background: $PRIMARY_COLOR;
+    color: white;
+    border: none;
+    padding: .25rem 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1rem;
+    border-radius: $BORDER_RADIUS;
+}
+
+.btn-light {
+    background: white;
+    color:  $PRIMARY_COLOR;
+    border: none;
+    padding: .25rem 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1rem;
+    border-radius: $BORDER_RADIUS;
+}
+.btn-outline {
+    border: none;
+    padding: .25rem 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    background: none;
+    color: $PRIMARY_COLOR;
+    border: 2px solid $PRIMARY_COLOR;
+    border-radius: $BORDER_RADIUS;
+    font-size: 1rem;
+}
+.btn-link {
+    border: none;
+    padding: .25rem 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    background: none;
+    color: $PRIMARY_COLOR;
+    font-size: 1rem;
+}
+
+.btn-link-light {
+    border: none;
+    padding: .25rem 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    background: none;
+    color: white;
+    font-size: 1rem;
+}
+
+body {
+    max-width: 1920px;
+    margin: auto;
+}
+
+.form-feild {
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    margin: .5rem 0;
+    .help-text {
+        color: grey;
+        font-size: .9rem;
+    }
+    label {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+    input{
+        font-size: 1rem;
+        padding: .5rem .75rem;
+        border-radius: $BORDER_RADIUS;
+        border: 1px solid grey;
+        margin: .25rem 0;
+    }
+}

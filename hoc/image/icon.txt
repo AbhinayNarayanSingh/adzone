@@ -1,0 +1,65 @@
+import { useState } from "react";
+
+const Icon = ({src, id, color, hoverColor, width, height, size=16, unit, className="", style, onClick=() => {}, viewBox, useWidth, useHeight}) => {
+  const [ishovered, setHover] = useState(false);
+  const styles = {
+    svg: {
+      display: "inline-block",
+      verticalAlign: "middle",
+      "&:hover, &:focus": {
+        fill: hoverColor,
+      },
+    },
+    path: {
+      fill: color,
+    },
+  };
+  src=src + id
+
+  const handleMouseEnter = () => {
+    setHover(true);
+  };
+
+  const handleMouseLeave = () => {
+    setHover(false);
+  };
+
+  return (
+    <div
+      className={`${className}`}
+      style={style}
+      onClick={onClick}
+    >
+      <svg
+        style={styles.svg ? styles.svg : {}}
+        width={`${width || size}${unit || "px"}`}
+        height={`${height || size}${unit || "px"}`}
+        viewBox={viewBox || "0 0 32 32"}
+        fill={
+          ishovered
+            ? hoverColor
+              ? hoverColor
+              : color
+            : color
+        }
+        color={
+          ishovered
+            ? hoverColor
+              ? hoverColor
+              : color
+            : color
+        }
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <use
+          xlinkHref={src}
+          width={useWidth || "100%" || `${size}px`}
+          height={useHeight || "100%" || `${size}px`}
+        />
+      </svg>
+    </div>
+  );
+};
+
+export default Icon;

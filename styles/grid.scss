@@ -1,0 +1,23 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+
+@media only screen and (max-width: 1440px) {
+    .grid { grid-template-columns: repeat(4, 1fr); }
+
+}
+
+@media only screen and (max-width: 1000px) {
+    .grid { grid-template-columns: repeat(3, 1fr); }
+    
+}
+@media only screen and (max-width: 768px) {
+    .grid { grid-template-columns: repeat(3, 1fr); }
+    
+}
+@media only screen and (max-width: 512px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+
+}

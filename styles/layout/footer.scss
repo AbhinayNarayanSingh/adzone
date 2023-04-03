@@ -1,0 +1,20 @@
+.footer-outer-container {
+    padding: 3rem 2rem;
+    background: $PRIMARY_COLOR;
+
+
+    .footer-brand-container {
+        text-align: center;
+        img {
+            height: 3rem;
+            margin-bottom: .5rem;
+        }
+        p{
+            color: white;
+        }
+    }
+    .footer-link-container {
+        text-align: center;
+        margin-top: 2rem;
+    }
+}

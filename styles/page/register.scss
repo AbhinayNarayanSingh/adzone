@@ -1,0 +1,33 @@
+
+.register-page-container {
+    max-width: 700px;
+    margin: 4rem auto;
+
+
+    h2 {
+        font-weight: 600;
+        font-size: 2rem;
+        text-align: center;
+    }
+    .register-subline{
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    
+}
+.sign-form {
+    margin: 2rem 1rem;
+
+    .full-btn {
+        width: 100%;
+        margin: .5rem 0;
+        padding: .5rem;
+    }
+
+}
+.sign-option {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    align-items: center;
+}
