@@ -1,5 +1,16 @@
+$navbar-height : 4.25rem;
+
+.min-height-container {
+    min-height: calc(100vh - $navbar-height);
+}
+.center-min-height {
+    min-height: calc(100vh - $navbar-height);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .navbar-outer-container {
-    $navbar-height : 4.25rem;
     position: relative;
 
     .navbar-fill-span {

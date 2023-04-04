@@ -1,7 +1,7 @@
 
 .register-page-container {
     max-width: 700px;
-    margin: 4rem auto;
+    margin: 1rem auto;
 
 
     h2 {
@@ -30,4 +30,22 @@
     justify-content: center;
     margin-bottom: 2rem;
     align-items: center;
+}
+
+.social-login{
+    width: -webkit-fill-available;
+    margin: 0 1rem 1rem;
+    padding: 1rem;
+    border-radius: $BORDER_RADIUS;
+    border: none;
+    font-weight: 500;
+
+    &.google{
+        background-color: #4285F4;
+        color: white;
+    }
+    &.facebook{
+        background-color: #4267B2;
+        color: white;
+    }
 }

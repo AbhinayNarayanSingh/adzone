@@ -1,6 +1,7 @@
 import { LOGO, MAP_ICON } from '@/Environment'
 import Icon from '../image/Icon'
 import Link from 'next/link'
+import { open_dialog } from '@/utils/rxjs/rxHelper'
 
 
 const Navbar = () => {
@@ -13,9 +14,9 @@ const Navbar = () => {
             <img src={LOGO} className="logo" />
           </Link>
 
-          <div className="location-button-container">
+          <div className="location-button-container" onClick={() => open_dialog()}>
             <Icon src={MAP_ICON}/>
-            <button className='btn-link'>
+            <button className='btn-link pl-05'>
               London, Ontario
             </button>
           </div>

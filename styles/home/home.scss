@@ -76,3 +76,32 @@
     display: flex;
     justify-content: center;
 }
+
+.category-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem;
+
+    .category {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        .category-icon {
+            $size : 5rem;
+            width: $size;
+            height: $size;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5rem;
+            background: $PRIMARY_COLOR_SHADOW;
+        }
+        p{
+            color: $PRIMARY_COLOR;
+            margin: .5rem 0;
+        }
+    }
+}

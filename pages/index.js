@@ -1,4 +1,6 @@
 import PeoductCards from "@/hoc/cards/PeoductCards";
+import Icon from "@/hoc/image/Icon";
+import { categoryData } from "@/store/staticStore";
 import { useState } from "react";
 
 
@@ -6,6 +8,20 @@ export default function Home() {
   const [loading, setLoading] = useState(false)
   return (
     <div className="homepage-outer-container">
+
+      <div className="category-container">
+        {categoryData.map((item, index) => {
+          return (
+            <div className="category" key={item.name+"__"+index}>
+              <div className="category-icon">
+                <Icon src={item.icon} alt={item.name} size="2.25rem" />
+              </div>
+              <p>{item.name}</p>
+            </div>
+          )
+        })}
+      </div>
+
 
       <div className="homepage-banner">
         <h2>Connect with local buyers and sellers and score great deals on AdZone</h2>
@@ -51,12 +67,12 @@ export default function Home() {
         </div>
         <div className="loadmore-btn-container">
           <button className="btn-outline" disabled={loading} onClick={() => setLoading(true)}>
-            {loading ? 
+            {loading ?
               <div className="loading-container">
                 <div className="dot-flashing"></div>
                 LOADING
               </div>
-             : "LOAD MORE"
+              : "LOAD MORE"
             }
           </button>
         </div>

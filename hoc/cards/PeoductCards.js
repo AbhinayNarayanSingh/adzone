@@ -1,6 +1,6 @@
-const PeoductCards = ({isSkelton=false, isFeatured=false}) => {
+const PeoductCards = ({isSkelton=false, isFeatured=true}) => {
   return (
-    <div className={`product-outer-card-container ${isFeatured && "skelton"}`}>
+    <div className={`product-outer-card-container ${isSkelton && "skelton"}`}>
       <div className="product-card-container">
         <div className="image-container">
           {isFeatured && <p className="featured">FEATURED</p>}
