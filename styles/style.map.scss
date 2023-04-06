@@ -4,6 +4,7 @@ $PRIMARY_COLOR_SHADOW : #37337314;
 $BLACK : #1e1e1e;
 $YELLOW : rgb(255, 187, 0);
 $SKELTON_GREY : #bbbbbb;
+$TEXT_COLOR : #3e4153;
 
 $BORDER_RADIUS : .25rem;
 
@@ -25,10 +26,15 @@ $CARD_BOX_SHADOW : rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px
 @import "./layout/drawer.scss";
 @import "./layout/dialog.scss";
 
+// hoc
+@import "./hoc/cards.scss";
+@import "./hoc/icons.scss";
+
 // page
 @import "./home/home.scss";
-@import "./hoc/cards.scss";
 @import "./page/register.scss";
+@import "./page/item.scss";
+@import "./page/404.scss";
 
 @import "./grid.scss";
 @import "./loading-animation.scss";
