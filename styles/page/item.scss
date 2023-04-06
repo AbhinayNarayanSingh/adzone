@@ -1,12 +1,14 @@
+.breadcrumb {
+    margin: 1rem 0;
+    font-weight: 500;
+    font-size: .9rem;
+    color: $TEXT_COLOR;
+}
+
 .item-detail-page-container {
     max-width: 1440px;
     margin: auto;
 
-    .breadcrumb {
-        margin: 1rem 0;
-        font-weight: 500;
-        font-size: .9rem;
-    }
 
 
     .image-container {

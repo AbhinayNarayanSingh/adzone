@@ -27,7 +27,6 @@ export default function Home() {
         <h2>Connect with local buyers and sellers and score great deals on AdZone</h2>
         <p>Join the local marketplace and discover unbeatable bargains on AdZone</p>
         <button className="btn-light">Start posting today!</button>
-        {/* <img src={BANNER_PLACEHOLDER} alt="BANNER_PLACEHOLDER" /> */}
       </div>
 
       <div className="outer-featured-product-container">

@@ -30,7 +30,7 @@ const Item = () => {
                         <div>
                             <h2 className="title">{title}</h2>
                             <p className="location">{location} <button className="btn-link px-05">(View Map)</button></p>
-                            <p className="posted-on">{posted_on}</p>
+                            <p className="posted-on">Posted about {posted_on}</p>
                         </div>
                         <h2 className="amount">{currency} {amount}</h2>
                     </div>

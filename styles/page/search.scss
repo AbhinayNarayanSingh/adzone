@@ -1,0 +1,76 @@
+
+.search-page-container {
+    max-width: 1440px;
+    margin: auto;
+
+    *{
+        color: $TEXT_COLOR;
+    }
+
+    .heading-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: $PRIMARY_COLOR;
+        }
+        p{
+            font-weight: 500;
+        }
+    }
+
+    .search-result-container {
+        margin: 1rem 0 2rem;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+    }
+
+    .pagination-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+
+        .pages-container {
+            .pages {
+                width: 2.5rem;
+                height: 2.5rem;
+                margin: .5rem;
+                text-align: center;
+
+                background: white;
+                border: 1px solid $PRIMARY_COLOR;
+                color: $PRIMARY_COLOR;
+
+                &.current-page {
+                    background: $PRIMARY_COLOR;
+                    color: white;
+                }
+            }
+        }
+    }
+
+    .filter-banner {
+
+        background-color: $PRIMARY_COLOR;
+        text-align: center;
+        padding: 3rem 0;
+        margin: 0 auto 2rem;
+        
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 500;
+            color: white;
+        }
+        p{
+            color: white;
+
+        }
+    
+        button {
+            margin-top: 1rem;
+        }
+    }
+}

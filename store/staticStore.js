@@ -62,10 +62,11 @@ export const postData = {
     Ad_id : "1633679888",
     title : "2 BEDROOM | FULLY RENOVATED | CLOSE TO FANSHAWE & WESTERN",
     location : "130 Sherwood Forest Square, London, ON, N2G 4G8",
+    short_location : "London, ON",
     description : "<div><b></b><p>Welcome to the | w! We have 2-bedroom suites available for May lease (price is per room).<br><br>Join an exclusive student community with various amenities on-site including a clubhouse, fitness facility, study rooms, lounge area, and free shuttle service to campus.<br><br><strong>What we offer: </strong></p><ul><li>2-bedroom + 2-bathrooms suites student rentals</li><li>Private ensuite bathrooms</li><li>Fully furnished bedrooms and common areas</li><li>Granite countertops</li><li>In-suite laundry<br></li><li>Unlimited high-speed internet</li><li>Utilities included in rent</li></ul><p><strong>Various amenities on-site:</strong></p><ul><li>Full fitness facility</li><li>Individual and group study spaces</li><li>Games room</li><li>Tenant lounge</li><li>Outdoor BBQ area</li><li>Coffee &amp; vending stations</li><li>Bike Storage</li><li>Shutte bus to campus</li></ul><br><strong>Virtual Tours:</strong><br><strong>Amenities building</strong>: https://youriguide.com/190_sherwood_forest_square_london_on/<p>Contact one of our Rental Agents today for more info at <b>rent@thewlondon.com or (519) 200-9613 x 1</b></p></div>",
     amount : "1,435.00",
     currency : "CAD",
-    posted_on : "Posted about 12 hours ago",
+    posted_on : "12 hours ago",
     seller : "740-758 Kipps Lane",
     images : [
         "https://media.kijiji.ca/api/v1/ca-prod-dealer-ads/images/00/00343aeb-9ee3-4ff5-8245-4569fab195a2?rule=kijijica-640-webp",

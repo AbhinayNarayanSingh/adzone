@@ -1,17 +1,20 @@
+import { postData } from "@/store/staticStore"
+
 const PeoductCards = ({isSkelton=false, isFeatured=true}) => {
+  const { images, Ad_id, title, short_location, location, description, amount, currency, posted_on, seller } = postData
   return (
     <div className={`product-outer-card-container ${isSkelton && "skelton"}`}>
       <div className="product-card-container">
         <div className="image-container">
           {isFeatured && <p className="featured">FEATURED</p>}
-          <img src="https://apollo-singapore.akamaized.net/v1/files/7jlzqdpqoe4g3-IN/image;s=780x0;q=60" alt="" />
+          <img src={images[0]} alt="" />
         </div>
-        <h2>$ 16,500</h2>
-        <p>I PHONE 11 ( HOLI BUMPER OFFER REFURBISHED )</p>
+        <h2>$ {amount}</h2>
+        <p>{title}</p>
 
         <div className="address-date-container">
-          <p>Bengaluru, India</p>
-          <p>Yesterday</p>
+          <p>{short_location}</p>
+          <p>{posted_on}</p>
         </div>
 
       </div>
