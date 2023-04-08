@@ -1,16 +1,31 @@
-import { LOGO, MAP_ICON } from '@/Environment'
-import Icon from '../image/Icon'
+import { useRouter } from 'next/router'
 import Link from 'next/link'
+import { useState } from 'react'
+
 import { open_dialog } from '@/utils/rxjs/rxHelper'
 
+import Icon from '../image/Icon'
+import { LOGO, MAP_ICON, SETTING_ICON } from '@/Environment'
+import { navigateToPage, navigateToSearch } from '@/utils/navigate/navigator'
 
 const Navbar = () => {
+  const router = useRouter()
+  const {page, section} = router.query
+  const [searchString, setSearchString] = useState("")
+  const [isSuggetionsBoxOpen, setIsSuggetionsBoxOpen] = useState(false)
+
+  const searchHandlerFn = (event) => {
+    event.preventDefault()
+    router.push(navigateToSearch(searchString))
+    setSearchString("")
+  }
+  
   return (
     <div className='navbar-outer-container'>
 
       <div className='navbar-container'>
         <div className="navbar-left-col">
-          <Link href="/">
+          <Link href={navigateToPage()}>
             <img src={LOGO} className="logo" />
           </Link>
 
@@ -25,31 +40,62 @@ const Navbar = () => {
         <div className='navbar-right-col'>
           <button className='btn-link'>ES</button>
           <div className='sign-button'>
-            <Link href="/register">
-              <button className='btn-link'>Register</button>
-            </Link>
-            <p>or</p>
-            <Link href="/login">
-              <button className='btn-link'>Login</button>
-            </Link>
+            {!true ? 
+            <>
+              <Link href={navigateToPage("register")}>
+                <button className='btn-link'>Register</button>
+              </Link>
+              <p>or</p>
+              <Link href={navigateToPage("login")}>
+                <button className='btn-link'>Login</button>
+              </Link>
+            </> : 
+            <>
+              <Link href={navigateToPage("profile")}>
+                <button className='btn-link'>Abhinay Narayan Singh</button>
+              </Link>
+            </>}
           </div>
-          <button className='btn'>POST FREE ADS</button>
+          <Link href={navigateToPage("new-ad")}>
+            <button className='btn'>POST FREE ADS</button>
+          </Link>
         </div>
       </div>
 
       <span className='navbar-fill-span' />
 
+      {false && 
       <div className="search-input-outer-container">
-        <form action="" className="search-input-container">
-          <input type="text" placeholder='What are you looking for?'/>
-          <div className="category-container">
-            {/* <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPRibzIXsJKGzJpuACO4cxMZh8BYuZdd87_A&usqp=CAU" alt="" /> */}
-            
-            <p>Commercial Vehicle & Spare</p>
-          </div>
+        <form action="" className="search-input-container" onSubmit={searchHandlerFn}>
+          <input type="text" placeholder='What are you looking for?' value={searchString} onChange={(e) => setSearchString(e.target.value)}/>
           <button>Search</button>
+
+
+          {isSuggetionsBoxOpen && <div className="search-suggetions-container">
+            {[...Array(10)].map((item) => {return (
+              <Link href={navigateToSearch("ford-gt-mustang")}>
+                <p className='search-suggetions-container__suggetion'>Ford GT Mustang - <span>Car</span></p>
+              </Link>
+            )})}
+          </div>}
+
         </form>
-      </div>
+
+      </div>}
+
+      {section && <div className="section-navbar-outer-container">
+        <div className="section-navbar-inner-container">
+          <div>
+            <button>My Profile</button>
+            <button>Messages</button>
+          </div>
+
+          <button className='active'>
+            Account Settings
+            <Icon src={SETTING_ICON}/>
+          </button>
+        </div>
+      </div>}
     </div>
   )
 }

@@ -16,6 +16,9 @@ const Footer = () => {
         <button className="btn-link-light">FAQ</button>
         <button className="btn-link-light">Sitemap</button>
       </div>
+      <div className="footer-link-container">
+        <button className="btn-link-light">Logout as Abhinay Narayan Singh</button>
+      </div>
 
     </div>
   )

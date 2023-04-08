@@ -36,6 +36,8 @@ $CARD_BOX_SHADOW : rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px
 @import "./page/item.scss";
 @import "./page/404.scss";
 @import "./page/search.scss";
+@import "./page/profile-section.scss";
+@import "./page/ad-form.scss";
 
 @import "./grid.scss";
 @import "./loading-animation.scss";
@@ -67,6 +69,7 @@ button {
 .btn-light {
     background: white;
     color:  $PRIMARY_COLOR;
+    border: 2px solid $PRIMARY_COLOR;
     border: none;
     padding: .25rem 1rem;
     cursor: pointer;

@@ -1,7 +1,12 @@
+import Link from "next/link";
+import { useState } from "react";
+
 import PeoductCards from "@/hoc/cards/PeoductCards";
 import Icon from "@/hoc/image/Icon";
+
+import { navigateToSearch } from "@/utils/navigate/navigator";
+
 import { categoryData } from "@/store/staticStore";
-import { useState } from "react";
 
 
 export default function Home() {
@@ -12,12 +17,14 @@ export default function Home() {
       <div className="category-container">
         {categoryData.map((item, index) => {
           return (
-            <div className="category" key={item.name+"__"+index}>
-              <div className="category-icon">
-                <Icon src={item.icon} alt={item.name} size="2.25rem" />
+            <Link href={navigateToSearch(item.name, "c")}>
+              <div className="category" key={item.name+"__"+index}>
+                <div className="category-icon">
+                  <Icon src={item.icon} alt={item.name} size="2.25rem" />
+                </div>
+                <p>{item.name}</p>
               </div>
-              <p>{item.name}</p>
-            </div>
+            </Link>
           )
         })}
       </div>

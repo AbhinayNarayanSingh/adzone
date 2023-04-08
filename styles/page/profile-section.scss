@@ -1,0 +1,89 @@
+
+.main-section-outer-container {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    max-width: 1440px;
+    margin: auto;
+
+    .section-col-30 {
+        width: 30%;
+        
+    }
+    .section-col-70 {
+        width: 70%;
+
+    }
+
+
+
+    .user-profile-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 1rem 0;
+
+        .user-profile-character {
+            width: 7rem;
+            height: 7rem;
+            font-size: 4rem;
+            font-weight: 600;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: $PRIMARY_COLOR;
+            color: white;
+            border-radius: 5rem;
+
+            text-transform: uppercase;
+        }
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-top: 1rem;
+            color: $TEXT_COLOR;
+        }
+        p {
+            margin: .1rem 0 1rem;
+            color: $TEXT_COLOR;
+        }
+        p span{
+            font-weight: 600;
+            margin-left : .25rem;
+        }
+
+        button {
+            width: 100%;
+            padding: .75rem;
+            margin-bottom: .5rem;
+        }
+    }
+
+    .sections-conatiner {
+        margin-top: 2rem;
+        button {
+            width: 100%;
+            text-align: left;
+            padding: .5rem 1rem;
+            margin-bottom: .25rem;
+        }
+    }
+
+    .heading-container {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        p{
+            font-weight: 500;
+            color: $TEXT_COLOR;
+        }
+    }
+
+    .listing {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+}

@@ -13,6 +13,7 @@ export const BANNER_PLACEHOLDER = "/images/placeholder/banner_placeholder.svg"
 // icons
 export const MAP_ICON = "/images/icons/map.svg"
 export const SEARCH_ICON = "/images/icons/search.svg"
+export const SETTING_ICON = "/images/icons/setting.svg"
 
 export const TEST = "https://images.unsplash.com/photo-1499852848443-3004d6dc4cfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
 

@@ -5,11 +5,6 @@ import Image from "next/image"
 const Item = () => {
     const { images, Ad_id, title, location, description, amount, currency, posted_on, seller } = postData
 
-    const convertStringToHTML = (htmlString) => {
-        const parser = new DOMParser();
-        const html = parser.parseFromString(htmlString, 'text/html');
-        return html.body;
-    }
     return (
         <div className="min-height-container item-detail-page-container">
             <p className="breadcrumb">Home / {title} / Ad ID {Ad_id}</p>
@@ -56,10 +51,8 @@ const Item = () => {
                             <button className="btn send-message-btn" disabled>Send Message</button>
                         </form>
 
-                        <p className="message-help-txt">Caution: Please be careful when communicating with other users. Do not give out personal information or send money until you are sure the other user is trustworthy. Adzone is not responsible for any fraudulent activity. Report any suspicious activity to our support team.</p>
+                        <p className="message-help-txt">Caution: Be careful when communicating with other users. Do not give out personal information or send money until you are sure the other user is trustworthy. Adzone is not responsible for any fraudulent activity. Report any suspicious activity to our support team.</p>
                     </div>
-
-
 
                 </div>
             </div>

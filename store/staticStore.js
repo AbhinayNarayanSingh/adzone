@@ -59,6 +59,7 @@ export const categoryData = [
 // https://www.kijiji.ca/o-1123-1131-royal-york-road-apartments/1023941235/listings/1?referral=organic
 
 export const postData = {
+    slug : "2-bedroom-fully-renovated-close-to-fanshawe-western-1633679888",
     Ad_id : "1633679888",
     title : "2 BEDROOM | FULLY RENOVATED | CLOSE TO FANSHAWE & WESTERN",
     location : "130 Sherwood Forest Square, London, ON, N2G 4G8",
