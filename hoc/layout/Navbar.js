@@ -14,6 +14,8 @@ const Navbar = () => {
   const [searchString, setSearchString] = useState("")
   const [isSuggetionsBoxOpen, setIsSuggetionsBoxOpen] = useState(false)
 
+  const showSearchInput = router.route === "/" || router.route.includes("/search")
+
   const searchHandlerFn = (event) => {
     event.preventDefault()
     router.push(navigateToSearch(searchString))
@@ -64,10 +66,10 @@ const Navbar = () => {
 
       <span className='navbar-fill-span' />
 
-      {false && 
+      {showSearchInput && 
       <div className="search-input-outer-container">
         <form action="" className="search-input-container" onSubmit={searchHandlerFn}>
-          <input type="text" placeholder='What are you looking for?' value={searchString} onChange={(e) => setSearchString(e.target.value)}/>
+          <input type="text" placeholder='What are you looking for?' value={searchString} onChange={(e) => setSearchString(e.target.value)} onClick={() => setIsSuggetionsBoxOpen(true)}/>
           <button>Search</button>
 
 

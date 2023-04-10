@@ -30,6 +30,9 @@ $CARD_BOX_SHADOW : rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px
 @import "./hoc/cards.scss";
 @import "./hoc/icons.scss";
 
+// input
+@import "./input/telephone-input.scss";
+
 // page
 @import "./home/home.scss";
 @import "./page/register.scss";
@@ -133,4 +136,49 @@ body {
         border: 1px solid grey;
         margin: .25rem 0;
     }
+}
+
+.select-input-container {
+    position: relative;
+    cursor: pointer;
+
+    .input {
+        font-size: 1rem;
+        padding: .5rem 1rem;
+        border-radius: $BORDER_RADIUS;
+        border: 1px solid #cfcfcf;
+        margin: .25rem 0;
+        width: 100%;
+        display: flex;
+    }
+    .options-container {
+        position: absolute;
+        z-index: 9;
+        font-size: 1rem;
+        border-radius: $BORDER_RADIUS;
+        border: 1px solid #cfcfcf;
+        margin: .25rem 0;
+        background-color: white;
+        width: calc(100% + 2rem);
+        top: 2.6rem;
+
+        
+        .option {
+            padding: .5rem 1rem;
+            border-bottom: 1px solid #cfcfcf;
+            display: flex;
+
+            &:hover {
+                background: #80808026;
+            }
+
+            &:nth-last-of-type(1) {
+                border-bottom: none;
+            }
+        }
+    }
+}
+
+label {
+    cursor: pointer;
 }

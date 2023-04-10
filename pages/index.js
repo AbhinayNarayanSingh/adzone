@@ -7,6 +7,7 @@ import Icon from "@/hoc/image/Icon";
 import { navigateToSearch } from "@/utils/navigate/navigator";
 
 import { categoryData } from "@/store/staticStore";
+import { products } from "@/store/product";
 
 
 export default function Home() {
@@ -60,16 +61,15 @@ export default function Home() {
           <button className="btn-link">See All</button>
         </div>
         <div className="product-container grid">
-          <PeoductCards />
-          <PeoductCards />
-          <PeoductCards />
-          <PeoductCards />
-          <PeoductCards />
-          <PeoductCards />
-          <PeoductCards />
-          <PeoductCards />
-          <PeoductCards />
-          <PeoductCards />
+          {products.map((item, index) => {
+            item["images"]= [item["img-src"],]
+            item["short_location"]= item.location
+            item["posted_on"]= "today"
+            item["isFeatured"]= false
+            item["amount"]= item.amount.replace(/[$,]/g, '')
+
+            return ( <PeoductCards data={item}/> )
+            })}
         </div>
         <div className="loadmore-btn-container">
           <button className="btn-outline" disabled={loading} onClick={() => setLoading(true)}>

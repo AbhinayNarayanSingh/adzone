@@ -1,0 +1,65 @@
+.telephone-input-outer-container {
+    position: relative;
+    cursor: pointer;
+
+    .telephone-input-container {
+        display: flex;
+        gap: 1rem;
+
+
+        .telephone-input-container__country-select {
+            font-size: 1rem;
+            padding: .5rem 1rem;
+            border-radius: $BORDER_RADIUS;
+            border: 1px solid #cfcfcf;
+            margin: .25rem 0;
+            width: 120px;
+            cursor: pointer;
+            
+            display: flex;
+            justify-content: space-between;
+            
+            h2{
+                font-weight: 500;
+                letter-spacing: 1px;
+            }
+        }
+
+        .telephone-input-container__telephone-input {
+            letter-spacing: 1px;
+        }
+    }
+
+    .options-container {
+        position: absolute;
+        z-index: 9;
+        font-size: 1rem;
+        border-radius: $BORDER_RADIUS;
+        border: 1px solid #cfcfcf;
+        margin: .25rem 0;
+        background-color: white;
+        width: 100%;
+        top: 3rem;
+
+        height: 250px;
+        overflow-y: scroll;
+
+
+        .option {
+            padding: .5rem 1rem;
+            border-bottom: 1px solid #cfcfcf;
+            display: flex;
+            justify-content: space-between;
+
+            &:hover {
+                background: #80808026;
+            }
+
+            &:nth-last-of-type(1) {
+                border-bottom: none;
+            }
+        }
+    }
+
+
+}

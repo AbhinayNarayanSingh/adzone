@@ -2,8 +2,8 @@ import { postData } from "@/store/staticStore"
 import { navigateToPage } from "@/utils/navigate/navigator"
 import Link from "next/link"
 
-const PeoductCards = ({isSkelton=false}) => {
-  const { images, slug, Ad_id, title, short_location, location, description, amount, currency, posted_on, seller, isFeatured=true } = postData
+const PeoductCards = ({data, isSkelton=false}) => {
+  const { images, slug, Ad_id, title, short_location, location, description, amount, currency, posted_on, seller, isFeatured=true } = data || postData
   return (
     <Link href={navigateToPage("pdp", slug)} legacyBehavior>
       <div className={`product-outer-card-container ${isSkelton && "skelton"}`}>
