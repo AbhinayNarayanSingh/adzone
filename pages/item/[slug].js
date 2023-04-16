@@ -9,7 +9,7 @@ const Item = () => {
 
     return (
         <div className="min-height-container item-detail-page-container">
-            <p className="breadcrumb">Home / {title} / Ad ID {Ad_id}</p>
+            <p className="breadcrumb">Home / {title}</p>
 
             <div className="item-details-outer-container">
                 <div className="left-col">
@@ -26,7 +26,7 @@ const Item = () => {
                     <div className="item-title-container section">
                         <div>
                             <h2 className="title">{title}</h2>
-                            <p className="location">{location} <button className="btn-link px-05">(View Map)</button></p>
+                            <p className="location">{location} <button className="btn-link btn-size-s px-05">(View Map)</button></p>
                             <p className="posted-on">Posted about {posted_on}</p>
                         </div>
                         <h2 className="amount">{currency} {amount}</h2>

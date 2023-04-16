@@ -38,20 +38,24 @@
     .item-title-container {
         display: flex;
         justify-content: space-between;
+
         .title {
             font-size: 1.75rem;
             font-weight: 500;
             text-transform: uppercase;
             color: $PRIMARY_COLOR;
         }
+
         .location {
             font-weight: 500;
             color: $TEXT_COLOR;
         }
-        .posted-on{
+
+        .posted-on {
             color: grey;
         }
-        .amount{
+
+        .amount {
             font-weight: 500;
             color: $PRIMARY_COLOR;
             font-size: 1.25rem;
@@ -61,25 +65,28 @@
     }
 
     .description-container {
-        
+
         .description-container__description {
             * {
                 color: $TEXT_COLOR;
             }
-            p, ul, strong {
+
+            p,
+            ul,
+            strong {
                 display: block;
                 margin-bottom: 0.5rem;
             }
-            // p{
-            // }
+
             strong {
                 font-weight: 500;
             }
+
             ul {
                 margin-left: 1rem;
 
             }
-            
+
         }
     }
 
@@ -87,8 +94,8 @@
         position: sticky;
         top: 5rem;
         background-color: white;
-        
-        textarea{
+
+        textarea {
             border: 1px solid #cfcfcf;
             width: calc(100% - 2rem);
             height: 150px;
@@ -97,7 +104,7 @@
             border-radius: $BORDER_RADIUS;
         }
 
-        h2{
+        h2 {
             text-align: center;
             color: $PRIMARY_COLOR;
             font-weight: 600;
@@ -109,20 +116,26 @@
             margin: .5rem 0 1rem;
             padding: .5rem 1rem;
         }
-        .message-help-txt, span{
+
+        .message-help-txt,
+        span {
             font-size: .7em;
             color: grey;
             text-align: center;
         }
     }
 
-    .ad-report-container{
+    .ad-report-container {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        h2 {
+            color: $TEXT_COLOR;
+            font-weight: 500;
+        }
     }
 
-    .item-details-sub-title{
+    .item-details-sub-title {
         margin-bottom: 1rem;
         color: $PRIMARY_COLOR;
         font-weight: 500;
@@ -131,7 +144,7 @@
 
 
 
-    .item-details-outer-container{
+    .item-details-outer-container {
         display: flex;
         gap: 1rem;
         margin: 1rem 0;
@@ -141,11 +154,149 @@
             padding: 1rem;
             box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
         }
-        .left-col{
+
+        .left-col {
             width: 70%;
         }
+
         .right-col {
             width: 30%;
         }
+    }
+}
+
+
+@media only screen and (max-width: 512px) {
+    .breadcrumb {
+        margin: .5rem;
+        font-size: .6rem;
+    }
+
+    .item-detail-page-container {
+        .item-details-sub-title {
+            margin-bottom: .5rem;
+            font-size: 1rem;
+        }
+
+        .item-details-outer-container {
+            flex-direction: column;
+            gap: 0;
+
+            margin: 0;
+
+            .section {
+                margin-bottom: 0;
+                padding: .5rem;
+                box-shadow: none;
+            }
+
+            .left-col {
+                width: 100%;
+
+                .image-container {
+                    width: 100%;
+                    height: auto;
+
+                    .image-slider-button-container button img {
+                        height: 2rem !important;
+                        width: 2rem !important;
+                    }
+
+                    margin-bottom: .5rem;
+                }
+
+                .item-title-container {
+                    flex-direction: column-reverse;
+
+                    .title {
+                        font-size: 1rem;
+                        line-height: 1.25rem;
+                    }
+
+                    .location {
+                        font-size: .8rem;
+                        margin: .25rem 0;
+
+                        button {
+                            padding: 0 .1rem;
+                        }
+                    }
+
+                    .posted-on {
+                        color: grey;
+                        font-size: .8rem;
+                    }
+
+                    .amount {
+                        font-weight: 600;
+                        font-size: 1rem;
+                        text-align: start;
+                        width: 100%;
+                        margin: 0 0 .5rem;
+                    }
+                }
+
+                .description-container {
+
+                    .description-container__description {
+                        * {
+                            margin-bottom: 0.25rem;
+                            font-size: .8rem;
+                        }
+
+                        ul {
+                            margin-left: 1.5rem;
+                        }
+
+                        overflow: hidden;
+                    }
+                }
+
+            }
+
+            .right-col {
+                width: 100%;
+                display: flex;
+                flex-direction: column-reverse;
+
+                .contact-seller-container {
+                    position: inherit;
+
+                    textarea {
+                        padding: .5rem 1rem;
+                        font-size: .8rem;
+                        height: 100px;
+                    }
+
+                    h2 {
+                        margin-bottom: 1rem;
+                        font-size: .9rem;
+                    }
+
+                    .send-message-btn {
+                        margin: .25rem .5rem .5rem 0;
+                    }
+
+                    .message-help-txt,
+                    span {
+                        font-size: .5rem;
+                    }
+                }
+
+                .ad-report-container {
+                    h2 {
+                        font-size: .9rem;
+                    }
+                    button {
+                        margin-right: .5rem;
+                    }
+                }
+            }
+
+
+
+
+        }
+
     }
 }
