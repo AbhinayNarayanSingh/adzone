@@ -3,7 +3,7 @@ import React from 'react'
 const Input = ({ formFeild: { type, label, name, helpText, className, jsx } }) => {
     switch (type) {
         case "static" : 
-            return (<div className={className}>{jsx}</div>)
+            return (<div className={className + " static-text"}>{jsx}</div>)
         case "button" :
             return (
                 <div>

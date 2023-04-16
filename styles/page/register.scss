@@ -1,5 +1,9 @@
 
 .register-page-container {
+    * {
+        color: $TEXT_COLOR;
+    }
+
     max-width: 700px;
     margin: 1rem auto;
 
@@ -12,6 +16,9 @@
     .register-subline{
         text-align: center;
         margin-bottom: 1rem;
+    }
+    .t-and-c-string {
+        margin: 1rem 0;
     }
     
 }
@@ -48,4 +55,47 @@
         background-color: #4267B2;
         color: white;
     }
+}
+
+@media only screen and (max-width: 512px) {
+
+    .register-page-container {
+
+        margin: .5rem;
+
+        h2 {
+            font-size: 1.1rem;
+        }
+        .register-subline{
+            font-size: .9rem;
+            line-height: 125%;
+            margin: .25rem 0;
+        }
+        
+    }
+    .sign-form {
+        margin: 0;
+
+        .full-btn {
+            width: 100%;
+            margin: 0 0 .5rem;
+        }
+
+    }
+    .sign-option {
+        margin-bottom: 1rem;
+        font-size: .9rem;
+    }
+
+    .social-login{
+        margin: 0 0 .5rem;
+        padding: .75rem;
+        font-weight: 500;
+        font-size: .9rem;
+    }
+    .t-and-c-string {
+        font-size: .8rem;
+        margin: 1rem 0;
+    }
+
 }

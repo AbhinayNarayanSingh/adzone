@@ -8,32 +8,35 @@ const register = () => {
             placeholder: "Name",
             errorMsg: "",
             name : "name",
-            helpText: "Your name will be displayed on your public profile."
+            helpText: "Your name will be displayed on your public profile"
         },
         {
             label : "Email",
             type : "email",
             name : "email",
             placeholder: "Email",
-            errorMsg: "Email is required"
+            errorMsg: "Email is required",
+            helpText: "Please enter your email address"
         },
         {
             label : "Password",
             type : "password",
             name : "password",
             placeholder: "Password",
+            helpText : "Please enter a secure password with at least 8 characters, including at least one uppercase letter, one lowercase letter, one number, and one special character",
             errorMsg: ""
         },
         {
             label : "Confirm password",
             type : "password",
             placeholder: "Re-enter Password",
-            errorMsg: ""
+            errorMsg: "",
+            helpText: "Please re-enter your password to confirm it"
         },
         {
             type : "static",
-            jsx : <p>By Submitting in you agree to <button className="btn-link p-0">T&C</button> and <button className="btn-link p-0">Privacy Policy</button></p>,
-            className : "my-1"
+            jsx : <p className="t-and-c-string">By Submitting in you agree to T&C and Privacy Policy</p>,
+            className : ""
         },
         {
             type : "button",

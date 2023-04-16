@@ -1,0 +1,87 @@
+.form-feild {
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    margin: .5rem 0;
+    .help-text {
+        color: grey;
+        font-size: .9rem;
+    }
+    label {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+    input{
+        font-size: 1rem;
+        padding: .5rem .75rem;
+        border-radius: $BORDER_RADIUS;
+        border: 1px solid grey;
+        margin: .25rem 0;
+    }
+}
+
+.select-input-container {
+    position: relative;
+    cursor: pointer;
+
+    .input {
+        font-size: 1rem;
+        padding: .5rem 1rem;
+        border-radius: $BORDER_RADIUS;
+        border: 1px solid #cfcfcf;
+        margin: .25rem 0;
+        width: 100%;
+        display: flex;
+    }
+    .options-container {
+        position: absolute;
+        z-index: 9;
+        font-size: 1rem;
+        border-radius: $BORDER_RADIUS;
+        border: 1px solid #cfcfcf;
+        margin: .25rem 0;
+        background-color: white;
+        width: calc(100% + 2rem);
+        top: 2.6rem;
+
+        
+        .option {
+            padding: .5rem 1rem;
+            border-bottom: 1px solid #cfcfcf;
+            display: flex;
+
+            &:hover {
+                background: #80808026;
+            }
+
+            &:nth-last-of-type(1) {
+                border-bottom: none;
+            }
+        }
+    }
+}
+
+label {
+    cursor: pointer;
+}
+@media only screen and (max-width: 512px) {
+    .form-feild {
+        font-size: .9rem;
+
+        .help-text {
+            font-size: .7rem;
+        }
+        label {
+            font-size: .9rem;
+        }
+        input{
+            font-size: .9rem;
+            padding: .4rem .75rem;
+            margin: .15rem 0;
+        }
+        .static-text p {
+            font-size: .8rem;
+        }
+    }
+
+}
