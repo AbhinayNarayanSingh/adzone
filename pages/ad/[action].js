@@ -4,12 +4,15 @@ import Select from "@/hoc/input/Select";
 import TelephoneInput from "@/hoc/input/TelephoneInput";
 import { categoryData } from "@/store/staticStore";
 import TextEditor from "@/hoc/input/Editor";
+import { getCroppedImage } from "@/utils/helper/imageCroper";
 
 const AdPost = () => {
 
+    const [responseState, setResponseState] = useState({})
+    
     const [selectedFiles, setSelectedFiles] = useState([]);
-    const [previewUrls, setPreviewUrls] = useState([]);
-    const [thumbnailUrl, setThumbnailUrl] = useState('');
+    const [previewUrls, setPreviewUrls] = useState([]);     // only for preview
+    const [thumbnailUrl, setThumbnailUrl] = useState('');   // only for preview
 
 
     useEffect(() => {
@@ -26,18 +29,28 @@ const AdPost = () => {
         }
     }, [selectedFiles]);
 
-    const handleFileInputChange = (event) => {
-        const files = Array.from(event.target.files);
-        setSelectedFiles(files);
+    const handleFileInputChange = async (event) => {
+        try {
+            const croppedImages = [...selectedFiles]
+
+            const files = Array.from(event.target.files);
+            for (const imageUrl of files) {
+                const croppedImage = await getCroppedImage(imageUrl, "4:3");
+                croppedImages.push(croppedImage)
+            }
+            setSelectedFiles(croppedImages);
+        } catch (error) {
+            console.log('+++ error', error);
+        }
     };
 
-    const handleVideoUrl = (e) => {
+
+    const youtubeVideoPreviewHandler = (e) => {
         const videoUrl = e.target.value;
 
         // Regex pattern to match the video ID parameter in the URL
         const regex = /(?:\?|&)v=([a-zA-Z0-9_-]{11})(?:&|$)/;
 
-        // Test the regex pattern against the URL
         const match = videoUrl.match(regex);
 
         if (match) {
@@ -46,8 +59,29 @@ const AdPost = () => {
         }
     };
 
+    const valueHandlerFn = (name) => responseState[name]
+
+    const onChangeHandlerFn = (e) => {
+        const { name, value, checked, type } = e.target;
+        const prevState = { ...responseState };
+        
+        if (name === "listing-for" && value !== "for_sale") prevState["amount"] = ""
+        
+        switch (type) {
+            case "checkbox":
+                prevState[name] = checked;
+                break;
+            default:
+                prevState[name] = value;
+                break;        
+        }
+
+        setResponseState(prevState)
+    }
+
     return (
         <div className="ad-form-outer-container">
+            {/* {console.log('+++ responseState', responseState)} */}
             <h2 className="page-heading">Post Your Ad and Find Your Buyer</h2>
 
             {/* Ad details */}
@@ -59,7 +93,12 @@ const AdPost = () => {
                     <h2 className="left-col">Select Category :</h2>
                     <div className="right-col">
                         <div className="inner-container">
-                            <Select options={categoryData} className="pl-1" />
+                            <Select options={categoryData}
+                                name={"category"}
+                                valueHandlerFn={valueHandlerFn}
+                                onChangeHandlerFn={onChangeHandlerFn}
+                                className="pl-1"
+                            />
                         </div>
                     </div>
                 </div>
@@ -69,8 +108,12 @@ const AdPost = () => {
                     <h2 className="left-col">Ad title :</h2>
                     <div className="right-col">
                         <div className="inner-container">
-                            <textarea name="" ></textarea>
-                            <p className="help-text">Create a clear and descriptive title to accurately represent your listing and catch the buyer's attention.</p>
+                            <textarea
+                                name="title"
+                                value={valueHandlerFn("title")}
+                                onChange={(e) => onChangeHandlerFn(e)}
+                            ></textarea>
+                            <p className="help-text">Create a clear and descriptive title to accurately represent your listing and catch the buyer&apos;s attention.</p>
                         </div>
                     </div>
                 </div>
@@ -79,8 +122,12 @@ const AdPost = () => {
                 <div className="section-detail-container">
                     <h2 className="left-col">Description :</h2>
                     <div className="right-col">
-                            <TextEditor/>
-                            <p className="help-text">Provide a detailed description to help buyers understand your listing.</p>
+                        <TextEditor
+                            name="description"
+                            value={valueHandlerFn}
+                            setValue={onChangeHandlerFn}
+                        />
+                        <p className="help-text">Provide a detailed description to help buyers understand your listing.</p>
                     </div>
                 </div>
 
@@ -91,22 +138,56 @@ const AdPost = () => {
                         <div className="inner-container">
                             <div>
                                 <div className="radio-input">
-                                    <input type="radio" name="price" id="for-sale" className="radio-input_input" />
+                                    <input
+                                        type="radio"
+                                        name="listing-for"
+                                        id="for-sale"
+                                        className="radio-input_input"
+                                        value="for_sale"
+                                        onChange={(e) => onChangeHandlerFn(e)}
+                                    />
                                     <label htmlFor="for-sale">For Sale</label>
                                 </div>
-                                <input type="text" className="price-input" />
+                                <input 
+                                    type="text" 
+                                    className="price-input" 
+                                    name="amount"
+                                    value={valueHandlerFn("amount")}
+                                    onChange={(e) => onChangeHandlerFn(e)}
+                                />
                             </div>
                             <div className="radio-input">
-                                <input type="radio" name="price" id="for-free" className="radio-input_input" />
+                                <input
+                                    type="radio"
+                                    name="listing-for"
+                                    id="for-free"
+                                    className="radio-input_input"
+                                    value="for_free"
+                                    onChange={(e) => onChangeHandlerFn(e)}
+                                />
                                 <label htmlFor="for-free">Free</label>
                             </div>
                             <div className="radio-input">
-                                <input type="radio" name="price" id="for-swap-trade" className="radio-input_input" />
+                                <input
+                                    type="radio"
+                                    name="listing-for"
+                                    id="for-swap-trade"
+                                    className="radio-input_input"
+                                    value="for_swap_trade"
+                                    onChange={(e) => onChangeHandlerFn(e)}
+                                />
                                 <label htmlFor="for-swap-trade">Swap / Trade</label>
                             </div>
                             <div className="radio-input">
-                                <input type="radio" name="price" id="for-contact" className="radio-input_input" />
-                                <label htmlFor="for-contact">Contact</label>
+                                <input
+                                    type="radio"
+                                    name="listing-for"
+                                    id="contact"
+                                    className="radio-input_input"
+                                    value="contact"
+                                    onChange={(e) => onChangeHandlerFn(e)}
+                                />
+                                <label htmlFor="contact">Contact</label>
                             </div>
                         </div>
                     </div>
@@ -134,10 +215,20 @@ const AdPost = () => {
                     <div className="right-col">
                         <div className="inner-container">
                             <div className="link-to-website-container">
-                                <input type="checkbox" name="" id="link-to-website" />
+                                <input type="checkbox" 
+                                name="isWebsiteLinked" 
+                                id="link-to-website"
+                                value={valueHandlerFn("isWebsiteLinked")}
+                                onChange={(e) => onChangeHandlerFn(e)}
+                                />
                                 <label htmlFor="link-to-website">Link to your website ($4.95)</label>
                             </div>
-                            <input type="text" />
+                            <input 
+                                type="text"
+                                name="website-url"
+                                value={valueHandlerFn("website-url")}
+                                onChange={(e) => onChangeHandlerFn(e)}
+                            />
                             <p className="help-text">Website URL feature drives buyers directly to your own site.</p>
                         </div>
                     </div>
@@ -177,7 +268,13 @@ const AdPost = () => {
                     <h2 className="left-col">YouTube Video :</h2>
                     <div className="right-col">
                         <div className="inner-container">
-                            <input type="text" onBlur={handleVideoUrl} />
+                            <input
+                                type="text"
+                                name="youtube_video"
+                                onBlur={youtubeVideoPreviewHandler}
+                                value={valueHandlerFn("youtube_video")}
+                                onChange={(e) => onChangeHandlerFn(e)}
+                            />
                             <p className="help-text">Add a YouTube video to your listing e.g. http://www.youtube.com/watch?v=:id</p>
                             {thumbnailUrl && <div className="youtube-video-thumbnail"><img src={thumbnailUrl} alt="Video thumbnail" /></div>}
 

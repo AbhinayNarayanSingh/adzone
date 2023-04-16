@@ -2,60 +2,18 @@
     display: flex;
 }
 
-.sign-up-banner {
-    background-color: $PRIMARY_COLOR;
-    color: white;
-    text-align: center;
-    padding: 2rem;
-    margin: 2rem auto 1rem;
-    border-radius: $BORDER_RADIUS;
-    max-width: 768px;
-
-    h2 {
-        font-size: 1.75rem;
-        font-weight: 500;
-    }
-
-    button {
-        margin-top: 1rem;
-    }
-}
-.homepage-banner {
-    background-color: $PRIMARY_COLOR;
-    color: white;
-    text-align: center;
-    padding: 3rem 0;
-    margin: 0 auto 2rem;
-
-    h2 {
-        font-size: 1.75rem;
-        font-weight: 500;
-    }
-
-    button {
-        margin-top: 1rem;
-    }
-}
-
-.homepage-banner {
-    width: 100%;
-    object-fit: contain;
-    overflow: hidden;
-}
-
 .outer-featured-product-container {
     background: rgb(230, 230, 230);
     border-radius: $BORDER_RADIUS;
     margin: 1rem;
     padding: 1rem;
-
-    
 }
 
 .product-container, .featured-product{
     display: flex;
     gap: 1rem;
 }
+
 .heading{
     display: flex;
     justify-content: space-between;
@@ -63,6 +21,7 @@
     h2{
         font-size: 1.1rem;
         font-weight: 500;
+        color: $TEXT_COLOR;
     }
     margin-bottom: 1rem;
 }
@@ -104,4 +63,91 @@
             margin: .5rem 0;
         }
     }
+}
+
+
+@media only screen and (min-width: 512px) {
+    .category-container {
+        display: flex;
+        // justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 1rem 0;
+
+        .category {
+            flex: 0 0 auto;
+            width: 150px;
+
+            p{
+                text-align: center;
+            }
+
+        }
+    }
+}
+@media only screen and (max-width: 512px) {
+
+    .category-container {
+        margin: 0;
+        width: 100%;
+
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+
+        .category-outer-container {
+            flex: 0 0 auto;
+            width: 25%;
+            gap: .5rem;
+            margin-top: 1rem;
+
+            .category {
+
+                .category-icon {
+                    $size : 3.5rem;
+                    width: $size;
+                    height: $size;
+                    border-radius: $size;
+                    img{
+                        height: 1.65rem !important;
+                    }
+                }
+                p{
+                    margin: .4rem 0 0;
+                    font-size: .8rem;
+                    text-align: center;
+                    line-height: 1.1rem;
+                }
+            }
+        }
+
+    }
+
+    .outer-featured-product-container {
+        border-radius: 0;
+        margin: 0;
+        padding: .5rem;
+    }
+
+    .product-container, .featured-product{
+        gap: .5rem;
+        padding-bottom: .5rem;
+    }
+
+    .outer-product-container{
+        margin: .5rem;
+    }
+
+    .heading{
+        h2{
+            font-size: .9rem;
+        }
+        margin-bottom: .5rem;
+    }
+
+    .loadmore-btn-container {
+        margin: 1rem 0 1.5rem;
+        display: flex;
+        justify-content: center;
+    }
+    
 }

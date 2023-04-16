@@ -1,0 +1,92 @@
+button {
+    cursor: pointer;
+}
+
+.btn {
+    background: $PRIMARY_COLOR;
+    color: white;
+    border: none;
+    padding: .25rem 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1rem;
+    border-radius: $BORDER_RADIUS;
+}
+
+.btn-light {
+    background: white;
+    color: $PRIMARY_COLOR;
+    border: none;
+    padding: .25rem 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1rem;
+    border-radius: $BORDER_RADIUS;
+}
+
+.btn-outline {
+    border: none;
+    padding: .25rem 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    background: none;
+    color: $PRIMARY_COLOR;
+    border: 2px solid $PRIMARY_COLOR;
+    border-radius: $BORDER_RADIUS;
+    font-size: 1rem;
+}
+
+.btn-link {
+    border: none;
+    padding: .25rem 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    background: none;
+    color: $PRIMARY_COLOR;
+    font-size: 1rem;
+}
+
+.btn-link-light {
+    border: none;
+    padding: .25rem 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    background: none;
+    color: white;
+    font-size: 1rem;
+}
+
+@media only screen and (max-width: 512px) {
+
+    .btn {
+        padding: .25rem 1rem;
+        font-weight: 500;
+        font-size: .9rem;
+    }
+
+    .btn-light {
+        padding: .25rem 1rem;
+        font-weight: 500;
+        font-size: .9rem;
+    }
+
+    .btn-outline {
+        padding: .25rem 1rem;
+        font-weight: 500;
+        font-size: .9rem;
+    }
+
+    .btn-link {
+        padding: .25rem 1rem;
+        font-weight: 500;
+        font-size: .9rem;
+    }
+
+    .btn-link-light {
+        padding: .25rem 1rem;
+        font-weight: 500;
+        font-size: .9rem;
+    }
+
+
+}

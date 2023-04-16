@@ -40,9 +40,9 @@ const Navbar = () => {
         </div>
 
         <div className='navbar-right-col'>
-          <button className='btn-link'>ES</button>
+          <button className='btn-link change-language'>ES</button>
           <div className='sign-button'>
-            {!true ? 
+            {true ? 
             <>
               <Link href={navigateToPage("register")}>
                 <button className='btn-link'>Register</button>
@@ -53,14 +53,16 @@ const Navbar = () => {
               </Link>
             </> : 
             <>
-              <Link href={navigateToPage("profile")}>
-                <button className='btn-link'>Abhinay Narayan Singh</button>
+              <Link href={navigateToPage("listings")}>
+                <button className='btn-link'>Abhinay Singh</button>
               </Link>
             </>}
           </div>
-          <Link href={navigateToPage("new-ad")}>
-            <button className='btn'>POST FREE ADS</button>
-          </Link>
+          <div className="post-new-ad">
+            <Link href={navigateToPage("new-ad")}>
+              <button className='btn'>POST FREE ADS</button>
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -90,6 +92,7 @@ const Navbar = () => {
           <div>
             <button>My Profile</button>
             <button>Messages</button>
+            <button>Premium</button>
           </div>
 
           <button className='active'>

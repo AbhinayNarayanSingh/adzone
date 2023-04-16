@@ -1,7 +1,33 @@
+import { useRouter } from "next/router"
+import Link from "next/link"
+
+import { navigateToPage } from "@/utils/navigate/navigator"
+import { PROJECT_NAME } from "@/Environment"
+
 import Listings from "@/components/Page/Listings"
-import PeoductCards from "@/hoc/cards/PeoductCards"
+import Orders from "@/components/Page/Orders"
+import Reviews from "@/components/Page/Reviews"
 
 const Profile = () => {
+    const router = useRouter()
+    const {section} = router.query
+
+    let profileSection
+
+    switch (section) {
+        case "listings":
+            profileSection = <Listings/>
+            break;
+        
+        case "orders":
+            profileSection = <Orders/>
+            break;
+        
+        case "reviews":
+            profileSection = <Reviews/>
+            break;
+        
+    }
   return (
     <div className="main-section-outer-container">
         <div className="section-col-30">
@@ -9,20 +35,20 @@ const Profile = () => {
 
                 <h3 className="user-profile-character">a</h3>
                 <h2>Abhinay Narayan Singh</h2>
-                <p>Member since <span>26 Febuary, 2023</span></p>
+                <p>On {PROJECT_NAME} since <span>Febuary, 2023</span></p>
 
                 <button className="btn">Share profile</button>
                 <button className="btn-outline">Report</button>
             </div>
 
             <div className="sections-conatiner">
-                <button>Listings</button>
-                <button>Reviews</button>
-                <button>Orders</button>
+                <Link href={navigateToPage("listings")}><button>Listings</button></Link>
+                <Link href={navigateToPage("reviews")}><button>Reviews</button></Link>
+                <Link href={navigateToPage("orders")}><button>Orders</button></Link>
             </div>
         </div>
         <div className="section-col-70 ">
-            <Listings/>
+            {profileSection}
         </div>
     </div>
   )

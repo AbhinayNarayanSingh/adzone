@@ -7,8 +7,14 @@ export const navigateToPage = (page, slug) => {
         case "login":
             return "/login"
 
-        case "profile":
-            return "/p/listing"
+        case "listings":
+            return "/p/listings"
+
+        case "reviews":
+            return "/p/reviews"
+
+        case "orders":
+            return "/p/orders"
 
         case "pdp":
             return "/item/" + slug

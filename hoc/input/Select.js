@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Icon from "../image/Icon"
 
-const Select = ({ options, className }) => {
+const Select = ({ options, className, name, valueHandlerFn, onChangeHandlerFn }) => {
     const [isOptionOpen, setIsOptionOpen] = useState(false)
     const [optionSelcted, setOptionSelcted] = useState(options[0])
 

@@ -1,4 +1,4 @@
-import PeoductCards from '@/hoc/cards/PeoductCards'
+import ProductCards from '@/hoc/cards/ProductCards'
 
 
 const Listings = () => {
@@ -9,9 +9,9 @@ const Listings = () => {
                 <p>Showing 1 - 7 of 7 results</p>
             </div>
             <div className="listing">
-                {[...Array(7)].map((item, index) => {
+                {[...Array(9)].map((item, index) => {
                     return (
-                        <PeoductCards />
+                        <ProductCards key={"listing__"+index}/>
                     )
                 })}
             </div>

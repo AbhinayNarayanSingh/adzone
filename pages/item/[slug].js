@@ -1,3 +1,5 @@
+import { NEXT_BUTTON_ICON, PREVIOUS_BUTTON_ICON } from "@/Environment"
+import Icon from "@/hoc/image/Icon"
 import { postData } from "@/store/staticStore"
 import Image from "next/image"
 
@@ -16,8 +18,8 @@ const Item = () => {
                         <Image src={images[0]} fill={true} object-fit="cover" />
 
                         <div className="image-slider-button-container">
-                            <button>Previous</button>
-                            <button>Next</button>
+                            <button><Icon src={PREVIOUS_BUTTON_ICON} alt="previous" size="3rem"/></button>
+                            <button><Icon src={NEXT_BUTTON_ICON} alt="next" size="3rem"/></button>
                         </div>
                     </div>
 
@@ -45,7 +47,7 @@ const Item = () => {
 
                         <form action="">
                             <textarea name="" id="" >
-                            Hi, I'm interested! Please contact me if this is still available.
+                            Hi, I&apos;m interested! Please contact me if this is still available.
                             </textarea>
 
                             <button className="btn send-message-btn" disabled>Send Message</button>

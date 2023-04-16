@@ -1,4 +1,4 @@
-import PeoductCards from "@/hoc/cards/PeoductCards"
+import ProductCards from "@/hoc/cards/ProductCards"
 import { useRouter } from "next/router"
 
 const Search = () => {
@@ -17,12 +17,12 @@ const Search = () => {
         </div>
 
         <div className="search-result-container">
-            {[...Array(20)].map((_id) => {return <PeoductCards />})}
+            {[...Array(20)].map((_id, index) => {return <ProductCards key={"search-result__"+ index}/>})}
 
         </div>
 
         <div className="filter-banner">
-            <h2>Our classifieds are the perfect place to find them! Whether you're buying or selling</h2>
+            <h2>Our classifieds are the perfect place to find them! Whether you&apos;re buying or selling</h2>
             <p>Post your classified ad today and connect with buyers and sellers near you!</p>
             <button className="btn-light">Post Your Ad Now</button>
         </div>

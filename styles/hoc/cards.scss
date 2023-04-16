@@ -5,7 +5,11 @@
     box-shadow: $CARD_BOX_SHADOW;
 
     .product-card-container {
-        padding: .65rem;
+        padding: 0.65rem 0.65rem 0.25rem;
+
+        * {
+            color: $TEXT_COLOR;
+        }
 
         .image-container {
             position: relative;
@@ -34,14 +38,38 @@
                 object-fit: cover;
                 background: $BLACK;
             }
-        }
 
-        h2 {
-            font-size: 1.25rem;
-            font-weight: 500;
-            line-height: 1.5rem;
-            height: 1.5rem;
-            margin-bottom: .5rem;
+            .listing-price {
+                position: absolute;
+                display: flex;
+                z-index: 2;
+                bottom: .25rem;
+                right: 0;
+
+                .path {
+                    clip-path: polygon(85% 0, 100% 0, 100% 100%, 0% 100%);
+                    background: white;
+                    display: block;
+                    width: 1rem;
+                    margin-right: -0.1rem;
+                }
+
+                h2 {
+                    background: white;
+                    font-size: .75rem;
+                    font-weight: 500;
+                    padding-left: .25rem;
+
+                    span {
+                        font-size: 1rem;
+                        font-weight: 500;
+                        line-height: 150%;
+                        height: 1.5rem;
+                        margin-bottom: .5rem;
+                    }
+
+                }
+            }
         }
 
         p {
@@ -57,20 +85,92 @@
             text-transform: uppercase;
             margin-top: .5rem;
 
+            .address {
+                max-width: 175px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
             p {
-                line-height: 1rem;
+                line-height: .7rem;
                 height: 1rem;
                 font-size: .8rem;
                 color: grey;
             }
         }
     }
+
+}
+
+@media only screen and (max-width: 512px) {
+    .product-outer-card-container {
+        .product-card-container {
+            padding: 0.25rem 0.25rem 0.1rem;
+
+            .image-container {
+
+                .featured {
+                    padding: 0 .35rem;
+                    font-size: .5rem;
+                    top: .15rem;
+                    left: -0.15rem;
+                    line-height: 1rem;
+                    height: 1rem;
+                }
+
+                .listing-price {
+                    .path {
+                        width: .75rem;
+                    }
+                    
+                    h2 {
+                        font-size: .7rem;
+                        padding-left: .1rem;
+
+    
+                        span {
+                            font-size: .7rem;
+                            font-weight: 600;
+                        }
+    
+                    }
+                }
+            }
+
+            p {
+                font-size: .8rem;
+                line-height: 1rem;
+                height: 1rem;
+                display: block;
+            }
+
+            .address-date-container {
+                margin-top: .25rem;
+
+                .address {
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+
+                    font-size: .6rem;
+                }
+
+                .timestamp {
+                    display: none;
+                }
+            }
+
+        }
+    }
+
 }
 
 .product-outer-card-container.skelton {
-    .product-card-container img{ background: $SKELTON_GREY; }
+    .product-card-container img {
+        background: $SKELTON_GREY;
+    }
 
-    h2, .address-date-container p { 
+    h2,
+    .address-date-container p {
         background: $SKELTON_GREY;
         width: 125px;
     }
@@ -79,4 +179,116 @@
         background: $SKELTON_GREY;
     }
 
+}
+
+.review-card-outer-container {
+    max-width: 100%;
+    background: white;
+    border-radius: $BORDER_RADIUS;
+    box-shadow: $CARD_BOX_SHADOW;
+
+    .review-card-container {
+        padding: .65rem 1rem;
+
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+
+        .user-profile-character {
+            width: 3rem;
+            height: 3rem;
+            font-size: 2rem;
+            font-weight: 500;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: $PRIMARY_COLOR;
+            color: white;
+            border-radius: 5rem;
+
+            text-transform: uppercase;
+
+            margin-top: .25rem;
+        }
+
+        * {
+            color: $TEXT_COLOR;
+        }
+
+        .user-name-timestamp {
+            display: flex;
+            align-items: center;
+
+            h2 {
+                font-weight: 500;
+            }
+
+            span {
+                width: .25rem;
+                height: .25rem;
+                border-radius: 1rem;
+                background: grey;
+                display: block;
+                margin: 0 .5rem;
+            }
+
+            p {
+                color: grey;
+                font-size: .9rem;
+            }
+        }
+
+        p {
+            line-height: 1.2rem;
+        }
+
+    }
+}
+
+
+.order-card-outer-container {
+    max-width: 100%;
+    background: white;
+    border-radius: $BORDER_RADIUS;
+    box-shadow: $CARD_BOX_SHADOW;
+
+    .order-card-container {
+        padding: .65rem 1rem;
+
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+
+
+        .order-history-icon {
+            $size : 5rem;
+            width: $size;
+            height: $size;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5rem;
+            background: $PRIMARY_COLOR_SHADOW;
+        }
+
+        * {
+            color: $TEXT_COLOR;
+        }
+
+        h2 {
+            font-weight: 600;
+            color: $PRIMARY_COLOR;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            font-weight: 500;
+        }
+
+        .order_id {
+            color: grey;
+        }
+    }
 }

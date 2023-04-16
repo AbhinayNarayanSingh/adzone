@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useState } from "react";
 
-import PeoductCards from "@/hoc/cards/PeoductCards";
+import ProductCards from "@/hoc/cards/ProductCards";
 import Icon from "@/hoc/image/Icon";
 
 import { navigateToSearch } from "@/utils/navigate/navigator";
@@ -18,14 +18,16 @@ export default function Home() {
       <div className="category-container">
         {categoryData.map((item, index) => {
           return (
-            <Link href={navigateToSearch(item.name, "c")}>
-              <div className="category" key={item.name+"__"+index}>
-                <div className="category-icon">
-                  <Icon src={item.icon} alt={item.name} size="2.25rem" />
+            <div key={item.name+"__"+index} className="category-outer-container">
+              <Link href={navigateToSearch(item.name, "c")}>
+                <div className="category">
+                  <div className="category-icon">
+                    <Icon src={item.icon} alt={item.name} size="2.25rem" />
+                  </div>
+                  <p>{item.name}</p>
                 </div>
-                <p>{item.name}</p>
-              </div>
-            </Link>
+              </Link>
+            </div>
           )
         })}
       </div>
@@ -43,9 +45,9 @@ export default function Home() {
           <button className="btn-link">See All</button>
         </div>
         <div className="featured-product grid">
-          <PeoductCards />
-          <PeoductCards />
-          <PeoductCards />
+          <ProductCards />
+          <ProductCards />
+          <ProductCards />
         </div>
       </div>
 
@@ -58,7 +60,6 @@ export default function Home() {
       <div className="outer-product-container">
         <div className="heading">
           <h2>Fresh recommendations</h2>
-          <button className="btn-link">See All</button>
         </div>
         <div className="product-container grid">
           {products.map((item, index) => {
@@ -68,7 +69,7 @@ export default function Home() {
             item["isFeatured"]= false
             item["amount"]= item.amount.replace(/[$,]/g, '')
 
-            return ( <PeoductCards data={item}/> )
+            return ( <ProductCards data={item} key={"product__"+index}/> )
             })}
         </div>
         <div className="loadmore-btn-container">
