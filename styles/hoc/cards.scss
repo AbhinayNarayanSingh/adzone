@@ -247,6 +247,37 @@
     }
 }
 
+@media only screen and (max-width: 512px) {
+    .review-card-outer-container {
+        .review-card-container {
+            padding: .25rem .5rem;
+            margin-bottom: .5rem;
+    
+            .user-profile-character {
+                width: 2.5rem;
+                height: 2.5rem;
+                font-size: 1.25rem;
+            }
+    
+            .user-name-timestamp {
+                h2 {
+                    font-size: .8rem;
+                }
+    
+                p {
+                    font-size: .75rem;
+                }
+            }
+    
+            p {
+                font-size: .8rem;
+                line-height: 1.05rem;
+            }
+    
+        }
+    }
+}
+
 
 .order-card-outer-container {
     max-width: 100%;
@@ -291,4 +322,33 @@
             color: grey;
         }
     }
+}
+
+@media only screen and (max-width: 512px) {
+    .order-card-outer-container {
+        .order-card-container {
+            padding: .5rem;
+            gap: .65rem;
+            margin-bottom: .5rem;
+    
+    
+            .order-history-icon {
+                margin-top: .25rem;
+                $size : 4rem;
+                width: $size;
+                height: $size;
+
+                img {
+                    height: 2.25rem !important;
+                }
+            }
+    
+            h2 {
+                line-height: 130%;
+            }
+            h2, h3, .order_id {
+                font-size: .8rem;
+            }
+        }
+    }    
 }

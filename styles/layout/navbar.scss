@@ -155,6 +155,7 @@ $navbar-height : 4.25rem;
                 font-weight: 500;
                 color: $TEXT_COLOR;
                 display: flex;
+                align-items: center;
                 img {
                     padding-left: .5rem;
                 }
@@ -166,6 +167,18 @@ $navbar-height : 4.25rem;
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -234,5 +247,21 @@ $navbar-height : 4.25rem;
     
         }
 
+        .section-navbar-outer-container {
+            .section-navbar-inner-container {
+                padding: .25rem;
+    
+                button {
+                    font-size: .8rem;
+                    padding: 0.5rem .5rem;
+
+                    img {
+                        padding-left: .25rem;
+                        height: 1rem !important;
+                    }
+                }
+            }
+        }
     }
+
 }

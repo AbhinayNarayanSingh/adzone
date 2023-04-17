@@ -119,10 +119,10 @@ const Navbar = () => {
             <div>
               <button>My Profile</button>
               <button>Messages</button>
-              <button>Premium</button>
+              {/* <button>Premium</button> */}
             </div>
 
-            <button className="active">
+            <button className="btn-with-icon active">
               Account Settings
               <Icon src={SETTING_ICON} />
             </button>

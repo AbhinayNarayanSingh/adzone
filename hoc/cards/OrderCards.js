@@ -27,13 +27,12 @@ const OrderCards = ({ key, data }) => {
   return (
     <div key={order_id} className="order-card-outer-container">
       <div className="order-card-container">
-        <div className="order-history-icon">
-          <Icon src={order_img} alt={type} size="3rem" />
+        <div>
+          <div className="order-history-icon"><Icon src={order_img} alt={type} size="3rem" /></div>
         </div>
         <div>
           <h2>
-            {type} |{" "}
-            {isCustomPlan ? (
+            {type} | {isCustomPlan ? (
               <>
                 {plan} : {Ads} Ads Credit - {tenure} day validity
               </>

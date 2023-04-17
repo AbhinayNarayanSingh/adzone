@@ -13,7 +13,7 @@ const Icon = ({
   const icons = {
     ...default_wxh,
     filter:
-      "invert(19%) sepia(14%) saturate(5649%) hue-rotate(220deg) brightness(90%) contrast(90%)",
+      "invert(15%) sepia(22%) saturate(6122%) hue-rotate(232deg) brightness(87%) contrast(83%)",
   };
   const hover = {
     ...default_wxh,

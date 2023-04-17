@@ -136,9 +136,8 @@ const AdPost = () => {
               setValue={onChangeHandlerFn}
             />
             <p className="help-text">
-              Provide a detailed description to help buyers understand your
-              listing.
-            </p>
+              Please provide a thorough and detailed description of your listing to aid buyers in understanding the product better. Keep in mind that the description you provide will be visible on the product detail page, so it's essential to be as precise and accurate as possible.
+              </p>
           </div>
         </div>
 
