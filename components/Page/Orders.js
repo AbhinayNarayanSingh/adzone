@@ -1,5 +1,5 @@
-import OrderCards from "@/hoc/cards/OrderCards"
-import { orderHistory } from "@/store/staticStore"
+import OrderCards from "@/hoc/cards/OrderCards";
+import { orderHistory } from "@/store/staticStore";
 
 const Orders = () => {
   return (
@@ -9,10 +9,12 @@ const Orders = () => {
         <p>Showing 1 - 3 of 3 results</p>
       </div>
       <div className="min-body-section-container">
-        {orderHistory.map((order, index) => <OrderCards key={"order__" + index} data={order} />)}
+        {orderHistory.map((order, index) => (
+          <OrderCards key={"order__" + index} data={order} />
+        ))}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Orders
+export default Orders;

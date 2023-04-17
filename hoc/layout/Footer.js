@@ -1,9 +1,8 @@
-import { FOOTER_LOGO, PROJECT_DESCRIPTION } from '@/Environment'
+import { FOOTER_LOGO, PROJECT_DESCRIPTION } from "@/Environment";
 
 const Footer = () => {
   return (
-    <div className='footer-outer-container'>
-
+    <div className="footer-outer-container">
       <div className="footer-brand-container">
         <img src={FOOTER_LOGO} className="" />
         <p>{PROJECT_DESCRIPTION}</p>
@@ -17,11 +16,12 @@ const Footer = () => {
         <button className="btn-link-light">Sitemap</button>
       </div>
       <div className="footer-link-container">
-        <button className="btn-link-light">Logout as Abhinay Narayan Singh</button>
+        <button className="btn-link-light">
+          Logout as Abhinay Narayan Singh
+        </button>
       </div>
-
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

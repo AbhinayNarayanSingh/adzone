@@ -7,20 +7,20 @@ import "react-quill/dist/quill.snow.css";
 const TextEditor = ({ name, setValue, error }) => {
   const modules = {
     toolbar: [],
-    clipboard: { matchVisual: false, },
+    clipboard: { matchVisual: false },
   };
-  const [editorValue, setEditorValue] = useState()
+  const [editorValue, setEditorValue] = useState();
 
   const changeHandler = (value) => {
-    setEditorValue(value)
+    setEditorValue(value);
     let e = {
-      target : {
-        value : editorValue,
-        name : name
-      }
-    }
-    setValue(e)
-  }
+      target: {
+        value: editorValue,
+        name: name,
+      },
+    };
+    setValue(e);
+  };
   return (
     <div className={"text-editor"}>
       <ReactQuill

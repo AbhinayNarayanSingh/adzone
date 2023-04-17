@@ -1,15 +1,17 @@
-import Input from "./Input"
+import Input from "./Input";
 
-const Form = ({formFeild, className}) => {
+const Form = ({ formFeild, className }) => {
   return (
     <form className={className}>
-        {formFeild.map((feild, index) => {return (
-            <>
-            <Input formFeild={feild}/>
-            </>
-        )})}
+      {formFeild.map((feild, index) => {
+        return (
+          <>
+            <Input formFeild={feild} />
+          </>
+        );
+      })}
     </form>
-  )
-}
+  );
+};
 
-export default Form
+export default Form;

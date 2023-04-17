@@ -1,10 +1,11 @@
-
 const Loader = () => {
-  return ( false &&
-    <div className="full-page-loader">
+  return (
+    false && (
+      <div className="full-page-loader">
         <div className="dot-bricks"></div>
-    </div>
-  )
-}
+      </div>
+    )
+  );
+};
 
-export default Loader
+export default Loader;

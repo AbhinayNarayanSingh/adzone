@@ -52,25 +52,48 @@
         }
     }
 
-    .filter-banner {
+}
 
-        background-color: $PRIMARY_COLOR;
-        text-align: center;
-        padding: 3rem 0;
-        margin: 0 auto 2rem;
-        
-        h2 {
-            font-size: 1.75rem;
-            font-weight: 500;
-            color: white;
-        }
-        p{
-            color: white;
 
+@media only screen and (max-width: 512px) {
+    .search-page-container {
+    
+        .heading-container {
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 0 0.5rem;
+
+            h2 {
+                font-size: 1.25rem;
+            }
+            p{
+                font-size: .8rem;
+            }
         }
     
-        button {
-            margin-top: 1rem;
+        .search-result-container {
+            margin: 0;
+            margin: .5rem 0;
+            padding: .5rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: .5rem;
         }
+    
+        .pagination-container {
+            margin: 1rem 0;
+    
+            .pages-container {
+                .pages {
+
+                    width: 1.5rem;
+                    height: 1.5rem;
+                    margin: .25rem;
+                    font-size: .8rem;
+                }
+            }
+        }
+    
     }
+
 }

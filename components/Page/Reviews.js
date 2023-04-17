@@ -1,9 +1,7 @@
-import ReviewCards from "@/hoc/cards/ReviewCards"
-import { reviewsData } from "@/store/staticStore"
-
+import ReviewCards from "@/hoc/cards/ReviewCards";
+import { reviewsData } from "@/store/staticStore";
 
 const Reviews = () => {
-  
   return (
     <>
       <div className="heading-container">
@@ -12,13 +10,11 @@ const Reviews = () => {
       </div>
       <div className="min-body-section-container">
         {reviewsData.map((review, index) => {
-          return (
-            <ReviewCards key={"review__" + index} data={review}/>
-          )
+          return <ReviewCards key={"review__" + index} data={review} />;
         })}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Reviews
+export default Reviews;
