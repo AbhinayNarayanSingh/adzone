@@ -26,6 +26,8 @@ const Navbar = () => {
     setSearchString("");
   };
 
+  const pageActiveIndicator = (pages) => page === pages ? "active" : ""
+
   return (
     <div className="navbar-outer-container">
       <div className="navbar-container">
@@ -117,15 +119,11 @@ const Navbar = () => {
         <div className="section-navbar-outer-container">
           <div className="section-navbar-inner-container">
             <div>
-              <button>My Profile</button>
-              <button>Messages</button>
+              <Link href={navigateToPage("listings")}><button className={pageActiveIndicator("p")}>My Profile</button></Link>
+              <Link href={navigateToPage("messages")}><button className={pageActiveIndicator("m")}>Messages</button></Link>
               {/* <button>Premium</button> */}
             </div>
-
-            <button className="btn-with-icon active">
-              Account Settings
-              <Icon src={SETTING_ICON} />
-            </button>
+            <Link href={navigateToPage("setting")}><button className={`btn-with-icon ${pageActiveIndicator("s")}`}>Account Settings<Icon src={SETTING_ICON} /></button></Link>
           </div>
         </div>
       )}

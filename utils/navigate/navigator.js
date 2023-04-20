@@ -15,6 +15,12 @@ export const navigateToPage = (page, slug) => {
     case "orders":
       return "/p/orders";
 
+    case "messages":
+      return "/m/chats";
+
+    case "setting":
+      return "/s/listings";
+
     case "pdp":
       return "/item/" + slug;
 

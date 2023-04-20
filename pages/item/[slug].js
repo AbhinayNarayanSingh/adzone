@@ -66,6 +66,16 @@ const Item = () => {
               <h2>AD ID {Ad_id}</h2>
               <button className="btn-link p-0">Report</button>
             </div>
+            <div className="section professional-card-container">
+              <img src="https://image.slidesharecdn.com/companyprofile-121023075346-phpapp02/85/choueri-real-estate-company-profile-1-320.jpg?cb=1666135751" alt="" />
+              <h2>Choueri Real Estate</h2>
+              <p>We are established contractors with in civil road works. The performance of our company is superb and speaks of our commitment and attitude.</p>
+              <div className="btn-container">
+                <button className="btn">Website</button>
+                <button className="btn">Contact</button>
+                <button className="btn">eMail</button>
+              </div>
+            </div>
             <div className="contact-seller-container section">
               <h2 className="item-details-sub-title">Contact : {seller}</h2>
 

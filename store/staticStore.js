@@ -269,3 +269,77 @@ export const orderHistory = [
     },
   },
 ];
+
+
+export const chatLists = [
+  {
+    chat_id : 86374686574,
+    listing : "House for rent/lease",
+    cover_image : "https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/34/3491d08d-c402-433f-9505-ff7cc13977b1?rule=kijijica-300-webp",
+    user : "Nitin Yadav",
+    type : "Sell"
+  },
+  {
+    chat_id : 86875686784,
+    listing : "Jeep Wrangler JK Rear Axle",
+    cover_image : "https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/22/22bf6ed7-aa5f-4783-b83d-7396e5a157fa?rule=kijijica-640-webp",
+    user : "Jeff Carter",
+    type : "Wanted"
+  },
+  {
+    chat_id : 86374686784,
+    listing : "2BHK in Old South London at Ridout St",
+    cover_image : "https://media.kijiji.ca/api/v1/ca-prod-dealer-ads/images/7c/7c0e9efd-e72b-47ad-ab70-a8ce56b34e95?rule=kijijica-300-webp",
+    user : "Gaurav Pandey",
+    type : "Buy"
+  },
+  {
+    chat_id : 86934686574,
+    listing : "2006 Infiniti G35 Coupe",
+    cover_image : "https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/03/03b91c56-96fd-488e-b2c2-0ed720d9fbd6?rule=kijijica-640-webp",
+    user : "Mukesh Sharma",
+    type : "Swap/Trade"
+  },
+  {
+    chat_id : 86377356574,
+    listing : "House for rent/lease",
+    cover_image : "https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/34/3491d08d-c402-433f-9505-ff7cc13977b1?rule=kijijica-300-webp",
+    user : "Aman Yadav",
+    type : "Sell"
+  },
+  {
+    chat_id : 86847286574,
+    listing : "House for rent/lease",
+    cover_image : "https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/34/3491d08d-c402-433f-9505-ff7cc13977b1?rule=kijijica-300-webp",
+    user : "Siddhant Sharma",
+    type : "Sell"
+  },
+  {
+    chat_id : 86938486574,
+    listing : "2000 Fender American Vintage Series Jazz Bass",
+    cover_image : "https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/6c/6cbe3d87-bffa-4d70-b9e9-7f9f3fd2c86e?rule=kijijica-640-webp",
+    user : "Jennie Nichols",
+    type : "Swap/Trade"
+  },
+  {
+    chat_id : 86847286574,
+    listing : "House for rent/lease",
+    cover_image : "https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/34/3491d08d-c402-433f-9505-ff7cc13977b1?rule=kijijica-300-webp",
+    user : "Riya Gupta",
+    type : "Sell"
+  },
+  {
+    chat_id : 86937356574,
+    listing : "Rehome - Doberman",
+    cover_image : "https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/e0/e0fb97db-4c97-4668-8568-962316c17d7b?rule=kijijica-640-webp",
+    user : "Celia Smith",
+    type : "Free Stuff"
+  },
+  {
+    chat_id : 86937486574,
+    listing : "Free stuff on curb",
+    cover_image : "https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/b4/b4d0047d-f26b-4327-b7e5-6ed5cff73af9?rule=kijijica-640-webp",
+    user : "Adzone User",
+    type : "Free Stuff"
+  },
+]

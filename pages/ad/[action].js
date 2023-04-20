@@ -175,7 +175,7 @@ const AdPost = () => {
                   value="for_free"
                   onChange={(e) => onChangeHandlerFn(e)}
                 />
-                <label htmlFor="for-free">Free</label>
+                <label htmlFor="for-free">Free Stuff</label>
               </div>
               <div className="radio-input">
                 <input
@@ -186,7 +186,7 @@ const AdPost = () => {
                   value="for_swap_trade"
                   onChange={(e) => onChangeHandlerFn(e)}
                 />
-                <label htmlFor="for-swap-trade">Swap / Trade</label>
+                <label htmlFor="for-swap-trade">Swap/Trade</label>
               </div>
               <div className="radio-input">
                 <input
@@ -198,6 +198,17 @@ const AdPost = () => {
                   onChange={(e) => onChangeHandlerFn(e)}
                 />
                 <label htmlFor="contact">Contact</label>
+              </div>
+              <div className="radio-input">
+                <input
+                  type="radio"
+                  name="listing-for"
+                  id="wanted"
+                  className="radio-input_input"
+                  value="wanted"
+                  onChange={(e) => onChangeHandlerFn(e)}
+                />
+                <label htmlFor="wanted">Wanted</label>
               </div>
             </div>
           </div>
