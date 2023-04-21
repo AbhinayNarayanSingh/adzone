@@ -343,3 +343,118 @@ export const chatLists = [
     type : "Free Stuff"
   },
 ]
+
+export const chat = {
+  chat_id : 86374686574,
+  listing : "House for rent/lease",
+  cover_image : "https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/34/3491d08d-c402-433f-9505-ff7cc13977b1?rule=kijijica-300-webp",
+  user : "Nitin Yadav",
+  type : "Sell",
+  messages : [
+    {
+       "message_id":694920460,
+       "message":{
+          "message_id":128,
+          "date":"Apr 19, 2023 1:02 PM",
+          isSent : true,
+          "text":"Let's get lunch. How about pizza?",
+          "from":{
+             "id":518057869,
+             "is_bot":false,
+             "first_name":"Abhinay Narayan Singh",
+             "username":"abhinaynarayansingh",
+          },
+          "chat":{
+             "id":518057868,
+             "first_name":"Abhinay Narayan Singh",
+             "username":"abhinaynarayansingh",
+             "type":"private"
+          },
+       }
+    },
+    {
+       "message_id":694920461,
+       "message":{
+          "message_id":129,
+          "from":{
+             "id":518057868,
+             "is_bot":false,
+             "first_name":"Abhinay Narayan Singh",
+             "username":"abhinaynarayansingh",
+          },
+          "chat":{
+             "id":518057868,
+             "first_name":"Abhinay Narayan Singh",
+             "username":"abhinaynarayansingh",
+             "type":"private"
+          },
+          "date":"Apr 19, 2023 1:02 PM",
+          "text":"No"
+          ,isSent : true
+       }
+    },
+    // {
+    //    "message_id":694920462,
+    //    "edited_message":{
+    //       "message_id":129,
+    //       "from":{
+    //          "id":518057868,
+    //          "is_bot":false,
+    //          "first_name":"Abhinay Narayan Singh",
+    //          "username":"abhinaynarayansingh",
+    //       },
+    //       "chat":{
+    //          "id":518057868,
+    //          "first_name":"Abhinay Narayan Singh",
+    //          "username":"abhinaynarayansingh",
+    //          "type":"private"
+    //       },
+    //       "date":"Apr 19, 2023 1:02 PM",
+    //       "edit_date":1673359558,
+    //       "text":"Let's do it! I'm in a meeting until noon."
+    //    }
+    // },
+    {
+       "message_id":694920463,
+       "message":{
+          "message_id":130,
+          "from":{
+             "id":518057869,
+             "is_bot":false,
+             "first_name":"Abhinay Narayan Singh",
+             "username":"abhinaynarayansingh",
+          },
+          "chat":{
+             "id":518057868,
+             "first_name":"Abhinay Narayan Singh",
+             "username":"abhinaynarayansingh",
+             "type":"private"
+          },
+          "date":"Apr 19, 2023 1:02 PM",
+          "text":"Let's do it! I'm in a meeting until noon."
+          ,isSent : true
+       }
+    },
+    {
+       "message_id":694920464,
+       "message":{
+          "message_id":131,
+          "from":{
+             "id":518057868,
+             "is_bot":false,
+             "first_name":"Abhinay Narayan Singh",
+             "username":"abhinaynarayansingh",
+          },
+          "chat":{
+             "id":518057868,
+             "first_name":"Abhinay Narayan Singh",
+             "username":"abhinaynarayansingh",
+             "type":"private"
+          },
+          "date":"Apr 19, 2023 1:02 PM",
+          "text":"I don't know why people are so anti pineapple pizza. I kind of like it.",
+          isSent : false
+       }
+    }
+ ]
+}

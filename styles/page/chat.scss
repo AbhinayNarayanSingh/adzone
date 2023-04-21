@@ -13,9 +13,7 @@
     }
     .col-70 {
         flex: 0 0 auto;
-        width: 70%;
-
-        background-color: grey;
+        width: calc(70% - 1rem);
     }
 
     .chat-lists-outer-container {
@@ -103,6 +101,120 @@
                 color: $PRIMARY_COLOR;
             }
 
+        }
+
+    }
+
+    .chat-body-container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .chat-header-container {
+            padding: .75rem 1rem;
+            border-bottom: 1px solid grey;
+            text-align: center;
+
+            h2 {
+                font-size: 1.1rem;
+                font-weight: 600;
+                margin-bottom: .15rem;
+                color: $PRIMARY_COLOR;
+            }
+            p{
+                font-size: .9rem;
+                line-height: 125%;
+                
+                span {
+                    font-size: .8rem;
+                    font-weight: 500;
+                    background: $PRIMARY_COLOR;
+                    color: white;
+                    padding: 0 0.25rem;
+                    border-radius: $BORDER_RADIUS;
+                    margin-right: .5rem;
+                }
+            }
+        }
+
+        .messages-outer-container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            margin: 0.5rem 0;
+
+            .messages-inner-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: end;
+                
+                margin: .25rem .5rem 0;
+                overflow-y: scroll;
+                height: 100%;
+            }
+
+            .message {
+                display: flex;
+                width: fit-content;
+                p{
+                    font-size: .925rem;
+                    padding: 0.25rem 0.75rem;
+                }
+                span {
+                    font-size: .8rem;
+                    font-weight: 500;
+                    line-height: 150%;
+                }
+            }
+
+            .you {
+                display: flex;
+                align-items: flex-end;
+                flex-direction: column;
+                width: 100%;
+
+                p{
+                    border-radius: 0.75rem 0.75rem 0 0.75rem;
+                    background: $PRIMARY_COLOR_SHADOW;
+                }
+            }
+            .user {
+                display: flex;
+                flex-direction: column;
+
+                p{
+                    background: $PRIMARY_COLOR;
+                    color: white;
+                    border-radius: 0.75rem 0.75rem 0.75rem 0;
+                }
+            }
+
+            .message {
+                &:not(:nth-last-of-type(1)){
+                    margin-bottom: .5rem;
+                }
+            }
+        }
+
+        .chat-input-box {
+            display: flex;
+            align-items: center;
+            border: 1px solid $PRIMARY_COLOR;
+            border-radius: .25rem;
+            overflow: hidden;
+
+
+            input {
+                width: 100%;
+                font-size: 1rem;
+                padding: .75rem 1rem;
+            }
+            button {
+                width: 150px;
+                background-color: $PRIMARY_COLOR;
+                color: white;
+                height: 100%;
+            }
         }
 
     }
