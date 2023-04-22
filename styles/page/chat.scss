@@ -1,6 +1,7 @@
 .chat-outer-container {
     display: flex;
     gap: 1rem;
+    height: 78vh;
 
     * {
         color: $TEXT_COLOR;
@@ -10,16 +11,18 @@
     .col-30 {
         flex: 0 0 auto;
         width: 30%;
+        height: 78vh;
     }
     .col-70 {
         flex: 0 0 auto;
         width: calc(70% - 1rem);
+        height: 78vh;
     }
 
     .chat-lists-outer-container {
         height: 100%;
         overflow-y: scroll;
-        max-height: 80vh;
+        max-height: 78vh;
     }
 
     .chat-filter-btn-container {
@@ -114,6 +117,23 @@
             padding: .75rem 1rem;
             border-bottom: 1px solid grey;
             text-align: center;
+            position: relative;
+
+            .back-button-container {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+
+                display: flex;
+                align-items: center;
+                z-index: 2;
+
+                background: none;
+                padding: .5rem;
+
+                display: none;
+            }
 
             h2 {
                 font-size: 1.1rem;
@@ -140,13 +160,13 @@
         .messages-outer-container {
             display: flex;
             flex-direction: column;
-            height: 100%;
+            height: calc(80vh - 123px);
             margin: 0.5rem 0;
+            overflow: hidden;
 
             .messages-inner-container {
                 display: flex;
                 flex-direction: column;
-                justify-content: end;
                 
                 margin: .25rem .5rem 0;
                 overflow-y: scroll;
@@ -159,6 +179,7 @@
                 p{
                     font-size: .925rem;
                     padding: 0.25rem 0.75rem;
+                    line-height: 130%;
                 }
                 span {
                     font-size: .8rem;
@@ -172,10 +193,11 @@
                 align-items: flex-end;
                 flex-direction: column;
                 width: 100%;
-
+                
                 p{
                     border-radius: 0.75rem 0.75rem 0 0.75rem;
                     background: $PRIMARY_COLOR_SHADOW;
+                    max-width: 80%;
                 }
             }
             .user {
@@ -186,6 +208,8 @@
                     background: $PRIMARY_COLOR;
                     color: white;
                     border-radius: 0.75rem 0.75rem 0.75rem 0;
+                    max-width: 80%;
+
                 }
             }
 
@@ -218,4 +242,108 @@
         }
 
     }
+}
+
+
+@media only screen and (max-width: 512px) {
+    .chat-outer-container {
+        $height : 100vh;
+        flex-direction: column;
+        margin-top: .5rem;
+    
+        .col-30 {
+            width: 100%;
+            height: $height;
+        }
+        .col-70 {
+            width: 100%;
+            height: calc($height - 5rem);
+        }
+    
+        .chat-lists-outer-container {
+            height: 100%;
+            max-height: 100%;
+
+
+        }
+  
+    
+        .chat-list-container {
+            margin-bottom: 0;
+    
+            .chat-list_image {
+                $size : 4rem;
+                height: $size;
+                width: $size;
+            }
+
+            h2 {
+                font-size: .9rem;
+            }
+            p{
+                font-size: .8rem;
+                
+                span {
+                    font-size: .7rem;
+                    margin-right: .25rem;
+                }
+            }
+        }
+    
+        .chat-body-container {
+            position: fixed;
+            top: 0rem;
+            z-index: 99;
+            background: white;
+            right: 0;
+            padding: 0 0.5rem;
+            max-height: 100vh;
+    
+            .chat-header-container {
+                padding: .5rem;
+
+                .back-button-container {
+                    display: flex;
+                }
+    
+                p{
+                    font-size: .8rem;                
+                    span {
+                        font-size: .8rem;
+                    }
+                }
+            }
+    
+            .messages-outer-container {
+                height: 100%;
+                max-height: 100vh;
+    
+                .messages-inner-container {
+                    margin: .25rem 0 0;
+                }
+    
+                .message {
+                    p{
+                        font-size: .85rem;
+                    }
+                    span {
+                        font-size: .7rem;
+                    }
+                }
+    
+            }
+    
+            .chat-input-box {
+                input {
+                    font-size: .9rem;
+                    padding: .5rem .5rem;
+                }
+                margin-bottom: .5rem;
+            }
+    
+        }
+    }
+    
+
+
 }

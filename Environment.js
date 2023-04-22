@@ -22,6 +22,7 @@ export const STAR_OUTLINE = "/images/icons/star-outline.svg";
 export const MEMBERSHIP = "/images/icons/membership.svg";
 export const ADS_CREDIT = "/images/icons/ads-credit.svg";
 export const VERIFIED_BADGE_ICON = "/images/icons/verifiedBadge.svg";
+export const BACK_BTN_ICON = "/images/icons/backBtn.svg"
 
 export const TEST =
   "https://images.unsplash.com/photo-1499852848443-3004d6dc4cfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80";

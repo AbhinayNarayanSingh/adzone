@@ -1,21 +1,69 @@
+import { BACK_BTN_ICON } from '@/Environment'
+import Icon from '@/hoc/image/Icon'
+import useIsMobile from '@/hooks/useIsMobile'
 import { chat, chatLists } from '@/store/staticStore'
+import { useState } from 'react'
 
 const ChatPage = () => {
+
+  const isMobile = useIsMobile()
+  const [showPage, setShowPage] = useState("CHAT_LIST")
+  const [activeFilter, setActiveFilter] = useState("All")
+  const [openChatId, setOpenChatId] = useState("")
+
+  // if !isMobile = true then show both section, otherwise show only one section as per showPage state
+  const showChatListScreen = !isMobile || (isMobile && showPage === "CHAT_LIST");
+  const showChatBodyScreen = !isMobile || (isMobile && showPage === "CHAT_BODY");
+
+  const getChatMessagesHandler = () => {
+    // start loader
+    // call api
+    // stop loader
+
+    // show chat body
+    setShowPage("CHAT_BODY")
+  }
+
+  const goBackPageHandler = () => setShowPage("CHAT_LIST")
+
+
+  const chatFilterBtns = [
+    {
+      name: "All"
+    },
+    {
+      name: "Buy"
+    },
+    {
+      name: "Sell"
+    },
+    {
+      name: "Wanted"
+    },
+    {
+      name: "Swap/Trade"
+    },
+    {
+      name: "Free Stuff"
+    },
+  ]
+
   return (
     <div className='main-section-outer-container min-body-section-container chat-outer-container'>
 
-      <div className="col-30 chat-lists-outer-container hide-scrollbar">
+      {showChatListScreen && <div className="col-30 chat-lists-outer-container hide-scrollbar">
         <div className='chat-filter-btn-container hide-scrollbar'>
-          <button className='chat-filter-btn active-filter'>All</button>
-          <button className='chat-filter-btn'>Buy</button>
-          <button className='chat-filter-btn'>Sell</button>
-          <button className='chat-filter-btn'>Wanted</button>
-          <button className='chat-filter-btn'>Swap/Trade</button>
-          <button className='chat-filter-btn'>Free Stuff</button>
+          {chatFilterBtns.map((btn, i) => <button
+            key={"fillterBtn_" + i}
+            className={`chat-filter-btn ${activeFilter === btn.name ? "active-filter" : ""}`}
+            onClick={() => setActiveFilter(btn.name)}
+          >
+            {btn.name}
+          </button>)}
         </div>
         {chatLists.map((item) => {
           return (
-            <div className='chat-list-container' key={item.chat_id}>
+            <div className='chat-list-container' key={item.chat_id} onClick={getChatMessagesHandler}>
               <div className='chat-list_image'><img src={item.cover_image} alt="" /></div>
               <div>
                 <h2>{item.user}</h2>
@@ -23,12 +71,21 @@ const ChatPage = () => {
               </div>
             </div>)
         })}
-      </div>
+      </div>}
 
-      <div className="col-70">
+
+
+
+
+
+      {showChatBodyScreen && <div className="col-70">
         <div className="chat-body-container">
 
           <div className='chat-header-container' key={chat.chat_id}>
+            <button className='back-button-container' onClick={goBackPageHandler}>
+              <Icon src={BACK_BTN_ICON} size="2rem"/>
+            </button>
+            
             <h2>{chat.user}</h2>
             <p><span>{chat.type}</span>{chat.listing}</p>
           </div>
@@ -56,7 +113,7 @@ const ChatPage = () => {
           </div>
 
         </div>
-      </div>
+      </div>}
     </div>
   )
 }

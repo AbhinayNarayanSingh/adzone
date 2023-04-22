@@ -273,188 +273,480 @@ export const orderHistory = [
 
 export const chatLists = [
   {
-    chat_id : 86374686574,
-    listing : "House for rent/lease",
-    cover_image : "https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/34/3491d08d-c402-433f-9505-ff7cc13977b1?rule=kijijica-300-webp",
-    user : "Nitin Yadav",
-    type : "Sell"
+    chat_id: 86374686574,
+    listing: "House for rent/lease",
+    cover_image: "https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/34/3491d08d-c402-433f-9505-ff7cc13977b1?rule=kijijica-300-webp",
+    user: "Nitin Yadav",
+    type: "Sell"
   },
   {
-    chat_id : 86875686784,
-    listing : "Jeep Wrangler JK Rear Axle",
-    cover_image : "https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/22/22bf6ed7-aa5f-4783-b83d-7396e5a157fa?rule=kijijica-640-webp",
-    user : "Jeff Carter",
-    type : "Wanted"
+    chat_id: 86875686784,
+    listing: "Jeep Wrangler JK Rear Axle",
+    cover_image: "https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/22/22bf6ed7-aa5f-4783-b83d-7396e5a157fa?rule=kijijica-640-webp",
+    user: "Jeff Carter",
+    type: "Wanted"
   },
   {
-    chat_id : 86374686784,
-    listing : "2BHK in Old South London at Ridout St",
-    cover_image : "https://media.kijiji.ca/api/v1/ca-prod-dealer-ads/images/7c/7c0e9efd-e72b-47ad-ab70-a8ce56b34e95?rule=kijijica-300-webp",
-    user : "Gaurav Pandey",
-    type : "Buy"
+    chat_id: 86374686784,
+    listing: "2BHK in Old South London at Ridout St",
+    cover_image: "https://media.kijiji.ca/api/v1/ca-prod-dealer-ads/images/7c/7c0e9efd-e72b-47ad-ab70-a8ce56b34e95?rule=kijijica-300-webp",
+    user: "Gaurav Pandey",
+    type: "Buy"
   },
   {
-    chat_id : 86934686574,
-    listing : "2006 Infiniti G35 Coupe",
-    cover_image : "https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/03/03b91c56-96fd-488e-b2c2-0ed720d9fbd6?rule=kijijica-640-webp",
-    user : "Mukesh Sharma",
-    type : "Swap/Trade"
+    chat_id: 86934686574,
+    listing: "2006 Infiniti G35 Coupe",
+    cover_image: "https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/03/03b91c56-96fd-488e-b2c2-0ed720d9fbd6?rule=kijijica-640-webp",
+    user: "Mukesh Sharma",
+    type: "Swap/Trade"
   },
   {
-    chat_id : 86377356574,
-    listing : "House for rent/lease",
-    cover_image : "https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/34/3491d08d-c402-433f-9505-ff7cc13977b1?rule=kijijica-300-webp",
-    user : "Aman Yadav",
-    type : "Sell"
+    chat_id: 86377356574,
+    listing: "House for rent/lease",
+    cover_image: "https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/34/3491d08d-c402-433f-9505-ff7cc13977b1?rule=kijijica-300-webp",
+    user: "Aman Yadav",
+    type: "Sell"
   },
   {
-    chat_id : 86847286574,
-    listing : "House for rent/lease",
-    cover_image : "https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/34/3491d08d-c402-433f-9505-ff7cc13977b1?rule=kijijica-300-webp",
-    user : "Siddhant Sharma",
-    type : "Sell"
+    chat_id: 86847286574,
+    listing: "House for rent/lease",
+    cover_image: "https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/34/3491d08d-c402-433f-9505-ff7cc13977b1?rule=kijijica-300-webp",
+    user: "Siddhant Sharma",
+    type: "Sell"
   },
   {
-    chat_id : 86938486574,
-    listing : "2000 Fender American Vintage Series Jazz Bass",
-    cover_image : "https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/6c/6cbe3d87-bffa-4d70-b9e9-7f9f3fd2c86e?rule=kijijica-640-webp",
-    user : "Jennie Nichols",
-    type : "Swap/Trade"
+    chat_id: 86938486574,
+    listing: "2000 Fender American Vintage Series Jazz Bass",
+    cover_image: "https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/6c/6cbe3d87-bffa-4d70-b9e9-7f9f3fd2c86e?rule=kijijica-640-webp",
+    user: "Jennie Nichols",
+    type: "Swap/Trade"
   },
   {
-    chat_id : 86847286574,
-    listing : "House for rent/lease",
-    cover_image : "https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/34/3491d08d-c402-433f-9505-ff7cc13977b1?rule=kijijica-300-webp",
-    user : "Riya Gupta",
-    type : "Sell"
+    chat_id: 86847286574,
+    listing: "House for rent/lease",
+    cover_image: "https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/34/3491d08d-c402-433f-9505-ff7cc13977b1?rule=kijijica-300-webp",
+    user: "Riya Gupta",
+    type: "Sell"
   },
   {
-    chat_id : 86937356574,
-    listing : "Rehome - Doberman",
-    cover_image : "https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/e0/e0fb97db-4c97-4668-8568-962316c17d7b?rule=kijijica-640-webp",
-    user : "Celia Smith",
-    type : "Free Stuff"
+    chat_id: 86937356574,
+    listing: "Rehome - Doberman",
+    cover_image: "https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/e0/e0fb97db-4c97-4668-8568-962316c17d7b?rule=kijijica-640-webp",
+    user: "Celia Smith",
+    type: "Free Stuff"
   },
   {
-    chat_id : 86937486574,
-    listing : "Free stuff on curb",
-    cover_image : "https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/b4/b4d0047d-f26b-4327-b7e5-6ed5cff73af9?rule=kijijica-640-webp",
-    user : "Adzone User",
-    type : "Free Stuff"
+    chat_id: 86937486574,
+    listing: "Free stuff on curb",
+    cover_image: "https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/b4/b4d0047d-f26b-4327-b7e5-6ed5cff73af9?rule=kijijica-640-webp",
+    user: "Adzone User",
+    type: "Free Stuff"
   },
 ]
 
 export const chat = {
-  chat_id : 86374686574,
-  listing : "House for rent/lease",
-  cover_image : "https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/34/3491d08d-c402-433f-9505-ff7cc13977b1?rule=kijijica-300-webp",
-  user : "Nitin Yadav",
-  type : "Sell",
-  messages : [
+  chat_id: 86374686574,
+  listing: "House for rent/lease",
+  cover_image: "https://media.kijiji.ca/api/v1/ca-prod-fsbo-ads/images/34/3491d08d-c402-433f-9505-ff7cc13977b1?rule=kijijica-300-webp",
+  user: "Nitin Yadav",
+  type: "Sell",
+  user_id: 518057868,            // me 518057868          user 518057869
+  messages: [
     {
-       "message_id":694920460,
-       "message":{
-          "message_id":128,
-          "date":"Apr 19, 2023 1:02 PM",
-          isSent : true,
-          "text":"Let's get lunch. How about pizza?",
-          "from":{
-             "id":518057869,
-             "is_bot":false,
-             "first_name":"Abhinay Narayan Singh",
-             "username":"abhinaynarayansingh",
-          },
-          "chat":{
-             "id":518057868,
-             "first_name":"Abhinay Narayan Singh",
-             "username":"abhinaynarayansingh",
-             "type":"private"
-          },
-       }
+      "message_id": 694920460,
+      "message": {
+        "message_id": 128,
+        "date": "11:02 PM",
+        "isSent": true,
+        "text": "Hey!",
+        "from": {
+          "id": 518057869,
+          "is_bot": false,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+        },
+        "chat": {
+          "id": 518057868,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+          "type": "private"
+        },
+      }
     },
     {
-       "message_id":694920461,
-       "message":{
-          "message_id":129,
-          "from":{
-             "id":518057868,
-             "is_bot":false,
-             "first_name":"Abhinay Narayan Singh",
-             "username":"abhinaynarayansingh",
-          },
-          "chat":{
-             "id":518057868,
-             "first_name":"Abhinay Narayan Singh",
-             "username":"abhinaynarayansingh",
-             "type":"private"
-          },
-          "date":"Apr 19, 2023 1:02 PM",
-          "text":"No"
-          ,isSent : true
-       }
-    },
-    // {
-    //    "message_id":694920462,
-    //    "edited_message":{
-    //       "message_id":129,
-    //       "from":{
-    //          "id":518057868,
-    //          "is_bot":false,
-    //          "first_name":"Abhinay Narayan Singh",
-    //          "username":"abhinaynarayansingh",
-    //       },
-    //       "chat":{
-    //          "id":518057868,
-    //          "first_name":"Abhinay Narayan Singh",
-    //          "username":"abhinaynarayansingh",
-    //          "type":"private"
-    //       },
-    //       "date":"Apr 19, 2023 1:02 PM",
-    //       "edit_date":1673359558,
-    //       "text":"Let's do it! I'm in a meeting until noon."
-    //    }
-    // },
-    {
-       "message_id":694920463,
-       "message":{
-          "message_id":130,
-          "from":{
-             "id":518057869,
-             "is_bot":false,
-             "first_name":"Abhinay Narayan Singh",
-             "username":"abhinaynarayansingh",
-          },
-          "chat":{
-             "id":518057868,
-             "first_name":"Abhinay Narayan Singh",
-             "username":"abhinaynarayansingh",
-             "type":"private"
-          },
-          "date":"Apr 19, 2023 1:02 PM",
-          "text":"Let's do it! I'm in a meeting until noon."
-          ,isSent : true
-       }
+      "message_id": 694920461,
+      "message": {
+        "message_id": 129,
+        "date": "11:02 PM",
+        "text": "I am here to buy a car. Could you please help me with that?",
+        "isSent": true,
+        "from": {
+          "id": 518057868,
+          "is_bot": false,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+        },
+        "chat": {
+          "id": 518057868,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+          "type": "private"
+        },
+      }
     },
     {
-       "message_id":694920464,
-       "message":{
-          "message_id":131,
-          "from":{
-             "id":518057868,
-             "is_bot":false,
-             "first_name":"Abhinay Narayan Singh",
-             "username":"abhinaynarayansingh",
-          },
-          "chat":{
-             "id":518057868,
-             "first_name":"Abhinay Narayan Singh",
-             "username":"abhinaynarayansingh",
-             "type":"private"
-          },
-          "date":"Apr 19, 2023 1:02 PM",
-          "text":"I don't know why people are so anti pineapple pizza. I kind of like it.",
-          isSent : false
-       }
-    }
- ]
+      "message_id": 694920460,
+      "message": {
+        "message_id": 128,
+        "date": "11:02 PM",
+        "isSent": true,
+        "text": "Sure, sir. Which car do you want?",
+        "from": {
+          "id": 518057869,
+          "is_bot": false,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+        },
+        "chat": {
+          "id": 518057868,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+          "type": "private"
+        },
+      }
+    },
+    {
+      "message_id": 694920461,
+      "message": {
+        "message_id": 129,
+        "date": "11:02 PM",
+        "text": "Could you please brief about Dzire and Ciaz? So that I could decide which one I want to go for",
+        "isSent": true,
+        "from": {
+          "id": 518057868,
+          "is_bot": false,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+        },
+        "chat": {
+          "id": 518057868,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+          "type": "private"
+        },
+      }
+    },
+
+
+    {
+      "message_id": 694920460,
+      "message": {
+        "message_id": 128,
+        "date": "11:02 PM",
+        "isSent": true,
+        "text": "Sure, sir. We will have a look at Dzire first. It’s a sedan car. Which model do you need?",
+        "from": {
+          "id": 518057869,
+          "is_bot": false,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+        },
+        "chat": {
+          "id": 518057868,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+          "type": "private"
+        },
+      }
+    },
+    {
+      "message_id": 694920461,
+      "message": {
+        "message_id": 129,
+        "date": "11:02 PM",
+        "text": "Tell me about the VXI features",
+        "isSent": true,
+        "from": {
+          "id": 518057868,
+          "is_bot": false,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+        },
+        "chat": {
+          "id": 518057868,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+          "type": "private"
+        },
+      }
+    },
+
+
+    {
+      "message_id": 694920460,
+      "message": {
+        "message_id": 128,
+        "date": "11:02 PM",
+        "isSent": true,
+        "text": "Sure, in this you will get a desk lamp with parking sensors, you will also get power windows on both front and back",
+        "from": {
+          "id": 518057869,
+          "is_bot": false,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+        },
+        "chat": {
+          "id": 518057868,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+          "type": "private"
+        },
+      }
+    },
+    {
+      "message_id": 694920461,
+      "message": {
+        "message_id": 129,
+        "date": "11:02 PM",
+        "text": "How much will this cost?",
+        "isSent": true,
+        "from": {
+          "id": 518057868,
+          "is_bot": false,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+        },
+        "chat": {
+          "id": 518057868,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+          "type": "private"
+        },
+      }
+    },
+
+
+    {
+      "message_id": 694920460,
+      "message": {
+        "message_id": 128,
+        "date": "11:02 PM",
+        "isSent": true,
+        "text": "Onroad price for this will be 8 Lakhs 50 Thousand",
+        "from": {
+          "id": 518057869,
+          "is_bot": false,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+        },
+        "chat": {
+          "id": 518057868,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+          "type": "private"
+        },
+      }
+    },
+    {
+      "message_id": 694920461,
+      "message": {
+        "message_id": 129,
+        "date": "11:02 PM",
+        "text": "What about Ciaz?",
+        "isSent": true,
+        "from": {
+          "id": 518057868,
+          "is_bot": false,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+        },
+        "chat": {
+          "id": 518057868,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+          "type": "private"
+        },
+      }
+    },
+
+
+
+    {
+      "message_id": 694920460,
+      "message": {
+        "message_id": 128,
+        "date": "11:02 PM",
+        "isSent": true,
+        "text": "In Ciaz you will get auto gear, with parking sensors, power window, sunroof, wiper for the back mirror as well",
+        "from": {
+          "id": 518057869,
+          "is_bot": false,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+        },
+        "chat": {
+          "id": 518057868,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+          "type": "private"
+        },
+      }
+    },
+    {
+      "message_id": 694920461,
+      "message": {
+        "message_id": 129,
+        "date": "11:02 PM",
+        "text": "What is the on-road price for Ciaz?",
+        "isSent": true,
+        "from": {
+          "id": 518057868,
+          "is_bot": false,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+        },
+        "chat": {
+          "id": 518057868,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+          "type": "private"
+        },
+      }
+    },
+
+
+    {
+      "message_id": 694920460,
+      "message": {
+        "message_id": 128,
+        "date": "11:02 PM",
+        "isSent": true,
+        "text": "10 Lakhs 25 Thousand including all the accessories",
+        "from": {
+          "id": 518057869,
+          "is_bot": false,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+        },
+        "chat": {
+          "id": 518057868,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+          "type": "private"
+        },
+      }
+    },
+    {
+      "message_id": 694920461,
+      "message": {
+        "message_id": 129,
+        "date": "11:02 PM",
+        "text": "I will go for Ciaz",
+        "isSent": true,
+        "from": {
+          "id": 518057868,
+          "is_bot": false,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+        },
+        "chat": {
+          "id": 518057868,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+          "type": "private"
+        },
+      }
+    },
+
+
+
+    {
+      "message_id": 694920460,
+      "message": {
+        "message_id": 128,
+        "date": "11:02 PM",
+        "isSent": true,
+        "text": "Sure, sir. How about payment?",
+        "from": {
+          "id": 518057869,
+          "is_bot": false,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+        },
+        "chat": {
+          "id": 518057868,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+          "type": "private"
+        },
+      }
+    },
+    {
+      "message_id": 694920461,
+      "message": {
+        "message_id": 129,
+        "date": "11:02 PM",
+        "text": "I will make the complete payment by check",
+        "isSent": true,
+        "from": {
+          "id": 518057868,
+          "is_bot": false,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+        },
+        "chat": {
+          "id": 518057868,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+          "type": "private"
+        },
+      }
+    },
+
+
+    {
+      "message_id": 694920460,
+      "message": {
+        "message_id": 128,
+        "date": "11:02 PM",
+        "isSent": true,
+        "text": "Sure, sir. We will get your car ready in a while",
+        "from": {
+          "id": 518057869,
+          "is_bot": false,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+        },
+        "chat": {
+          "id": 518057868,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+          "type": "private"
+        },
+      }
+    },
+    {
+      "message_id": 694920461,
+      "message": {
+        "message_id": 129,
+        "date": "11:02 PM",
+        "text": "Ok!",
+        "isSent": true,
+        "from": {
+          "id": 518057868,
+          "is_bot": false,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+        },
+        "chat": {
+          "id": 518057868,
+          "first_name": "Abhinay Narayan Singh",
+          "username": "abhinaynarayansingh",
+          "type": "private"
+        },
+      }
+    },
+
+
+  ]
 }
