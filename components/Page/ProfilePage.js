@@ -41,10 +41,10 @@ const ProfilePage = () => {
                         On {PROJECT_NAME} since <span>Febuary, 2023</span>
                     </p>
 
-                    <div className="user-profile-actio-btn">
+                    {/* <div className="user-profile-actio-btn">
                         <button className="btn">Share profile</button>
                         <button className="btn-outline">Report</button>
-                    </div>
+                    </div> */}
                 </div>
 
                 <div className="sections-conatiner">

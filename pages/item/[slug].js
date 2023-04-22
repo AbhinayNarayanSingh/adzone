@@ -4,6 +4,7 @@ import { postData } from "@/store/staticStore";
 import ProductCards from "@/hoc/cards/ProductCards";
 
 import Image from "next/image";
+import { products } from "@/store/product";
 
 const Item = () => {
   const {
@@ -107,10 +108,15 @@ const Item = () => {
             <h2>Similar listings</h2>
           </div>
           <div className="similar-listings">
-            <ProductCards />
-            <ProductCards />
-            <ProductCards />
-            <ProductCards />
+          {products.slice(0,4).map((item, index) => {
+            item["images"] = [item["img-src"]];
+            item["short_location"] = item.location;
+            item["posted_on"] = "today";
+            item["isFeatured"] = item["isFeatured"] || false;
+            item["amount"] = item.amount.replace(/[$,]/g, "");
+
+            return <ProductCards data={item} key={"product__" + index} />;
+          })}
           </div>
         </div>
       </div>

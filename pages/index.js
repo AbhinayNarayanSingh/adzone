@@ -49,10 +49,15 @@ export default function Home() {
           <button className="btn-link">See All</button>
         </div>
         <div className="featured-product grid">
-          <ProductCards />
-          <ProductCards />
-          <ProductCards />
-          <ProductCards />
+          {products.slice(0,4).map((item, index) => {
+            item["images"] = [item["img-src"]];
+            item["short_location"] = item.location;
+            item["posted_on"] = "today";
+            item["isFeatured"] = item["isFeatured"] || false;
+            item["amount"] = item.amount.replace(/[$,]/g, "");
+
+            return <ProductCards data={item} key={"product__" + index} />;
+          })}
         </div>
       </div>
 
@@ -69,7 +74,7 @@ export default function Home() {
           <h2>Fresh recommendations</h2>
         </div>
         <div className="product-container grid">
-          {products.map((item, index) => {
+          {products.slice(4).map((item, index) => {
             item["images"] = [item["img-src"]];
             item["short_location"] = item.location;
             item["posted_on"] = "today";

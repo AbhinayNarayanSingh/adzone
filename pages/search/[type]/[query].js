@@ -1,5 +1,6 @@
 import ProductCards from "@/hoc/cards/ProductCards";
 import useIsMobile from "@/hooks/useIsMobile";
+import { products } from "@/store/product";
 import { useRouter } from "next/router";
 
 const Search = () => {
@@ -19,11 +20,15 @@ const Search = () => {
       </div>
 
       <div className="search-result-container">
-        {[...Array(20)].map((_id, index) => {
-          return <ProductCards key={"search-result__" + index} />;
-        })}
-      </div>
+        {products.slice(0, 20).map((item, index) => {
+          item["images"] = [item["img-src"]];
+          item["short_location"] = item.location;
+          item["posted_on"] = "today";
+          item["isFeatured"] = item["isFeatured"] || false;
+          item["amount"] = item.amount.replace(/[$,]/g, "");
 
+          return <ProductCards data={item} key={"product__" + index} />;
+        })}
       <div className="filter-banner">
         <h2>
           Our classifieds are the perfect place to find them! Whether
@@ -34,6 +39,8 @@ const Search = () => {
           you!
         </p>
         <button className="btn-light">Post Your Ad Now</button>
+      </div>
+
       </div>
 
       <div className="pagination-container">

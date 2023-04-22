@@ -7,13 +7,13 @@ import { useState } from 'react'
 const ChatPage = () => {
 
   const isMobile = useIsMobile()
-  const [showPage, setShowPage] = useState("CHAT_LIST")
+  const [showingChatList, setShowingChatList] = useState(true)
   const [activeFilter, setActiveFilter] = useState("All")
   const [openChatId, setOpenChatId] = useState("")
 
   // if !isMobile = true then show both section, otherwise show only one section as per showPage state
-  const showChatListScreen = !isMobile || (isMobile && showPage === "CHAT_LIST");
-  const showChatBodyScreen = !isMobile || (isMobile && showPage === "CHAT_BODY");
+  const showChatListScreen = !isMobile || (isMobile && showingChatList);
+  const showChatBodyScreen = !isMobile || (isMobile && !showingChatList);
 
   const getChatMessagesHandler = () => {
     // start loader
@@ -21,10 +21,10 @@ const ChatPage = () => {
     // stop loader
 
     // show chat body
-    setShowPage("CHAT_BODY")
+    setShowingChatList(false)
   }
 
-  const goBackPageHandler = () => setShowPage("CHAT_LIST")
+  const goBackPageHandler = () => setShowingChatList(true)
 
 
   const chatFilterBtns = [
@@ -61,9 +61,13 @@ const ChatPage = () => {
             {btn.name}
           </button>)}
         </div>
-        {chatLists.map((item) => {
+        {chatLists.map((item, i) => {
           return (
-            <div className='chat-list-container' key={item.chat_id} onClick={getChatMessagesHandler}>
+            <div 
+              className={`chat-list-container ${i === 0 && " active-chat"}`} 
+              key={item.chat_id} 
+              onClick={getChatMessagesHandler}
+            >
               <div className='chat-list_image'><img src={item.cover_image} alt="" /></div>
               <div>
                 <h2>{item.user}</h2>

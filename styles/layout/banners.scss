@@ -41,9 +41,12 @@
 
     background-color: $PRIMARY_COLOR;
     text-align: center;
-    padding: 3rem 0;
-    margin: 0 auto 2rem;
+    padding: 3rem 2rem;
+    margin: 1rem auto ;
     
+    grid-row: 4;
+    grid-column: 1/5;
+
     h2 {
         font-size: 1.75rem;
         font-weight: 500;
@@ -81,6 +84,12 @@
         }
     }
 
+    .filter-banner {
+
+        grid-row: 4;
+        grid-column: 1/3;
+
+    }
     .homepage-banner {
         margin-top: 1rem;
 

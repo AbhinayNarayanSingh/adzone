@@ -52,7 +52,7 @@ const Navbar = () => {
             <button className="btn-link change-language">ES</button>
           )}
           <div className="sign-button">
-            {true ? (
+            {!true ? (
               <>
                 <Link href={navigateToPage("register")}>
                   <button className="btn-link">Register</button>

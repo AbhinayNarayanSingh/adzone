@@ -386,7 +386,7 @@ const AdPost = () => {
             <div className="inner-container">
               <input
                 type="text"
-                value="abhinaynarayansingh@appscrip.co"
+                value=""
                 disabled
               />
               <p className="help-text">
@@ -406,7 +406,8 @@ const AdPost = () => {
       </div>
 
       <div className="submit-btn-container">
-        <button className="btn-outline">Post Your Ad</button>
+        <button className="btn">Post Your Ad</button>
+        <button className="btn-outline">Preview</button>
       </div>
     </div>
   );

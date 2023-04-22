@@ -1,5 +1,6 @@
 export const products = [
   {
+    isFeatured : true,
     "img-src":
       "https://media.kijiji.ca/api/v1/ca-prod-dealer-ads/images/87/8782f8d2-01fd-421a-9f15-a04bef0a64f7?rule=kijijica-640-jpg",
     title: "24 Highwood Drive Okotoks, Alberta",
@@ -10,6 +11,7 @@ export const products = [
     seller: "BODE - Jeff Jackson",
   },
   {
+    isFeatured : true,
     "img-src":
       "https://media.kijiji.ca/api/v1/ca-prod-dealer-ads/images/4a/4ad242d7-0569-4d50-8235-51123fa469f6?rule=kijijica-640-jpg",
     title: "720 corner meadows way  NE Calgary, Alberta",
@@ -20,6 +22,7 @@ export const products = [
     seller: "RE/MAX RIVER CITY - Lakhwinder Brar",
   },
   {
+    isFeatured : true,
     "img-src":
       "https://media.kijiji.ca/api/v1/ca-prod-dealer-ads/images/e3/e38ac265-dfa5-4ee5-b31b-94b8b7329434?rule=kijijica-640-jpg",
     title: "1809 31 Avenue SW Calgary, Alberta",
@@ -30,6 +33,7 @@ export const products = [
     seller: null,
   },
   {
+    isFeatured : true,
     "img-src":
       "https://media.kijiji.ca/api/v1/ca-prod-dealer-ads/images/0c/0c4330f8-fb8c-4f75-afe5-ace85cad384e?rule=kijijica-640-jpg",
     title: "59 Edith  Terrace NW Calgary, Alberta",

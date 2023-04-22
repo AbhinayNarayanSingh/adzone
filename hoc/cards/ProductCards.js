@@ -17,7 +17,7 @@ const PeoductCards = ({ data, isSkelton = false, key = 0 }) => {
     currency_word = DEFAULT_CURRENCY_WORD,
     posted_on,
     seller,
-    isFeatured = true,
+    isFeatured,
   } = data || postData;
   return (
     <Link href={navigateToPage("pdp", slug)} legacyBehavior>
