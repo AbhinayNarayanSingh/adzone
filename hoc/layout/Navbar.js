@@ -6,7 +6,7 @@ import { open_dialog } from "@/utils/rxjs/rxHelper";
 import useIsMobile from "@/hooks/useIsMobile";
 
 import Icon from "../image/Icon";
-import { LOGO, MAP_ICON, SETTING_ICON } from "@/Environment";
+import { LOGO, MAP_ICON, MENU_ICON, SETTING_ICON } from "@/Environment";
 import { navigateToPage, navigateToSearch } from "@/utils/navigate/navigator";
 
 const Navbar = () => {
@@ -48,35 +48,35 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-right-col">
-          {!isMobile && (
+          {isMobile ? 
+          <div className="navbar-menu-icon"><Icon src={MENU_ICON} alt="menu" /></div>  : 
+          <>
             <button className="btn-link change-language">ES</button>
-          )}
-          <div className="sign-button">
-            {!true ? (
-              <>
-                <Link href={navigateToPage("register")}>
-                  <button className="btn-link">Register</button>
-                </Link>
-                <p>or</p>
-                <Link href={navigateToPage("login")}>
-                  <button className="btn-link">Login</button>
-                </Link>
-              </>
-            ) : (
-              <>
-                <Link href={navigateToPage("listings")}>
-                  <button className="btn-link">Abhinay Singh</button>
-                </Link>
-              </>
-            )}
-          </div>
-          {!isMobile && (
+            <div className="sign-button">
+              {!true ? (
+                <>
+                  <Link href={navigateToPage("register")}>
+                    <button className="btn-link">Register</button>
+                  </Link>
+                  <p>or</p>
+                  <Link href={navigateToPage("login")}>
+                    <button className="btn-link">Login</button>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link href={navigateToPage("listings")}>
+                    <button className="btn-link">Abhinay Singh</button>
+                  </Link>
+                </>
+              )}
+            </div>
             <div className="post-new-ad">
               <Link href={navigateToPage("new-ad")}>
                 <button className="btn">POST FREE ADS</button>
               </Link>
             </div>
-          )}
+          </>}
         </div>
       </div>
 

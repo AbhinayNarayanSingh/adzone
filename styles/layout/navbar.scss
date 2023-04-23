@@ -134,6 +134,11 @@ $navbar-height : 4.25rem;
 
     }
 
+    .navbar-menu-icon {
+        padding: 0.25rem 1rem;
+        display: flex;
+    }
+
 
     .section-navbar-outer-container {
         box-shadow: 0 4px 5px rgba(0,0,0,.05);

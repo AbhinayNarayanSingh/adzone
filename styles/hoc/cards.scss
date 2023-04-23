@@ -60,8 +60,10 @@
                     font-size: .75rem;
                     font-weight: 500;
                     padding-left: .25rem;
-
+                    color: $AMOUNT_GREEN;
+                    
                     span {
+                        color: $AMOUNT_GREEN;
                         font-size: 1rem;
                         font-weight: 500;
                         line-height: 150%;

@@ -87,7 +87,7 @@ const ChatPage = () => {
 
           <div className='chat-header-container' key={chat.chat_id}>
             <button className='back-button-container' onClick={goBackPageHandler}>
-              <Icon src={BACK_BTN_ICON} size="2rem"/>
+              <Icon src={BACK_BTN_ICON} size="1.2rem"/>
             </button>
             
             <h2>{chat.user}</h2>
