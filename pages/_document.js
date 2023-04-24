@@ -17,6 +17,8 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
+        <div id="drawer"></div>
+        <div id="dialog"></div>
       </body>
     </Html>
   );

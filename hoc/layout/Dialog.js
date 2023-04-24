@@ -1,8 +1,4 @@
 import { useEffect, useState } from "react";
-import dynamic from "next/dynamic";
-import { dialogCloseRx, dialogOpenRx } from "@/utils/rxjs/rxSubject";
-
-// const Dialogs = dynamic(() => import("../containers/dialog/dialog"));
 
 const Dialog = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -18,20 +14,6 @@ const Dialog = () => {
   const close_dialog = () => {
     setDialogState(false);
   };
-
-  useEffect(() => {
-    const dialogOpenSubscription = dialogOpenRx
-      .asObservable()
-      .subscribe(open_dialog);
-    const dialogCloseSubscription = dialogCloseRx
-      .asObservable()
-      .subscribe(close_dialog);
-
-    return () => {
-      dialogOpenSubscription.unsubscribe();
-      dialogCloseSubscription.unsubscribe();
-    };
-  }, []);
 
   return isDialogOpen && <div>Dialog</div>;
 };

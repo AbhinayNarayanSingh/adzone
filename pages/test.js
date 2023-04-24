@@ -1,13 +1,20 @@
-import { MAP_ICON } from "@/Environment";
-import Icon from "@/hoc/image/Icon";
-import React from "react";
+import DialogWrapper from "@/components/Dialog/DialogWrapper";
+import React, { useState } from "react";
 
-const test = () => {
+const Test = () => {
+  const [portal, setPortal] = useState(false)
   return (
-    <div>
-      <Icon src={MAP_ICON} />
-    </div>
+    <>
+    <button onClick={() => setPortal(state => !state)}>Open</button>
+    {portal && <DialogWrapper/>}
+    
+    {/* {portal && <DrawerWrapper>
+      <div>drawer</div>
+    </DrawerWrapper>} */}
+
+    </>
+    
   );
 };
 
-export default test;
+export default Test;

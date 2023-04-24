@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { useState } from "react";
 
-import { open_dialog } from "@/utils/rxjs/rxHelper";
 import useIsMobile from "@/hooks/useIsMobile";
 
 import Icon from "../image/Icon";
@@ -39,7 +38,7 @@ const Navbar = () => {
           {!isMobile && (
             <div
               className="location-button-container"
-              onClick={() => open_dialog()}
+              onClick={() => {}}
             >
               <Icon src={MAP_ICON} />
               <button className="btn-link pl-05">London, Ontario</button>
