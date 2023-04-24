@@ -22,9 +22,9 @@ export default function App({ Component, pageProps }) {
       <Loader />
       <Drawer />
       <Dialog />
-      {/* <Navbar /> */}
+      <Navbar />
       <Component {...pageProps} />
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }
