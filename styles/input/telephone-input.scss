@@ -63,3 +63,34 @@
 
 
 }
+
+
+@media only screen and (max-width: 512px) {
+    .telephone-input-outer-container {
+    
+        .telephone-input-container {
+            gap: .5rem;
+    
+    
+            .telephone-input-container__country-select {
+                font-size: .9rem;
+                h2{
+                    font-size: .9rem;
+                }
+            }
+        }
+    
+        .options-container {
+            font-size: .9rem;
+            top: 2.75rem;
+
+            
+            .option p{
+                font-size: .9rem;
+            }
+        }
+    
+    
+    }
+
+}

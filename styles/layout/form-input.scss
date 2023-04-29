@@ -84,4 +84,21 @@ label {
         }
     }
 
+    .select-input-container {
+    
+        .input h2 {
+            font-size: .9rem;
+        }
+        .options-container {
+            align-items: center;
+            p {
+                font-size: .9rem;
+            }
+            
+            .option {
+                font-size: .9rem;
+            }
+        }
+    }
+
 }
