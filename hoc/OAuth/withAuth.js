@@ -12,7 +12,7 @@ export default function withAuth(Component) {
       if (!isLoggedIn()) router.replace(navigateToPage("login"))
     }, []);
 
-    if (!isLoggedIn()) {
+    if (isLoggedIn()) {
       return <Component {...props} />;
     }
 

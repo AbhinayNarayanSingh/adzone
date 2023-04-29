@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import endpoints from "@/utils/services/endpoints";
 import { services } from "@/utils/services/services";
 
-const login = () => {
+const Login = () => {
   const registerFormFeild = [
     {
       label: "Email",
@@ -34,7 +34,7 @@ const login = () => {
 
   const loginSubmitHandler = async (event) => {
     event.preventDefault();
-    // dispatch(loginAction("Abhinay Singh"))
+    dispatch(loginAction("Abhinay Singh"))
     // router.push("/")
 
     const {data} = await services.get(endpoints.getProductsList, {})
@@ -65,4 +65,4 @@ const login = () => {
   );
 };
 
-export default withoutAuth(login);
+export default withoutAuth(Login);
