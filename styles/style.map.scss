@@ -25,6 +25,7 @@ $CARD_BOX_SHADOW : rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px
 // hoc
 @import "./hoc/cards.scss";
 @import "./hoc/icons.scss";
+@import "./hoc/dialogs.scss";
 
 // input
 @import "./input/telephone-input.scss";
@@ -42,6 +43,10 @@ $CARD_BOX_SHADOW : rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px
 
 @import "./grid.scss";
 @import "./loading-animation.scss";
+
+
+// drawers
+@import "./page/drawers/menu-drawer.scss";
 
 // layout
 @import "./layout/navbar.scss";

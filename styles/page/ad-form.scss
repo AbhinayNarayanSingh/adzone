@@ -201,7 +201,7 @@
 
     p {
         strong {
-            font-weight: 500;
+            font-weight: 600;
         }
     }
     
@@ -222,4 +222,163 @@
     .ql-editor.ql-blank::before {
         font-style: normal !important;
     }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 512px) {
+    $para : .8rem;
+
+    .ad-form-outer-container {
+        margin: 0 .75rem;
+    
+        .page-heading {
+            font-size: 1rem;
+        }
+    
+        .section {
+            padding: 0;
+            margin-bottom: 1.5rem;
+            border: none;
+    
+            .section-heading {
+                font-size: .9rem;
+                line-height: 1.2rem;
+
+                span {
+                    font-size: .9rem;
+                }
+            }
+    
+    
+            .section-detail-container {
+                margin-top: .5rem;
+                flex-direction: column;
+                gap: .25rem;
+    
+                .left-col {
+                    width: 100%;
+                    text-align: left;
+                    font-size: .9rem;
+                }
+    
+                .right-col {
+                    width: 100%;
+                }
+    
+                .help-text {
+                    font-size: .75rem;
+                    color: grey;
+                    line-height: 1rem;
+                }
+    
+                input {
+                    font-size: $para;
+                    padding: .5rem;
+                }
+        
+                textarea {
+                    padding: .5rem .75rem;
+                    font-size: .9rem;
+                    line-height: 1.2rem;
+                }
+    
+                .tags-container {
+                    flex-wrap: wrap;
+                    gap: .5rem;
+                    margin-top: .5rem;
+    
+                    p {
+                        padding: 0.25rem .5rem;
+                        font-size: $para;
+                    }
+                }
+            }
+        }
+    
+        .agree-tc-container {
+            margin-bottom: .5rem;
+    
+            label {
+                font-size: $para;
+                line-height: 1.25rem;
+                
+                & span {
+                    font-size: $para;
+                }
+            }
+            input {
+                width: 1.5rem;
+            }
+        }
+    
+        .submit-btn-container {
+            margin-bottom: 2rem;
+            display: flex;
+            gap: .5rem;
+        }
+    }
+
+    .text-editor {
+        p {
+            font-size: $para;
+            line-height: 1.1rem;
+        }
+        .ql-editor {
+            padding: .5rem .75rem;
+        }
+    }
+
+    .link-to-website-container {
+        label {
+            font-size: .9rem;
+        }
+        input{
+            width: 1rem;
+        }
+    }
+
+    .radio-input {
+        label {
+            font-size: $para;
+        }
+        .radio-input_input {
+            width: 1.5rem !important;
+        }
+    }
+
+    .listing-image-container {
+    
+        label {
+            padding: 1.5rem 1rem;
+            font-size: .9rem;
+            p {
+                font-size: $para;
+            }
+            h2 {
+                font-size: .9rem;
+            }
+        }
+   
+        .image-preview-container {
+            gap: .5rem;
+            margin-top: .75rem;
+        }
+    
+    }
+
 }

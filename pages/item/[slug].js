@@ -1,9 +1,11 @@
-import { NEXT_BUTTON_ICON, PREVIOUS_BUTTON_ICON } from "@/Environment";
-import Icon from "@/hoc/image/Icon";
-import { postData } from "@/store/staticStore";
-import ProductCards from "@/hoc/cards/ProductCards";
-
+import dynamic from "next/dynamic";
 import Image from "next/image";
+
+// import Icon from "@/hoc/image/Icon";
+import { NEXT_BUTTON_ICON, PREVIOUS_BUTTON_ICON } from "@/Environment";
+import { postData } from "@/store/staticStore";
+
+const ProductCards = dynamic(() => import("@/hoc/cards/ProductCards"));
 import { products } from "@/store/product";
 
 const Item = () => {

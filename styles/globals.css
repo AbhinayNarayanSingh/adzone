@@ -117,3 +117,7 @@ input, select, option {
   border-radius: 5px;
   background: transparent;
 }
+
+.w-100 {
+  width: 100%;
+}

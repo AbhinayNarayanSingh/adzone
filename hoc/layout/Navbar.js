@@ -7,8 +7,9 @@ import useIsMobile from "@/hooks/useIsMobile";
 import Icon from "../image/Icon";
 import { LOGO, MAP_ICON, MENU_ICON, SETTING_ICON } from "@/Environment";
 import { navigateToPage, navigateToSearch } from "@/utils/navigate/navigator";
+import DrawerHOC from "../drawer/drawerHOC";
 
-const Navbar = () => {
+const Navbar = (props) => {
   const router = useRouter();
   const { page, section } = router.query;
   const [searchString, setSearchString] = useState("");
@@ -48,7 +49,9 @@ const Navbar = () => {
 
         <div className="navbar-right-col">
           {isMobile ? 
-          <div className="navbar-menu-icon"><Icon src={MENU_ICON} alt="menu" /></div>  : 
+          <div className="navbar-menu-icon" onClick={() => props.open_drawer("MENU")}>
+            <Icon src={MENU_ICON} alt="menu" />
+          </div>  : 
           <>
             <button className="btn-link change-language">ES</button>
             <div className="sign-button">
@@ -130,4 +133,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default DrawerHOC(Navbar);

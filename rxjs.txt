@@ -1,0 +1,49 @@
+  useEffect(() => {
+    const drawerOpenSubscription = drawerOpen.asObservable().subscribe(open_drawer)
+    const drawerCloseSubscription = drawerClose.asObservable().subscribe(open_drawer)
+
+    return () =>{
+      drawerOpenSubscription.unsubscribe()
+      drawerCloseSubscription.unsubscribe()
+    }
+  }, [])
+
+
+
+
+
+
+
+
+
+
+
+
+import { Subject } from "rxjs";
+
+export const dialogOpen = new Subject();
+export const dialogClose = new Subject();
+export const drawerOpen = new Subject();
+export const drawerClose = new Subject();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export const open_dialog = (type, dialogData, dialogModel) => {
+  return dialogOpen.next({ type, dialogData, dialogModel })
+}
+
+export const close_dialog = (...params) => {
+  return dialogClose.next()
+}
