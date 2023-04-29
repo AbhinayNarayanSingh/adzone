@@ -1,3 +1,4 @@
+import withoutAuth from "@/hoc/OAuth/withoutAuth";
 import Form from "@/hoc/input/Form";
 
 const register = () => {
@@ -75,4 +76,4 @@ const register = () => {
   );
 };
 
-export default register;
+export default withoutAuth(register);

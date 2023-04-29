@@ -14,11 +14,11 @@ export default function Home() {
   return (
     <div className="homepage-outer-container">
       <div className="category-container">
-        {categoryData.map((item, index) => {
+        {categoryData.slice(0, 11).map((item, index) => {
           return (
             <div
               key={item.name + "__" + index}
-              className="category-outer-container"
+              className={`category-outer-container category-count__${index+1}`}
             >
               <Link href={navigateToSearch(item.name, "c")}>
                 <div className="category">

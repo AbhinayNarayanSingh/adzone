@@ -1,8 +1,8 @@
 import Input from "./Input";
 
-const Form = ({ formFeild, className }) => {
+const Form = ({ formFeild, className, submitHandler}) => {
   return (
-    <form className={className}>
+    <form className={className} onSubmit={submitHandler}>
       {formFeild.map((feild, index) => {
         return (
           <>

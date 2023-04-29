@@ -5,6 +5,7 @@ import TelephoneInput from "@/hoc/input/TelephoneInput";
 import { categoryData } from "@/store/staticStore";
 import TextEditor from "@/hoc/input/Editor";
 import { getCroppedImage } from "@/utils/helper/imageCroper";
+import withAuth from "@/hoc/OAuth/withAuth";
 
 const AdPost = () => {
   const [responseState, setResponseState] = useState({});
@@ -413,4 +414,4 @@ const AdPost = () => {
   );
 };
 
-export default AdPost;
+export default withAuth(AdPost);

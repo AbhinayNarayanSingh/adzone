@@ -3,7 +3,7 @@ import { postData } from "@/store/staticStore";
 import { navigateToPage } from "@/utils/navigate/navigator";
 import Link from "next/link";
 
-const PeoductCards = ({ data, isSkelton = false, key = 0 }) => {
+const PeoductCards = ({ data, isSkelton = false, key=0 }) => {
   const {
     images,
     slug,
@@ -20,10 +20,9 @@ const PeoductCards = ({ data, isSkelton = false, key = 0 }) => {
     isFeatured,
   } = data || postData;
   return (
-    <Link href={navigateToPage("pdp", slug)} legacyBehavior>
+    <Link href={navigateToPage("pdp", slug)} legacyBehavior key={key}>
       <div
         className={`product-outer-card-container ${isSkelton && "skelton"}`}
-        key={key}
       >
         <div className="product-card-container">
           <div className="image-container">

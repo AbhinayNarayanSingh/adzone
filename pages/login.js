@@ -1,4 +1,11 @@
+import withoutAuth from "@/hoc/OAuth/withoutAuth";
 import Form from "@/hoc/input/Form";
+import router from "next/router";
+
+import { loginAction } from "@/store/slice/auth";
+import { useDispatch } from "react-redux";
+import endpoints from "@/utils/services/endpoints";
+import { services } from "@/utils/services/services";
 
 const login = () => {
   const registerFormFeild = [
@@ -21,13 +28,19 @@ const login = () => {
       label: "Login now",
       className: "full-btn",
     },
-    // {
-    //     label : "",
-    //     input : "",
-    //     placeholder: "",
-    //     errorMsg: ""
-    // },
   ];
+
+  const dispatch = useDispatch()
+
+  const loginSubmitHandler = async (event) => {
+    event.preventDefault();
+    // dispatch(loginAction("Abhinay Singh"))
+    // router.push("/")
+
+    const {data} = await services.get(endpoints.getProductsList, {})
+    debugger
+
+  }
   return (
     <div className="register-page-container center-min-height">
       <h2>Login to your account</h2>
@@ -35,7 +48,11 @@ const login = () => {
         To enhance your AdZone experience and help you stay safe and secure
       </p>
 
-      <Form formFeild={registerFormFeild} className="sign-form" />
+      <Form 
+        className="sign-form" 
+        formFeild={registerFormFeild} 
+        submitHandler={loginSubmitHandler}
+      />
 
       <p className="sign-option">
         Not registered yet?{" "}
@@ -48,4 +65,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default withoutAuth(login);

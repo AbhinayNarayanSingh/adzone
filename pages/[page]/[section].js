@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import ChatPage from "@/components/Chat/ChatPage";
 import ProfilePage from "@/components/Page/ProfilePage";
 import SettingPage from "@/components/Setting/SettingPage";
+import withAuth from "@/hoc/OAuth/withAuth";
 
 const Profile = () => {
   const router = useRouter();
@@ -25,4 +26,4 @@ const Profile = () => {
   return (pageType);
 };
 
-export default Profile;
+export default withAuth(Profile);

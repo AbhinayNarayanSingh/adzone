@@ -1,0 +1,16 @@
+.setting-page-outer-container {
+    display: flex;
+
+    .col-30 {
+        flex: 0 0 auto;
+        width: 20%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .col-70 {
+        flex: 0 0 auto;
+        width: 70%;
+    }
+}

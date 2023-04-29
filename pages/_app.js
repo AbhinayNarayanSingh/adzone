@@ -1,17 +1,19 @@
+import { Provider } from 'react-redux'
+
 import Head from "next/head";
 
-import Dialog from "@/hoc/layout/Dialog";
-import Drawer from "@/hoc/layout/Drawer";
 import Footer from "@/hoc/layout/Footer";
 import Loader from "@/hoc/layout/Loader";
 import Navbar from "@/hoc/layout/Navbar";
+
+import store from '@/store/store';
 
 import "@/styles/style.map.scss";
 import "@/styles/globals.css";
 
 export default function App({ Component, pageProps }) {
   return (
-    <>
+    <Provider store={store}>
       <Head>
         <meta
           name="viewport"
@@ -20,11 +22,9 @@ export default function App({ Component, pageProps }) {
       </Head>
 
       <Loader />
-      <Drawer />
-      <Dialog />
       <Navbar />
       <Component {...pageProps} />
       <Footer />
-    </>
+    </Provider>
   );
 }
