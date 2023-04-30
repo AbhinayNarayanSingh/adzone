@@ -136,7 +136,7 @@ const AdPost = () => {
               value={valueHandlerFn}
               setValue={onChangeHandlerFn}
             />
-            <p className="help-text">
+            <p className="help-text help-text-margin">
               Please provide a thorough and detailed description of your listing to aid buyers in understanding the product better. Keep in mind that the description you provide will be visible on the product detail page, so it&apos;s essential to be as precise and accurate as possible.
               </p>
           </div>
@@ -226,9 +226,9 @@ const AdPost = () => {
                 search to find your ad.
               </p>
               <div className="tags-container">
+                <p>#Westmount London</p>
                 <p>#Auburn Park</p>
                 <p>#Apartment</p>
-                <p>#Westmount London</p>
               </div>
             </div>
           </div>
@@ -298,7 +298,7 @@ const AdPost = () => {
                 disabled={previewUrls.length > 10}
               />
 
-              <p className="help-text">
+              <p className="help-text help-text-margin">
                 Include pictures with different angles and details. You can
                 upload a maximum of 10 photos, that are at least 300px wide or
                 tall (we recommend at least 1000px).

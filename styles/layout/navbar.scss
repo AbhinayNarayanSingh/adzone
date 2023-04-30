@@ -135,7 +135,7 @@ $navbar-height : 4.25rem;
     }
 
     .navbar-menu-icon {
-        padding: 0.25rem 1rem;
+        padding: 0.25rem .5rem 0.25rem 2rem;
         display: flex;
     }
 
@@ -206,7 +206,7 @@ $navbar-height : 4.25rem;
             height: 1.25rem;
         }
         .navbar-left-col {
-            margin-left: 1rem;
+            margin-left: .5rem;
             align-items: end;
 
             .location-button-container {

@@ -32,7 +32,7 @@ const Menu = () => {
         </div>
       </div>
       <div>
-        <button className='btn-link w-100'>Share AdZone</button>
+        <button className='btn-link w-100 mt-1'>Share AdZone</button>
       </div>
     </div>
   )

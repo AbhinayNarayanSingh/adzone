@@ -1,5 +1,7 @@
 import withoutAuth from "@/hoc/OAuth/withoutAuth";
 import Form from "@/hoc/input/Form";
+import { navigateToPage } from "@/utils/navigate/navigator";
+import Link from "next/link";
 
 const register = () => {
   const registerFormFeild = [
@@ -57,7 +59,7 @@ const register = () => {
     // },
   ];
   return (
-    <div className="register-page-container center-min-height">
+    <div className="register-page-container">
       <h2>Create your free account</h2>
       <p className="register-subline">
         Register now to post, edit, and manage ads. It’s quick, easy, and free!
@@ -67,7 +69,9 @@ const register = () => {
 
       <p className="sign-option">
         Already have an account?
-        <button className="btn-link pl-05">Login</button>
+        <Link href={navigateToPage("login")}>
+          <button className="btn-link pl-05">Login</button>
+        </Link>
       </p>
 
       <button className="social-login google">Continue with Google</button>

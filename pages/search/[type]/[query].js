@@ -1,3 +1,4 @@
+import BannersMap from "@/components/Banners/BannersMap";
 import ProductCards from "@/hoc/cards/ProductCards";
 import useIsMobile from "@/hooks/useIsMobile";
 import { products } from "@/store/product";
@@ -29,17 +30,8 @@ const Search = () => {
 
           return <ProductCards data={item} key={"product__" + index} />;
         })}
-      <div className="filter-banner">
-        <h2>
-          Our classifieds are the perfect place to find them! Whether
-          you&apos;re buying or selling
-        </h2>
-        <p>
-          Post your classified ad today and connect with buyers and sellers near
-          you!
-        </p>
-        <button className="btn-light">Post Your Ad Now</button>
-      </div>
+      
+        {BannersMap("FILTER_BANNER")}
 
       </div>
 

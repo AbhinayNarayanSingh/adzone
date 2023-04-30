@@ -9,6 +9,9 @@ import { navigateToSearch } from "@/utils/navigate/navigator";
 import { categoryData } from "@/store/staticStore";
 import { products } from "@/store/product";
 
+import HeroBanner from "@/components/Banners/Banner/HeroBanner";
+import BannersMap from "@/components/Banners/BannersMap";
+
 export default function Home() {
   const [loading, setLoading] = useState(false);
   return (
@@ -33,15 +36,7 @@ export default function Home() {
         })}
       </div>
 
-      <div className="homepage-banner">
-        <h2>
-          Connect with local buyers and sellers and score great deals on AdZone
-        </h2>
-        <p>
-          Join the local marketplace and discover unbeatable bargains on AdZone
-        </p>
-        <button className="btn-light">Start posting today!</button>
-      </div>
+      {BannersMap("HERO_BANNER")}
 
       <div className="outer-featured-product-container">
         <div className="heading">
@@ -61,13 +56,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="sign-up-banner">
-        <h2>Join AdZone Today and Start Buying and Selling!</h2>
-        <p>
-          Sign up now to become a part of our community and find amazing deals!
-        </p>
-        <button className="btn-light">Join now!</button>
-      </div>
+      {BannersMap("HERO_SIGNUP_BANNER")}
 
       <div className="outer-product-container">
         <div className="heading">

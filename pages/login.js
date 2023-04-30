@@ -6,6 +6,8 @@ import { loginAction } from "@/store/slice/auth";
 import { useDispatch } from "react-redux";
 import endpoints from "@/utils/services/endpoints";
 import { services } from "@/utils/services/services";
+import Link from "next/link";
+import { navigateToPage } from "@/utils/navigate/navigator";
 
 const Login = () => {
   const registerFormFeild = [
@@ -42,7 +44,7 @@ const Login = () => {
 
   }
   return (
-    <div className="register-page-container center-min-height">
+    <div className="register-page-container">
       <h2>Login to your account</h2>
       <p className="register-subline">
         To enhance your AdZone experience and help you stay safe and secure
@@ -56,7 +58,9 @@ const Login = () => {
 
       <p className="sign-option">
         Not registered yet?{" "}
-        <button className="btn-link pl-05">Register Now</button>
+        <Link href={navigateToPage("register")}>
+          <button className="btn-link pl-05">Register Now</button>
+        </Link>
       </p>
 
       <button className="social-login google">Continue with Google</button>

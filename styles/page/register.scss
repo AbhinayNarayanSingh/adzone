@@ -1,5 +1,6 @@
 
 .register-page-container {
+    min-height: 60vh;
     * {
         color: $TEXT_COLOR;
     }
@@ -15,7 +16,6 @@
     }
     .register-subline{
         text-align: center;
-        margin-bottom: 1rem;
     }
     .t-and-c-string {
         margin: 1rem 0;
@@ -23,7 +23,7 @@
     
 }
 .sign-form {
-    margin: 2rem 1rem;
+    margin: 1rem;
 
     .full-btn {
         width: 100%;
@@ -35,7 +35,7 @@
 .sign-option {
     display: flex;
     justify-content: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.25rem;
     align-items: center;
 }
 
@@ -61,7 +61,7 @@
 
     .register-page-container {
 
-        margin: .5rem;
+        margin: 1rem .5rem 0;
 
         h2 {
             font-size: 1.1rem;
