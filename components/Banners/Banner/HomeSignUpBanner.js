@@ -4,7 +4,7 @@ import { navigateToPage } from '@/utils/navigate/navigator'
 const HomeSignUpBanner = () => {
     return (
         <div className="sign-up-banner">
-            <h2>Join AdZone Today and Start Buying & Selling!</h2>
+            <h2>Join AdZone today and start buying & selling!</h2>
             <p>Sign up now to become a part of our community and find amazing deals!</p>
 
             <Link href={navigateToPage("login")}>

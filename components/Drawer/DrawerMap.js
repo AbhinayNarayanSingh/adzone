@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic"
 
-const Menu = dynamic(() => import("./Drawers/Menu"))
+import Menu from "./Drawers/Menu"
 
 export const DrawerMap = (key) => {
     const drawer = {
