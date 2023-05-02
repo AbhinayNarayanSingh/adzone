@@ -6,7 +6,7 @@ import Link from "next/link";
 const ProductCards = ({ data, isSkelton = false, key=0 }) => {
   const {
     images,
-    slug,
+    slug="2-bedroom-fully-renovated-close-to-fanshawe-western-1633679888",
     Ad_id,
     title,
     short_location,

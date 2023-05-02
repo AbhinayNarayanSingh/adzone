@@ -12,7 +12,7 @@ import DrawerHOC from "../drawer/drawerHOC";
 const Navbar = (props) => {
   const router = useRouter();
   const { page, section } = router.query;
-  const [searchString, setSearchString] = useState("Real Estate");
+  const [searchString, setSearchString] = useState();
   const [isSuggetionsBoxOpen, setIsSuggetionsBoxOpen] = useState(false);
 
   const isMobile = useIsMobile();
@@ -22,7 +22,7 @@ const Navbar = (props) => {
 
   const searchHandlerFn = (event) => {
     event.preventDefault();
-    router.push(navigateToSearch(searchString));
+    router.push(navigateToSearch("Real Estate" || searchString));
     setSearchString("");
   };
 
