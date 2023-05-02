@@ -1,45 +1,31 @@
-export const navigateToPage = (page, slug) => {
-  switch (page) {
-    case "register":
-      return "/register";
+export const navigateToPage = (page="home", slug) => {
+  const pathObj = {
+    home: "/",
+    register: "/register",
+    login: "/login",
+    newAds : "/ad/new",
 
-    case "login":
-      return "/login";
+    listings: "/p/listings",
+    reviews: "/p/reviews",
+    orders: "/p/orders",
 
-    case "listings":
-      return "/p/listings";
+    setting: "/s/personal-details",
+    billingAddress: "/s/billing-address",
+    switchProfessinal: "/s/professinal",
+    
+    messages: "/m/chats",
 
-    case "reviews":
-      return "/p/reviews";
-
-    case "orders":
-      return "/p/orders";
-
-    case "messages":
-      return "/m/chats";
-
-    case "setting":
-      return "/s/listings";
-
-    case "pdp":
-      return "/item/" + slug;
-
-    case "new-ad":
-      return "/ad/new";
-
-    default:
-      return "/";
+    pdp: "/item/" + slug,
   }
+  return pathObj[page]
 };
 
-export const navigateToSearch = (query, type = "") => {
+export const navigateToSearch = (query, type="q") => {
   const slugify = query.replace(/[\s?|_\-&]+/g, "-").toLowerCase();
 
-  switch (type) {
-    case "c":
-      return "/search/c/" + slugify;
-
-    default:
-      return "/search/q/" + slugify;
+  const pathObj = {
+    c : "/search/c/" + slugify,
+    q : "/search/q/" + slugify
   }
+  return pathObj[type]
 };

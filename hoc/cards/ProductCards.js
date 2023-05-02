@@ -3,7 +3,7 @@ import { postData } from "@/store/staticStore";
 import { navigateToPage } from "@/utils/navigate/navigator";
 import Link from "next/link";
 
-const PeoductCards = ({ data, isSkelton = false, key=0 }) => {
+const ProductCards = ({ data, isSkelton = false, key=0 }) => {
   const {
     images,
     slug,
@@ -47,4 +47,4 @@ const PeoductCards = ({ data, isSkelton = false, key=0 }) => {
   );
 };
 
-export default PeoductCards;
+export default ProductCards;

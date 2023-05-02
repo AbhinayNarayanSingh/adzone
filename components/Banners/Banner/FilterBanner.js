@@ -8,7 +8,7 @@ const FilterBanner = () => {
       you&apos;re buying or selling</h2>
     <p>Post your classified ad today and connect with buyers and sellers near you!</p>
 
-    <Link href={navigateToPage("new-ad")}>
+    <Link href={navigateToPage("newAds")}>
         <button className="btn-light">Post Your Ad Now</button>
     </Link>
   </div>

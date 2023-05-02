@@ -12,7 +12,7 @@ import DrawerHOC from "../drawer/drawerHOC";
 const Navbar = (props) => {
   const router = useRouter();
   const { page, section } = router.query;
-  const [searchString, setSearchString] = useState("");
+  const [searchString, setSearchString] = useState("Real Estate");
   const [isSuggetionsBoxOpen, setIsSuggetionsBoxOpen] = useState(false);
 
   const isMobile = useIsMobile();
@@ -74,7 +74,7 @@ const Navbar = (props) => {
               )}
             </div>
             <div className="post-new-ad">
-              <Link href={navigateToPage("new-ad")}>
+              <Link href={navigateToPage("newAds")}>
                 <button className="btn">POST FREE ADS</button>
               </Link>
             </div>

@@ -7,7 +7,7 @@ const HeroBanner = () => {
             <h2>Connect with local buyers and sellers and score great deals on AdZone</h2>
             <p>Join the local marketplace and discover unbeatable bargains on AdZone</p>
 
-            <Link href={navigateToPage("new-ad")}>
+            <Link href={navigateToPage("newAds")}>
                 <button className="btn-light">Start posting today!</button>
             </Link>
         </div>

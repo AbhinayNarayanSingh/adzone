@@ -26,7 +26,7 @@ const Menu = () => {
           )}
         </div>
         <div className="post-new-ad">
-          <Link href={navigateToPage("new-ad")}>
+          <Link href={navigateToPage("newAds")}>
             <button className="btn w-100">POST FREE ADS</button>
           </Link>
         </div>
