@@ -2,6 +2,8 @@ import withoutAuth from "@/hoc/OAuth/withoutAuth";
 import Form from "@/hoc/input/Form";
 import { navigateToPage } from "@/utils/navigate/navigator";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
+
 
 const register = () => {
   const registerFormFeild = [
@@ -74,8 +76,8 @@ const register = () => {
         </Link>
       </p>
 
-      <button className="social-login google">Continue with Google</button>
-      <button className="social-login facebook">Continue with Facebook</button>
+      <button className="social-login google" type="button" onClick={() => signIn("google")}>Continue with Google</button>
+      <button className="social-login facebook" type="button" onClick={() => signIn("facebook")}>Continue with Facebook</button>
     </div>
   );
 };

@@ -6,8 +6,16 @@ export const DEFAULT_CURRENCY_WORD = "CAD";
 export const DEFAULT_CURRENCY = "$";
 
 
-export const AUTH_CLIENT_ID = "630576064420-368h7n73q1t07uhvhkdl3sr7k0910m7j.apps.googleusercontent.com";
-export const AUTH_CLIENT_SECRET = "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"
+export const GOOGLE_CLIENT_ID = "630576064420-368h7n73q1t07uhvhkdl3sr7k0910m7j.apps.googleusercontent.com";
+export const GOOGLE_CLIENT_SECRET = "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"
+
+export const FACEBOOK_CLIENT_ID = "1373170750141686";
+export const FACEBOOK_CLIENT_SECRET = "b66f605a1b18487b42773e4056f344d2"
+
+
+export const NEXT_AUTH_SECRET = "c53180cfa41b0970fd3b2e9eb124fa2e"
+
+export const DB_URI = "mongodb+srv://abhinaynarayansingh:ouEP2E5LFi1CJ57F@adzone.l7gc5e5.mongodb.net/?retryWrites=true&w=majority"
 
 
 export const LOGO = "/images/brand/logo.svg";

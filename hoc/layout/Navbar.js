@@ -9,8 +9,13 @@ import { LOGO, MAP_ICON, MENU_ICON, SETTING_ICON } from "@/Environment";
 import { navigateToPage, navigateToSearch } from "@/utils/navigate/navigator";
 import DrawerHOC from "../drawer/drawerHOC";
 import DialogHOC from "../dialog/DialogHOC";
+import { useSession } from "next-auth/react";
 
 const Navbar = (props) => {
+
+  const {data} = useSession()
+  console.log('+++ login data', data);
+  
   const router = useRouter();
   const { page, section } = router.query;
   const [searchString, setSearchString] = useState();

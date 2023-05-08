@@ -1,4 +1,5 @@
 import { Provider } from 'react-redux'
+import { SessionProvider } from 'next-auth/react';
 
 import Head from "next/head";
 
@@ -13,6 +14,7 @@ import "@/styles/globals.css";
 
 export default function App({ Component, pageProps }) {
   return (
+    <SessionProvider>
     <Provider store={store}>
       <Head>
         <meta
@@ -26,5 +28,6 @@ export default function App({ Component, pageProps }) {
       <Component {...pageProps} />
       <Footer />
     </Provider>
+    </SessionProvider>
   );
 }
