@@ -5,6 +5,11 @@ export const PROJECT_DESCRIPTION =
 export const DEFAULT_CURRENCY_WORD = "CAD";
 export const DEFAULT_CURRENCY = "$";
 
+
+export const AUTH_CLIENT_ID = "630576064420-368h7n73q1t07uhvhkdl3sr7k0910m7j.apps.googleusercontent.com";
+export const AUTH_CLIENT_SECRET = "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"
+
+
 export const LOGO = "/images/brand/logo.svg";
 export const FOOTER_LOGO = "/images/brand/footer_logo.svg";
 

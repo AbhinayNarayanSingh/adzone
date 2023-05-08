@@ -3,7 +3,11 @@ import { useState } from "react";
 
 const TelephoneInput = ({ label }) => {
   const [isOptionOpen, setIsOptionOpen] = useState(false);
-  const [optionSelcted, setOptionSelcted] = useState(CountryCode[0]);
+  const [optionSelcted, setOptionSelcted] = useState({
+    name: "India",
+    dial_code: "+91",
+    code: "IN",
+  });
 
   const optionSelectHandlerFn = (item) => {
     setIsOptionOpen((state) => !state);

@@ -13,30 +13,48 @@
 
 .dialog-outer-container {
   background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+  max-width: 768px;
   min-height: 100px;
-  border-radius: 1rem 1rem 0 0;
+  border-radius: .25rem;
+  margin: auto;
 
-  animation-name: slide-up;
-  animation-duration: 0.1s;
-  animation-timing-function: ease-out;
-  
   .dialog-content-container {
     margin: 1rem;
   } 
 }
-@keyframes slide-up {
-  0% {
-    transform: translateY(200px);
+
+
+@media only screen and (max-width: 512px) {
+
+  .dialog-outer-container {
+
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    min-height: 100px;
+    border-radius: 1rem 1rem 0 0;
+
+    animation-name: slide-up;
+    animation-duration: 0.1s;
+    animation-timing-function: ease-out;
+    
+    .dialog-content-container {
+      margin: 1rem;
+    } 
   }
-  100% {
-    transform: translateY(0);
+  @keyframes slide-up {
+    0% {
+      transform: translateY(200px);
+    }
+    100% {
+      transform: translateY(0);
+    }
   }
 }
-
 
 
 .drawer-background-overlay {

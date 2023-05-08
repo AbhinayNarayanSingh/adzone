@@ -198,30 +198,26 @@
 .text-editor {
     border: 1px solid #ccc;
     border-radius: $BORDER_RADIUS;
+    height: 348px;
+    overflow-y: scroll;
+    padding: .5rem 1rem;
 
-    p {
-        strong {
-            font-weight: 600;
+    .editor {
+        min-height: 348px;
+        div {
+            margin-bottom: .25rem;
         }
     }
-    
-    .ql-toolbar {
-        display : none;
+
+    *, div, a, p, code {
+        font-size: 1rem !important;
+        color: $TEXT_COLOR !important;
+        line-height: 125% !important;
     }
-    
-    .ql-container {
-        height: 400px !important;
-        border: none!important;
+    ul {
+        margin-left: 2rem;
     }
 
-    
-    ::-webkit-scrollbar {
-        width: 20px;
-      }
-    
-    .ql-editor.ql-blank::before {
-        font-style: normal !important;
-    }
 }
 
 .help-text-margin {
@@ -338,15 +334,15 @@
     }
 
     .text-editor {
-        p {
-            font-size: $para;
-            line-height: 1.1rem;
+        padding: .5rem .75rem;
+
+        *, div, a, p, code {
+            font-size: $para !important;
+            color: $TEXT_COLOR !important;
+            line-height: 125% !important;
         }
-        .ql-editor {
-            padding: .5rem .75rem;
-            &:before {
-                font-size: .9rem;
-            }
+        ul {
+            margin-left: 1rem;
         }
     }
 

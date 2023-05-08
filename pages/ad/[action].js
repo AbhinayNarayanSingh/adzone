@@ -60,6 +60,7 @@ const AdPost = () => {
   const valueHandlerFn = (name) => responseState[name];
 
   const onChangeHandlerFn = (e) => {
+    console.log('+++ e', e);
     const { name, value, checked, type } = e.target;
     const prevState = { ...responseState };
 

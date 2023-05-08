@@ -8,6 +8,7 @@ import Icon from "../image/Icon";
 import { LOGO, MAP_ICON, MENU_ICON, SETTING_ICON } from "@/Environment";
 import { navigateToPage, navigateToSearch } from "@/utils/navigate/navigator";
 import DrawerHOC from "../drawer/drawerHOC";
+import DialogHOC from "../dialog/DialogHOC";
 
 const Navbar = (props) => {
   const router = useRouter();
@@ -39,7 +40,7 @@ const Navbar = (props) => {
           {!isMobile && (
             <div
               className="location-button-container"
-              onClick={() => {}}
+              onClick={() => {props.open_dialog("CHANGE_LOCATION_DIALOG")}}
             >
               <Icon src={MAP_ICON} />
               <button className="btn-link pl-05">London, Ontario</button>
@@ -133,4 +134,4 @@ const Navbar = (props) => {
   );
 };
 
-export default DrawerHOC(Navbar);
+export default DialogHOC(DrawerHOC(Navbar));

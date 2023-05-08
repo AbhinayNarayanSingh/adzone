@@ -1,4 +1,4 @@
-import { PROJECT_DESCRIPTION, PROJECT_NAME } from "@/Environment";
+import { PROJECT_DESCRIPTION } from "@/Environment";
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
@@ -14,6 +14,7 @@ export default function Document() {
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
         rel="stylesheet"
       ></link>
+
       <body>
         <Main />
         <NextScript />
