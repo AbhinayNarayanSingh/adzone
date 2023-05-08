@@ -1,8 +1,9 @@
+import Link from "next/link";
+import { signIn } from "next-auth/react";
+
 import withoutAuth from "@/hoc/OAuth/withoutAuth";
 import Form from "@/hoc/input/Form";
 import { navigateToPage } from "@/utils/navigate/navigator";
-import Link from "next/link";
-import { signIn } from "next-auth/react";
 
 
 const register = () => {
