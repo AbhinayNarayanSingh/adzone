@@ -24,3 +24,6 @@ const productSlice = createSlice({
         })
     }
 })
+
+export const { increment, decrement, incrementByAmount } = counterSlice.actions
+export default productSlice.reducer

@@ -19,4 +19,60 @@
             padding: .25rem;
         }
     }
+
+    .post-new-ad button {
+        padding: .5rem;
+    }
+
+    .drawer-profile-card {
+        background: none;
+        display: flex;
+        align-items: center;
+        margin: .5rem 0 1rem;
+
+        .user-profile-first-letter {
+            font-size: 2.5rem;
+            font-weight: 600;
+
+            width: 4rem;
+            height: 4rem;
+            border-radius: 4rem;
+
+            background: $PRIMARY_COLOR;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-right: .5rem;
+        }
+
+        .user-details {
+            text-align: left;
+            * {
+                color: $TEXT_COLOR;
+            }
+            h2 {
+                font-size: 1.15rem;
+                font-weight: 600;
+            }
+            p{
+                font-size: .9rem;
+            }
+
+        }
+    }
+
+    .menu-option-button {
+        margin-top: 1rem;
+        .btn-link-icon {
+            margin: .25rem 0 0;
+        }
+    }
+
+    .menu-drawer-divider {
+        margin: 1rem 0;
+        display: block;
+    }
 }

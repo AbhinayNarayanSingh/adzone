@@ -61,6 +61,27 @@ button {
     font-size: 1rem;
 }
 
+.btn-link-icon {
+    border: none;
+    padding: .25rem 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    background: none;
+    color: $TEXT_COLOR;
+    font-size: 1rem;
+
+    display: flex;
+    align-items: center;
+
+    img {
+        margin-right: 1rem;
+    }
+
+    &:hover {
+        color: $PRIMARY_COLOR;
+    }
+}
+
 
 @media only screen and (max-width: 512px) {
 
@@ -96,6 +117,17 @@ button {
     
     .btn-size-s {
         font-size: .8rem !important;
+    }
+
+    .btn-link-icon {
+        padding: .25rem 1rem .25rem 0;
+        font-weight: 500;
+        font-size: .9rem;
+    
+        img {
+            margin-right: .5rem;
+        }
+
     }
 
 }

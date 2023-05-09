@@ -10,12 +10,12 @@ import { navigateToPage, navigateToSearch } from "@/utils/navigate/navigator";
 import DrawerHOC from "../drawer/drawerHOC";
 import DialogHOC from "../dialog/DialogHOC";
 import { useSession } from "next-auth/react";
+import { isLoggedIn } from "../OAuth/authHelper";
 
 const Navbar = (props) => {
 
   const {data} = useSession()
-  console.log('+++ login data', data);
-  
+
   const router = useRouter();
   const { page, section } = router.query;
   const [searchString, setSearchString] = useState();
@@ -33,6 +33,8 @@ const Navbar = (props) => {
   };
 
   const pageActiveIndicator = (pages) => page === pages ? "active" : ""
+
+  const isUserLoggedIn = isLoggedIn()
 
   return (
     <div className="navbar-outer-container">
@@ -61,7 +63,7 @@ const Navbar = (props) => {
           <>
             <button className="btn-link change-language">ES</button>
             <div className="sign-button">
-              {!true ? (
+              {!isUserLoggedIn ? (
                 <>
                   <Link href={navigateToPage("register")}>
                     <button className="btn-link">Register</button>

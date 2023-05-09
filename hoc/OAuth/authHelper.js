@@ -1,3 +1,6 @@
+import getGlobalState from "@/hooks/getGlobalState";
+
 export const isLoggedIn = () => {
-    return false;
+    const {isAuth} = getGlobalState("auth")
+    return isAuth;
 }
