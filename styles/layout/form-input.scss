@@ -5,18 +5,19 @@
     margin: .5rem 0;
     .help-text {
         color: grey;
-        font-size: .9rem;
+        font-size: .8rem;
     }
     label {
         font-size: 1rem;
         font-weight: 500;
     }
-    input{
+    input {
         font-size: 1rem;
-        padding: .5rem .75rem;
+        padding: .5rem 1rem;
         border-radius: $BORDER_RADIUS;
-        border: 1px solid grey;
+        border: 1px solid #cfcfcf;
         margin: .25rem 0;
+        width: 100%;
     }
 }
 
@@ -63,7 +64,9 @@
 
 label {
     cursor: pointer;
+    color: $TEXT_COLOR;
 }
+
 @media only screen and (max-width: 512px) {
     .form-feild {
         font-size: .9rem;

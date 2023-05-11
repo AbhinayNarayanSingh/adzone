@@ -1,5 +1,5 @@
-import ProductCards from "@/hoc/cards/ProductCards";
 import { products } from "@/store/product";
+import ProductCards from "@/componentWrapper/cards/ProductCards";
 
 const Listings = () => {
   return (

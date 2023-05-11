@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Icon from "../image/Icon";
+import Icon from "@/componentWrapper/image/Icon";
 
 const Select = ({
   options,
@@ -15,6 +15,20 @@ const Select = ({
     setIsOptionOpen((state) => !state);
     setOptionSelcted(item);
   };
+
+  const optionJsxFn = (selectType, item, index) => {
+    switch (selectType) {
+      case "CATEGORY_SELECT":
+        return (<>
+          <Icon src={item.icon} />
+          <p key={"option_" + index} className={className}>
+            {item.name}
+          </p>
+        </>)
+      default:
+        break;
+    }
+  } 
   return (
     <div className="select-input-container">
       <div className="input" onClick={() => setIsOptionOpen((state) => !state)}>
@@ -25,15 +39,15 @@ const Select = ({
       {isOptionOpen && (
         <div className="options-container">
           {options.map((item, index) => {
+            let selectOptionType = "CATEGORY_SELECT"
             return (
               <div
                 onClick={() => optionSelectHandlerFn(item)}
                 className="option"
+                key={selectOptionType + "_optionType_" + index}
+
               >
-                <Icon src={item.icon} />
-                <p key={"option_" + index} className={className}>
-                  {item.name}
-                </p>
+                {optionJsxFn(selectOptionType, item, index)}
               </div>
             );
           })}

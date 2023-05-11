@@ -1,5 +1,5 @@
 import { ADS_CREDIT, MEMBERSHIP } from "@/Environment";
-import Icon from "../image/Icon";
+import Icon from "@/componentWrapper/image/Icon";
 
 const OrderCards = ({ key, data }) => {
   const {

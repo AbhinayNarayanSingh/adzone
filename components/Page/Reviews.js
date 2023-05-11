@@ -1,5 +1,5 @@
-import ReviewCards from "@/hoc/cards/ReviewCards";
 import { reviewsData } from "@/store/staticStore";
+import ReviewCards from "@/componentWrapper/cards/ReviewCards";
 
 const Reviews = () => {
   return (

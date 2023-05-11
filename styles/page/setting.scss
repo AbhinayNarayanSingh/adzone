@@ -1,15 +1,15 @@
 .setting-page-outer-container {
     display: flex;
 
-    .col-20 {
+    .left-col {
         flex: 0 0 auto;
-        width: 20%;
+        width: 30%;
         display: flex;
         flex-direction: column;
         align-items: flex-end;
     }
 
-    .col-80 {
+    .right-col {
         flex: 0 0 auto;
         width: 70%;
     }

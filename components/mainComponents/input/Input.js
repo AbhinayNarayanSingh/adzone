@@ -5,10 +5,10 @@ const Input = ({
 }) => {
   switch (type) {
     case "static":
-      return <div className={className + " static-text"}>{jsx}</div>;
+      return <div className={className + " static-text"} key={type + "_input_" + name}>{jsx}</div>;
     case "button":
       return (
-        <div>
+        <div  key={type + "_input_" + name}>
           <button type="submit" className={`btn ${className}`}>
             {label}
           </button>
@@ -16,7 +16,7 @@ const Input = ({
       );
     case "email":
       return (
-        <div className="form-feild">
+        <div className="form-feild"  key={type + "_input_" + name}>
           <label htmlFor="">{label}</label>
           <input type="text" name={name} id="" />
           {helpText && <p className="help-text">{helpText}</p>}
@@ -25,7 +25,7 @@ const Input = ({
 
     case "password":
       return (
-        <div className="form-feild">
+        <div className="form-feild"  key={type + "_input_" + name}>
           <label htmlFor="">{label}</label>
           <input type="password" name={name} id="" />
           {helpText && <p className="help-text">{helpText}</p>}
@@ -34,7 +34,7 @@ const Input = ({
 
     default:
       return (
-        <div className="form-feild">
+        <div className="form-feild" key={type + "_input_" + name}>
           <label htmlFor="">{label}</label>
           <input type="text" name={name} />
           {helpText && <p className="help-text">{helpText}</p>}

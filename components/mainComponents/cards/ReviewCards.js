@@ -1,5 +1,5 @@
 import { STAR_FILLED, STAR_OUTLINE } from "@/Environment";
-import Icon from "../image/Icon";
+import Icon from "@/componentWrapper/image/Icon";
 
 const ReviewCards = ({ data, key }) => {
   const { first_name, last_name, rating = 5, review, timeStamp } = data;
@@ -19,11 +19,11 @@ const ReviewCards = ({ data, key }) => {
             <p>{timeStamp}</p>
           </div>
           <div>
-            {[...Array(starCount)].map(() => {
-              return <Icon src={STAR_FILLED} size="1rem" />;
+            {[...Array(starCount)].map((rate) => {
+              return <Icon src={STAR_FILLED} size="1rem" key={"rating_" + rate}/>;
             })}
-            {[...Array(starOutlineCount)].map(() => (
-              <Icon src={STAR_OUTLINE} size="1rem" />
+            {[...Array(starOutlineCount)].map((rate) => (
+              <Icon src={STAR_OUTLINE} size="1rem" key={"rating_" + 5 - rate}/>
             ))}
           </div>
           {review && <p>{review}</p>}

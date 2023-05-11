@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
-import Select from "@/hoc/input/Select";
-import TelephoneInput from "@/hoc/input/TelephoneInput";
+import Select from "@/componentWrapper/input/Select";
+import TelephoneInput from "@/componentWrapper/input/TelephoneInput";
 import { categoryData } from "@/store/staticStore";
-import TextEditor from "@/hoc/input/Editor";
+import TextEditor from "@/componentWrapper/input/Editor";
 import { getCroppedImage } from "@/utils/helper/imageCroper";
 import withAuth from "@/hoc/OAuth/withAuth";
 
@@ -81,7 +81,6 @@ const AdPost = () => {
 
   return (
     <div className="ad-form-outer-container">
-      {/* {console.log('+++ responseState', responseState)} */}
       <h2 className="page-heading">Post Your Ad and Find Your Buyer</h2>
 
       {/* Ad details */}

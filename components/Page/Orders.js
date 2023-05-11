@@ -1,5 +1,5 @@
-import OrderCards from "@/hoc/cards/OrderCards";
 import { orderHistory } from "@/store/staticStore";
+import OrderCards from "@/componentWrapper/cards/OrderCards";
 
 const Orders = () => {
   return (

@@ -4,13 +4,13 @@ import { useState } from "react";
 
 import useIsMobile from "@/hooks/useIsMobile";
 
-import Icon from "../image/Icon";
 import { LOGO, MAP_ICON, MENU_ICON, SETTING_ICON } from "@/Environment";
 import { navigateToPage, navigateToSearch } from "@/utils/navigate/navigator";
-import DrawerHOC from "../drawer/drawerHOC";
-import DialogHOC from "../dialog/DialogHOC";
+import DrawerHOC from "@/hoc/drawer/drawerHOC";
+import DialogHOC from "@/hoc/dialog/DialogHOC";
 import { useSession } from "next-auth/react";
-import { isLoggedIn } from "../OAuth/authHelper";
+import { isLoggedIn } from "@/hoc/OAuth/authHelper";
+import Icon from "@/componentWrapper/image/Icon";
 
 const Navbar = (props) => {
 
@@ -41,7 +41,7 @@ const Navbar = (props) => {
       <div className="navbar-container">
         <div className="navbar-left-col">
           <Link href={navigateToPage()}>
-            <img src={LOGO} className="logo" />
+            <img src={LOGO} className="logo" alt="NAVBAR_LOGO"/>
           </Link>
 
           {!isMobile && (
@@ -110,9 +110,9 @@ const Navbar = (props) => {
 
             {isSuggetionsBoxOpen && (
               <div className="search-suggetions-container">
-                {[...Array(10)].map((item) => {
+                {[...Array(10)].map((item, index) => {
                   return (
-                    <Link href={navigateToSearch("ford-gt-mustang")}>
+                    <Link href={navigateToSearch("ford-gt-mustang")} key={"suggetion_" + index}>
                       <p className="search-suggetions-container__suggetion">
                         Ford GT Mustang - <span>Car</span>
                       </p>

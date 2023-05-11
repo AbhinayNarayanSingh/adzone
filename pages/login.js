@@ -1,5 +1,5 @@
 import withoutAuth from "@/hoc/OAuth/withoutAuth";
-import Form from "@/hoc/input/Form";
+import Form from "@/componentWrapper/input/Form";
 import router from "next/router";
 
 import { loginAction } from "@/store/slice/auth";

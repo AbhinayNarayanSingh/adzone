@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import { navigateToPage } from '@/utils/navigate/navigator'
 import { isLoggedIn } from '@/hoc/OAuth/authHelper'
-import Icon from '@/hoc/image/Icon'
+import Icon from '@/componentWrapper/image/Icon'
 import { MAP_ICON, SETTING_ICON } from '@/Environment'
 
 const Menu = () => {

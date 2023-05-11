@@ -1,6 +1,6 @@
 import React from "react";
 import { useAmp } from "next/amp";
-import Wrapper from "../../hoc/Wrapper";
+import Wrapper from "@/hoc/Wrapper";
 import _JSXStyle from "styled-jsx/style";
 import { APP_NAME, BANNER_PLACEHOLDER_IMAGE } from "../../lib/config/homepage";
 

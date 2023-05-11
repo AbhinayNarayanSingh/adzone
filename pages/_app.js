@@ -3,10 +3,9 @@ import { SessionProvider } from 'next-auth/react';
 
 import Head from "next/head";
 
-import Footer from "@/hoc/layout/Footer";
-import Loader from "@/hoc/layout/Loader";
-import Navbar from "@/hoc/layout/Navbar";
-
+import Loader from '@/components/layout/Loader';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
 import store from '@/store/store';
 
 import "@/styles/style.map.scss";

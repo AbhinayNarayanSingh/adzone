@@ -1,5 +1,5 @@
 import { BACK_BTN_ICON } from '@/Environment'
-import Icon from '@/hoc/image/Icon'
+import Icon from '@/componentWrapper/image/Icon'
 import useIsMobile from '@/hooks/useIsMobile'
 import { chat, chatLists } from '@/store/staticStore'
 import { useState } from 'react'

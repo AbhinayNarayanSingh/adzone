@@ -1,5 +1,5 @@
 import BannersMap from "@/components/Banners/BannersMap";
-import ProductCards from "@/hoc/cards/ProductCards";
+import ProductCards from "@/componentWrapper/cards/ProductCards";
 import useIsMobile from "@/hooks/useIsMobile";
 import { products } from "@/store/product";
 import { useRouter } from "next/router";

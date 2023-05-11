@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { PROJECT_NAME, VERIFIED_BADGE_ICON } from '@/Environment';
 import { navigateToPage } from '@/utils/navigate/navigator';
-import Icon from '@/hoc/image/Icon';
+import Icon from '@/componentWrapper/image/Icon';
 
 import Listings from './Listings';
 import Orders from './Orders';

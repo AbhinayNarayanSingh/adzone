@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { useState } from "react";
 
-import ProductCards from "@/hoc/cards/ProductCards";
-import Icon from "@/hoc/image/Icon";
+import Icon from "@/componentWrapper/image/Icon";
 
 import { navigateToSearch } from "@/utils/navigate/navigator";
 
@@ -11,6 +10,7 @@ import { products } from "@/store/product";
 
 import HeroBanner from "@/components/Banners/Banner/HeroBanner";
 import BannersMap from "@/components/Banners/BannersMap";
+import ProductCards from "@/componentWrapper/cards/ProductCards";
 
 export default function Home() {
   const [loading, setLoading] = useState(false);

@@ -5,8 +5,8 @@ import Image from "next/image";
 import { NEXT_BUTTON_ICON, PREVIOUS_BUTTON_ICON } from "@/Environment";
 import { postData } from "@/store/staticStore";
 
-const ProductCards = dynamic(() => import("@/hoc/cards/ProductCards"));
 import { products } from "@/store/product";
+const ProductCards = dynamic(() => import("@/componentWrapper/cards/ProductCards"));
 
 const Item = () => {
   const {
@@ -29,7 +29,7 @@ const Item = () => {
         <div className="item-details-outer-container">
           <div className="left-col">
             <div className="image-container">
-              <Image src={images[0]} fill={true} object-fit="cover" />
+              <Image src={images[0]} fill={true} object-fit="cover" alt="listing main image"/>
 
               <div className="image-slider-button-container">
                 <button>
