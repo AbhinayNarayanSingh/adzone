@@ -25,6 +25,11 @@
   .dialog-content-container {
     margin: 1rem;
   } 
+
+  .dialog-title {
+    font-weight: 500;
+    text-align: center;
+}
 }
 
 
@@ -43,7 +48,12 @@
     animation-timing-function: ease-out;
     
     .dialog-content-container {
-      margin: 1rem;
+      margin: .5rem;
+
+
+    .dialog-title {
+      font-size: .9rem;
+    }
     } 
   }
   @keyframes slide-up {

@@ -4,8 +4,10 @@ import { navigateToPage } from '@/utils/navigate/navigator'
 import { isLoggedIn } from '@/hoc/OAuth/authHelper'
 import Icon from '@/componentWrapper/image/Icon'
 import { MAP_ICON, SETTING_ICON } from '@/Environment'
+import DialogHOC from '@/hoc/dialog/DialogHOC'
+import DrawerHOC from '@/hoc/drawer/drawerHOC'
 
-const Menu = () => {
+const Menu = (props) => {
   const isUserLoggedIn = isLoggedIn()
 
   const commonDrawerMenu = [
@@ -68,7 +70,10 @@ const Menu = () => {
     {
       name : "London, Ontario",
       icon : MAP_ICON,
-      action : () => {}
+      action : async () => {
+        await props.close_drawer()
+        // props.open_dialog("CHANGE_LOCATION_DIALOG")
+      }
     }
   ]
 
@@ -119,7 +124,7 @@ const Menu = () => {
 
         {optionDrawerMenu.map((menu, index) => {
           return (
-            <button className="btn-link-icon" key={"option_menu_" + index}>
+            <button className="btn-link-icon" key={"option_menu_" + index} onClick={() => menu.action()}>
               <Icon src={menu.icon}/>
               {menu.name}
             </button>
@@ -149,4 +154,4 @@ const Menu = () => {
   )
 }
 
-export default Menu
+export default DialogHOC(DrawerHOC(Menu))

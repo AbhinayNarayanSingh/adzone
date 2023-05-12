@@ -48,6 +48,9 @@ $CARD_BOX_SHADOW : rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px
 // drawers
 @import "./page/drawers/menu-drawer.scss";
 
+// Dialog
+@import "./page/dialog/ChangeLocationDialog.scss";
+
 // layout
 @import "./layout/navbar.scss";
 @import "./layout/footer.scss";

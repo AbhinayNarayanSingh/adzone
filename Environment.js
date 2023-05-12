@@ -5,6 +5,10 @@ export const PROJECT_DESCRIPTION =
 export const DEFAULT_CURRENCY_WORD = "CAD";
 export const DEFAULT_CURRENCY = "$";
 
+export const DEFAULT_LAT = 42.9849233
+export const DEFAULT_LNG = -81.2452768
+export const DEFAULT_LOCATION = "London, Ontario"
+
 
 export const LOGO = "/images/brand/logo.svg";
 export const FOOTER_LOGO = "/images/brand/footer_logo.svg";
