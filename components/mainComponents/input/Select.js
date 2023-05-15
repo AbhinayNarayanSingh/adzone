@@ -1,19 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Icon from "@/componentWrapper/image/Icon";
 
 const Select = ({
   options,
   className,
-  name,
-  valueHandlerFn,
-  onChangeHandlerFn,
+  name="select",
+  changeHandler,
 }) => {
   const [isOptionOpen, setIsOptionOpen] = useState(false);
-  const [optionSelcted, setOptionSelcted] = useState(options[0]);
-
+  const [optionSelcted, setOptionSelcted] = useState(options[0] || {});
+  
   const optionSelectHandlerFn = (item) => {
     setIsOptionOpen((state) => !state);
     setOptionSelcted(item);
+    changeHandler({ target :
+      {
+        name : name,
+        value : item
+      }}
+    )
   };
 
   const optionJsxFn = (selectType, item, index) => {

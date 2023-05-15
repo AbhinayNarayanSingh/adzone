@@ -17,16 +17,18 @@ const useGoogleMapServices = () => {
 
     const getPlaceAutoComplete = async (input) => {
         const predictionArray = []
-        var autocompleteService = new google.maps.places.AutocompleteService();
+        const autocompleteService = new google.maps.places.AutocompleteService();
 
         autocompleteService.getPlacePredictions({ input: input }, function (predictions, status) {
-            predictions?.forEach(prediction => predictionArray.push({
-                formatted_address: prediction.description,
-                short_formatted_address: prediction?.structured_formatting?.secondary_text,
-                place_id: prediction.place_id
-            })
-            );
-            setPredictions(predictionArray)
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+                predictions?.forEach(prediction => predictionArray.push({
+                    formatted_address: prediction.description,
+                    short_formatted_address: prediction?.structured_formatting?.secondary_text,
+                    place_id: prediction.place_id
+                })
+                );
+                setPredictions(predictionArray)
+        }
         });
     }
 
