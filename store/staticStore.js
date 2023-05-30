@@ -16,58 +16,72 @@ import {
 
 export const categoryData = [
   {
-    name: "Cars",
-    icon: Cars_category,
+      "_id": "6468c5c23d2fe40af7b9c049",
+      "icon": "/images/category/Cars.svg",
+      "name": "Cars",
+      "sub_category": []
   },
   {
-    name: "Properties",
-    icon: Properties_category,
+      "_id": "6468c5c23d2fe40af7b9c04a",
+      "icon": "/images/category/Mobiles.svg",
+      "name": "Mobiles",
+      "sub_category": []
   },
   {
-    name: "Mobiles",
-    icon: Mobiles_category,
+      "_id": "6468c5c23d2fe40af7b9c04b",
+      "icon": "/images/category/Properties.svg",
+      "name": "Properties",
+      "sub_category": []
   },
   {
-    name: "Appliances",
-    icon: Electronics_category,
-  },
-  // {
-  //     name : "Commercial Vehicles & Spares",
-  //     icon : Commercial_category
-  // },
-  {
-    name: "Furniture",
-    icon: Furniture_category,
+      "_id": "6468c5c23d2fe40af7b9c04c",
+      "icon": "/images/category/Electronics.svg",
+      "name": "Appliances",
+      "sub_category": []
   },
   {
-    name: "Pets",
-    icon: Pets_category,
+      "_id": "6468c5c23d2fe40af7b9c04e",
+      "icon": "/images/category/Pets.svg",
+      "name": "Pets",
+      "sub_category": []
   },
   {
-    name: "Jobs",
-    icon: Jobs_category,
+      "_id": "6468c5c23d2fe40af7b9c04d",
+      "icon": "/images/category/Furniture.svg",
+      "name": "Furniture",
+      "sub_category": []
   },
   {
-    name: "Services",
-    icon: Services_category,
-  },
-  // {
-  //     name : "Video Games",
-  //     icon : Games_category
-  // },
-  {
-    name: "Books, Sports & Hobbies",
-    icon: Books_category,
+      "_id": "6468c5c23d2fe40af7b9c04f",
+      "icon": "/images/category/Jobs.svg",
+      "name": "Jobs",
+      "sub_category": []
   },
   {
-    name: "Sports Equipment",
-    icon: Sports_category,
+      "_id": "6468c5c23d2fe40af7b9c050",
+      "icon": "/images/category/Books.svg",
+      "name": "Books, Sports & Hobbies",
+      "sub_category": []
   },
   {
-    name: "Others",
-    icon: Others_category,
+      "_id": "6468c5c23d2fe40af7b9c051",
+      "icon": "/images/category/Sports.svg",
+      "name": "Sports Equipment",
+      "sub_category": []
   },
-];
+  {
+      "_id": "6468c5c23d2fe40af7b9c052",
+      "icon": "/images/category/Services.svg",
+      "name": "Services",
+      "sub_category": []
+  },
+  {
+      "_id": "6468c5c23d2fe40af7b9c053",
+      "icon": "/images/category/Others.svg",
+      "name": "Others",
+      "sub_category": []
+  }
+]
 
 // https://www.kijiji.ca/v-apartments-condos/london/the-w-student-rentals-london/1633679888
 // https://www.kijiji.ca/o-1123-1131-royal-york-road-apartments/1023941235/listings/1?referral=organic

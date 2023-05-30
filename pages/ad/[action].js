@@ -8,36 +8,69 @@ import { getCroppedImage } from "@/utils/helper/imageCroper";
 import withAuth from "@/hoc/OAuth/withAuth";
 
 const AdPost = () => {
-  const [responseState, setResponseState] = useState({});
+  const [responseState, setResponseState] = useState({
+    _id: "",
+    uid: "1633679888",
+    slug: "",
 
-  const [selectedFiles, setSelectedFiles] = useState([]);
-  const [previewUrls, setPreviewUrls] = useState([]); // only for preview
+    category: "",
+    category_id: "",
+
+    title: "",
+    description: "",
+    listing_for: "",
+
+    amount: "",
+    currency: "CAD",
+
+    images: [],
+    posted_on: "",
+
+    isActiveAd: true,
+    isFeaturedAd: true,
+    isHighlightAd: true,
+    isWebsiteLinkedAd: false,
+
+    tags: [],
+    websiteURL: "",
+    youtubeVideoURL: "",
+
+    seller: "",
+    seller_id: "",
+
+    formatted_address: "",
+    short_formatted_address: "",
+    place_id: "",
+    lat: "",
+    lng: "",
+
+    country_code: "",
+    phone: "",
+    email: ""
+  });
+
   const [thumbnailUrl, setThumbnailUrl] = useState(""); // only for preview
 
-  useEffect(() => {
-    if (selectedFiles.length === 0) return setPreviewUrls([]);
-    const newUrls = [];
-
-    for (let i = 0; i < selectedFiles.length; i++) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        newUrls.push(reader.result);
-        if (newUrls.length === selectedFiles.length) setPreviewUrls(newUrls);
-      };
-      reader.readAsDataURL(selectedFiles[i]);
-    }
-  }, [selectedFiles]);
 
   const handleFileInputChange = async (event) => {
     try {
-      const croppedImages = [...selectedFiles];
+      const croppedImages = responseState["images"];
+      const state = {...responseState}
 
       const files = Array.from(event.target.files);
+
       for (const imageUrl of files) {
         const croppedImage = await getCroppedImage(imageUrl, "4:3");
-        croppedImages.push(croppedImage);
+        const obj = {
+          url : "",
+          public_id : "",
+          path : croppedImage,
+          preview : URL.createObjectURL(croppedImage) 
+        }
+        croppedImages.push(obj);
       }
-      setSelectedFiles(croppedImages);
+      state["images"] = croppedImages
+      setResponseState(state)
     } catch (error) {
       console.log("+++ error", error);
     }
@@ -60,12 +93,8 @@ const AdPost = () => {
   const valueHandlerFn = (name) => responseState[name];
 
   const onChangeHandlerFn = (e) => {
-    console.log('+++ e', e);
     const { name, value, checked, type } = e.target;
     const prevState = { ...responseState };
-
-    if (name === "listing-for" && value !== "for_sale")
-      prevState["amount"] = "";
 
     switch (type) {
       case "checkbox":
@@ -74,10 +103,31 @@ const AdPost = () => {
       default:
         prevState[name] = value;
         break;
+      }
+      
+    switch (name) {
+      case "category":
+        prevState["category"] = value.name;
+        prevState["category_id"] = value._id;
+        break;
+      
+      case "listing_for":
+        if (value !== "for_sale") prevState["amount"] = "";
+        break;
+    
+      default:
+        break;
     }
 
     setResponseState(prevState);
   };
+
+  const tagsHandlerFn = (e) => {
+    e.preventDefault();
+    e.target.value
+
+
+  }
 
   return (
     <div className="ad-form-outer-container">
@@ -138,7 +188,7 @@ const AdPost = () => {
             />
             <p className="help-text help-text-margin">
               Please provide a thorough and detailed description of your listing to aid buyers in understanding the product better. Keep in mind that the description you provide will be visible on the product detail page, so it&apos;s essential to be as precise and accurate as possible.
-              </p>
+            </p>
           </div>
         </div>
 
@@ -151,7 +201,7 @@ const AdPost = () => {
                 <div className="radio-input">
                   <input
                     type="radio"
-                    name="listing-for"
+                    name="listing_for"
                     id="for-sale"
                     className="radio-input_input"
                     value="for_sale"
@@ -170,7 +220,7 @@ const AdPost = () => {
               <div className="radio-input">
                 <input
                   type="radio"
-                  name="listing-for"
+                  name="listing_for"
                   id="for-free"
                   className="radio-input_input"
                   value="for_free"
@@ -181,7 +231,7 @@ const AdPost = () => {
               <div className="radio-input">
                 <input
                   type="radio"
-                  name="listing-for"
+                  name="listing_for"
                   id="for-swap-trade"
                   className="radio-input_input"
                   value="for_swap_trade"
@@ -192,7 +242,7 @@ const AdPost = () => {
               <div className="radio-input">
                 <input
                   type="radio"
-                  name="listing-for"
+                  name="listing_for"
                   id="contact"
                   className="radio-input_input"
                   value="contact"
@@ -203,7 +253,7 @@ const AdPost = () => {
               <div className="radio-input">
                 <input
                   type="radio"
-                  name="listing-for"
+                  name="listing_for"
                   id="wanted"
                   className="radio-input_input"
                   value="wanted"
@@ -220,7 +270,7 @@ const AdPost = () => {
           <h2 className="left-col">Tags :</h2>
           <div className="right-col">
             <div className="inner-container">
-              <input type="text" />
+              <form action=""><input type="text" name="tags" /></form>
               <p className="help-text">
                 Increase your ad exposure. Enter up to 5 keywords someone could
                 search to find your ad.
@@ -242,9 +292,9 @@ const AdPost = () => {
               <div className="link-to-website-container">
                 <input
                   type="checkbox"
-                  name="isWebsiteLinked"
+                  name="isWebsiteLinkedAd"
                   id="link-to-website"
-                  value={valueHandlerFn("isWebsiteLinked")}
+                  value={valueHandlerFn("isWebsiteLinkedAd")}
                   onChange={(e) => onChangeHandlerFn(e)}
                 />
                 <label htmlFor="link-to-website">
@@ -253,8 +303,8 @@ const AdPost = () => {
               </div>
               <input
                 type="text"
-                name="website-url"
-                value={valueHandlerFn("website-url")}
+                name="websiteURL"
+                value={valueHandlerFn("websiteURL")}
                 onChange={(e) => onChangeHandlerFn(e)}
               />
               <p className="help-text">
@@ -279,9 +329,8 @@ const AdPost = () => {
         <div className="section-detail-container">
           <h2 className="left-col">Photos :</h2>
           <div
-            className={`right-col listing-image-container ${
-              previewUrls.length > 10 && "disable-image"
-            }`}
+            className={`right-col listing-image-container ${responseState["images"].length > 10 && "disable-image"
+              }`}
           >
             <div className="inner-container">
               <label htmlFor="image-input-listing">
@@ -295,7 +344,7 @@ const AdPost = () => {
                 accept="image/*"
                 onChange={handleFileInputChange}
                 id="image-input-listing"
-                disabled={previewUrls.length > 10}
+                disabled={responseState["images"].length > 10}
               />
 
               <p className="help-text help-text-margin">
@@ -304,10 +353,10 @@ const AdPost = () => {
                 tall (we recommend at least 1000px).
               </p>
 
-              {previewUrls.length > 0 && (
+              {responseState["images"].length > 0 && (
                 <div className="image-preview-container">
-                  {previewUrls.map((url) => (
-                    <img key={url} src={url} alt="Preview" />
+                  {responseState["images"].map((url) => (
+                    <img key={url.preview} src={url.preview} alt="Preview" />
                   ))}
                 </div>
               )}
@@ -322,9 +371,9 @@ const AdPost = () => {
             <div className="inner-container">
               <input
                 type="text"
-                name="youtube_video"
+                name="youtubeVideoURL"
                 onBlur={youtubeVideoPreviewHandler}
-                value={valueHandlerFn("youtube_video")}
+                value={valueHandlerFn("youtubeVideoURL")}
                 onChange={(e) => onChangeHandlerFn(e)}
               />
               <p className="help-text">

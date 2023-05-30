@@ -5,7 +5,7 @@ const Select = ({
   options,
   className,
   name="select",
-  changeHandler,
+  onChangeHandlerFn,
 }) => {
   const [isOptionOpen, setIsOptionOpen] = useState(false);
   const [optionSelcted, setOptionSelcted] = useState(options[0] || {});
@@ -13,7 +13,7 @@ const Select = ({
   const optionSelectHandlerFn = (item) => {
     setIsOptionOpen((state) => !state);
     setOptionSelcted(item);
-    changeHandler({ target :
+    onChangeHandlerFn({ target :
       {
         name : name,
         value : item

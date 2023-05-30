@@ -56,6 +56,7 @@ const useGoogleMapServices = () => {
     }
 
     const getAddressFormAutocomplete = (placeId) => {
+	// function is created to fetch and format location data based on a provided place ID, specifically for address form auto-completion
         try {
             const fields = ["address_components", "geometry"]
             placesService(placeId, fields, (status, result) => {
