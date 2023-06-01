@@ -56,7 +56,8 @@ export default function Home() {
         </div>
       </div>
 
-      {BannersMap("HERO_SIGNUP_BANNER")}
+      {/* {BannersMap("HERO_SIGNUP_BANNER")} */}
+      {BannersMap("HOME_BECOME_MEMBER_BANNER")}
 
       <div className="outer-product-container">
         <div className="heading">

@@ -3,7 +3,7 @@ import Select from "./Select";
 import Icon from "../image/Icon";
 
 const Input = (props) => {
-  const {changeHandler, value, formFeild : { type, label, name, helpText, className, jsx, optionsFilterHandler, options, optionJsxType=""}} = props
+  const {changeHandler=() => {}, value, formFeild : { type, label, name, helpText, className, jsx, optionsFilterHandler, options, optionJsxType=""}} = props
 
   const [isSelectSearchOptionOpen, setIsSelectSearchOptionOpen] = useState(false)
 
@@ -24,6 +24,13 @@ const Input = (props) => {
   switch (type) {
     case "static":
       return <div className={className + " static-text"} key={type + "_input_" + name}>{jsx}</div>;
+
+    case "checkbox" : 
+    return (
+      <div className="checkbox-form-feild" >
+        <input type="checkbox" name={name} id={"checkbox__" + name} />
+        <label htmlFor={"checkbox__" + name}>{label}</label>
+      </div>)
 
     case "button":
       return (

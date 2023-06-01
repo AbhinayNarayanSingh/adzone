@@ -29,16 +29,44 @@ const PersonalDetails = () => {
       label: "Save & Update",
       className: "full-btn",
     },
-    // {
-    //     label : "",
-    //     input : "",
-    //     placeholder: "",
-    //     errorMsg: ""
-    // },
   ];
+  const passwordUpdatedFormFeild = [
+    {
+      label: "Old password",
+      type: "password",
+      name : "password",
+      placeholder: "",
+      errorMsg: ""
+    },
+    {
+      label: "New password",
+      type: "password",
+      name : "new-password",
+      placeholder: "",
+      errorMsg: ""
+    },
+    {
+      label: "Confirm password",
+      type: "password",
+      name : "confirm-password",
+      placeholder: "",
+      errorMsg: ""
+    },
+    {
+      type: "button",
+      label: "Update password",
+      className: "full-btn",
+    },
+  ]
+
   return (
     <div>
-      {personalDetailsFormFeild.map(feild => <Input formFeild={feild} key={feild.type + "_input_" + feild.name}/>)}
+      <form>
+        {personalDetailsFormFeild.map(feild => <Input formFeild={feild} key={feild.type + "_input_" + feild.name}/>)}
+      </form>
+      <form className='mt-2'>
+        {passwordUpdatedFormFeild.map(feild => <Input formFeild={feild} key={feild.type + "_input_" + feild.name}/>)}
+      </form>
     </div>
   )
 }
