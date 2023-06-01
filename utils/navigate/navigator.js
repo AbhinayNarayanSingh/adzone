@@ -5,17 +5,24 @@ export const navigateToPage = (page="home", slug) => {
     login: "/login",
     newAds : "/ad/new",
 
-    listings: "/p/listings",
-    reviews: "/p/reviews",
-    orders: "/p/orders",
+    listings: "/user/p/listings",
+    reviews: "/user/p/reviews",
+    orders: "/user/p/orders",
 
-    setting: "/s/personal-details",
-    billingAddress: "/s/billing-address",
-    switchProfessinal: "/s/professinal",
+    setting: "/user/s/personal-details",
+    billingAddress: "/user/s/billing-address",
+    switchProfessinal: "/user/s/professinal",
     
-    messages: "/m/chats",
+    messages: "/user/m/chats",
 
     pdp: "/item/" + slug,
+
+    membership : "/helpdesk/membership",
+    credits : "/helpdesk/ad-credits",
+    terms : "/helpdesk/terms-and-condition",
+    privacy : "/helpdesk/privacy-and-policy",
+    faq : "/helpdesk/faq",
+    // membership : "/helpdesk/membership",
   }
   return pathObj[page]
 };
