@@ -24,7 +24,7 @@ export const navigateToPage = (page="home", slug) => {
     faq : "/helpdesk/faq",
     // membership : "/helpdesk/membership",
   }
-  return pathObj[page]
+  return (pathObj[page] || "/")
 };
 
 export const navigateToSearch = (query, type="q") => {

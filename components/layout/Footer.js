@@ -1,6 +1,30 @@
 import { FOOTER_LOGO, PROJECT_DESCRIPTION } from "@/Environment";
+import Link from "next/link";
+import { navigateToPage } from "@/utils/navigate/navigator"
 
 const Footer = () => {
+  const footerBtns = [
+    {
+      label : "Membership",
+      navigateTo : "membership" 
+    },
+    {
+      label : "Terms & Condition",
+      navigateTo : "credits" 
+    },
+    {
+      label : "Privacy & Policy",
+      navigateTo : "terms" 
+    },
+    {
+      label : "FAQ",
+      navigateTo : "privacy" 
+    },
+    {
+      label : "Sitemap",
+      navigateTo : "faq" 
+    },
+  ]
   return (
     <div className="footer-outer-container">
       <div className="footer-brand-container">
@@ -9,11 +33,13 @@ const Footer = () => {
       </div>
 
       <div className="footer-link-container">
-        <button className="btn-link-light">Help</button>
-        <button className="btn-link-light">Terms & Condition</button>
-        <button className="btn-link-light">Privacy & Policy</button>
-        <button className="btn-link-light">FAQ</button>
-        <button className="btn-link-light">Sitemap</button>
+        {footerBtns.map(({navigateTo, label}, index) => {
+          return (
+            <Link href={navigateToPage(navigateTo)} key={"footerBtns__"+index}>
+              <button className="btn-link-light">{label}</button>
+            </Link>
+          )
+        })}
       </div>
       {true && <div className="footer-link-container">
         <button className="btn-link-light">

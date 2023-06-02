@@ -1,6 +1,11 @@
 button {
     cursor: pointer;
     white-space: nowrap;
+    &:disabled {
+        opacity: 0.8;
+    }
+
+
 }
 
 .btn {
