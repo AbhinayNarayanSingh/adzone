@@ -15,7 +15,8 @@
     .section {
         padding: 1rem;
         margin-bottom: 1.5rem;
-        border: 1px solid #d2d3d7;
+        // border: 1px solid #d2d3d7;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
         .section-heading {
             font-weight: 500;
@@ -96,6 +97,48 @@
                         text-decoration: line-through;
                         cursor: pointer;
                     }
+                }
+            }
+
+            .ad-promotion-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+
+                select {
+                    width: 125px;
+                }
+
+                .ad-options {
+                    display: flex;
+                    align-items: center;
+                    width: inherit;
+
+                    label {
+                        white-space: nowrap;
+                        margin-left: .5rem;
+                        font-size: 1rem;
+                    }
+                }
+                .price {
+                    font-weight: 500;
+                    color: $AMOUNT_GREEN;
+                    & span {
+                        font-weight: 500;
+                        color: $TEXT_COLOR;
+                    }
+                }
+                .listingOption__checkout {
+                    width: 25px;
+                }
+                .listingOption__price {
+                    width: 200px;
+                    text-align: end;
+
+                }
+                .listingOption__select {
+                    text-align: center;
                 }
             }
         }

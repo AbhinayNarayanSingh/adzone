@@ -7,6 +7,34 @@ import TextEditor from "@/componentWrapper/input/Editor";
 import { getCroppedImage } from "@/utils/helper/imageCroper";
 import withAuth from "@/hoc/OAuth/withAuth";
 import BannersMap from "@/components/Banners/BannersMap";
+import { RoundToDecimal } from "@/utils/helper/numberHelper";
+
+const listingOption = [
+  {
+    name : "ad-duration",
+    label : "Ad Duration",
+    basePrice : 2.49,
+    currency : "CAD"
+  },
+  {
+    name : "feature-ad",
+    label : "Feature Ad",
+    basePrice : 4.49,
+    currency : "CAD"
+  },
+  {
+    name : "highlight-ad",
+    label : "Highlight Ad",
+    basePrice : 4.49,
+    currency : "CAD"
+  },
+  {
+    name : "bump-ad",
+    label : "Bump Ad",
+    basePrice : 7.49,
+    currency : "CAD"
+  },
+]
 
 const AdPost = () => {
   const [responseState, setResponseState] = useState({
@@ -49,6 +77,26 @@ const AdPost = () => {
     phone: "",
     email: ""
   });
+  const [listingCost, setListingCost] = useState({
+    cost : {
+      "ad-duration": 2.49,
+      "feature-ad": 0,
+      "highlight-ad": 0,
+      "bump-ad": 0,
+    },
+    validity : {
+      "ad-duration": 1,
+      "feature-ad": 0,
+      "highlight-ad": 0,
+      "bump-ad": 0,
+    },
+    service : {
+      "ad-duration": 1,
+      "feature-ad": 0,
+      "highlight-ad": 0,
+      "bump-ad": 0,
+    }
+  })
 
   const [thumbnailUrl, setThumbnailUrl] = useState(""); // only for preview
 
@@ -126,9 +174,39 @@ const AdPost = () => {
   const tagsHandlerFn = (e) => {
     e.preventDefault();
     e.target.value
-
-
   }
+
+  const totalCost = () => {
+    let arr = Object.values(listingCost.cost)
+    arr = arr.reduce((accumulator, i) => accumulator + i).toFixed(2)
+    return RoundToDecimal(arr) 
+  }
+
+  const totalCostChangeHandler = (e, basePrice) => {
+    const { name, value, checked, type} = e.target;
+
+    const temp = {...listingCost}
+    temp["cost"][name] = RoundToDecimal(value * basePrice)
+    temp["validity"][name] = value
+    temp["service"][name] = 1
+    setListingCost(temp)
+  }
+  const featureHandler = (e, basePrice) => {
+    const { name, value, checked, type } = e.target;
+    const temp = {...listingCost}
+
+    if (checked) {
+      temp["cost"][name] = RoundToDecimal(basePrice)
+      temp["validity"][name] = 1
+      temp["service"][name] = 1
+    } else {
+      temp["cost"][name] = 0
+      temp["validity"][name] = 0
+      temp["service"][name] = 0
+    }
+    setListingCost(temp)
+  }
+  
 
   return (
     <div className="ad-form-outer-container">
@@ -449,6 +527,52 @@ const AdPost = () => {
         </div>
       </div>
 
+      {/* Ad Duration & Promotion */}
+      <div className="section">
+        <h2 className="section-heading">
+        Ad Duration & Promotion :{" "}
+          <span>
+          Enhance Your Ad&apos;s Visibility and Reach.
+          </span>
+        </h2>
+
+
+        <div className="section-detail-container">
+          <table className="w-100">
+            {listingOption.map((opt, index) => {
+              return (
+                <tr className="ad-promotion-container" key={"listingOption__" + index}>
+                  <td className="listingOption__checkout"><input 
+                    type="checkbox" 
+                    name={opt.name} 
+                    id={opt.name} 
+                    checked={listingCost["service"][opt.name]} 
+                    onChange={(e) => featureHandler(e, opt.basePrice)} 
+                  /></td>
+                  <td className="ad-options"><label htmlFor={opt.name}>{opt.label}</label></td>
+                  <td>
+                    <select name={opt.name} className="listingOption__select" value={listingCost["validity"][opt.name]} onChange={(e) => totalCostChangeHandler(e, opt.basePrice)}>
+                      <option value={1}>2 Week</option>
+                      <option value={2}>4 Week</option>
+                      <option value={3}>6 Week</option>
+                      <option value={6}>12 Week</option>
+                    </select>
+                  </td>
+                  <td className="listingOption__price"><p className="price">{opt.currency} {listingCost["cost"][opt.name] || opt.basePrice}</p></td>
+                </tr>
+              )
+            })}
+            <tr className="ad-promotion-container mt-1" >
+              <td className="listingOption__checkout"></td>
+              <td className="ad-options"></td>
+              <td className="listingOption__select"></td>
+              <td className="listingOption__price"><p className="price"><span>Total Price: </span> {"$"}{totalCost()}</p></td>
+            </tr>
+          </table>
+        </div>
+
+      </div>
+
       <div className="agree-tc-container">
         <input type="checkbox" name="" id="agree-t&c" />
         <label htmlFor="agree-t&c">
@@ -458,7 +582,7 @@ const AdPost = () => {
       </div>
 
       <div className="submit-btn-container">
-        <button className="btn">Post Your Ad</button>
+        <button className="btn">Checkout & Post</button>
         <button className="btn-outline">Preview</button>
       </div>
     </div>
