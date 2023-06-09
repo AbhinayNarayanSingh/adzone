@@ -1,21 +1,41 @@
-import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { isLoggedIn } from "./authHelper";
+import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+
+import Cookies from "js-cookie";
+import jwtDecode from "jwt-decode";
+
 import { navigateToPage } from "@/utils/navigate/navigator";
 
 
 export default function withAuth(Component) {
   return function AuthenticatedComponent(props) {
+
     const router = useRouter();
-    
+    const navigateToLoginPage = () => router.push(navigateToPage("login"))
+
+    const isAuth = useSelector((state) => state.auth.isAuth);
+    const token = Cookies.get('token');
+
     useEffect(() => {
-      if (!isLoggedIn()) router.replace(navigateToPage("login"))
-    }, []);
+      console.log('+++ !isAuth || !token', !isAuth , !token);
+      if (!isAuth || !token) {
+        navigateToLoginPage()
+        return
+      }
+    }, [isAuth, token])
 
-    if (isLoggedIn()) {
-      return <Component {...props} />;
+    if (isAuth && token) {
+      const {exp} = jwtDecode(token)
+
+      const expirationDate = new Date(exp * 1000); 
+      const currentDate = new Date();
+    
+      // Compare the expiration date with the current date and return when token is valid
+      if (expirationDate > currentDate) {
+        return <Component {...props} />;
+      }
     }
-
     
     return null;
   };

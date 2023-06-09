@@ -1,20 +1,24 @@
-
-import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { isLoggedIn } from "./authHelper";
+import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import Cookies from "js-cookie";
+
+import { navigateToPage } from "@/utils/navigate/navigator";
 
 export default function withoutAuth(Component) {
-  return function AuthenticatedComponent(props) {
+  return function UnauthenticatedComponent(props) {
     const router = useRouter();
+    const navigateToDashboard = () => router.push(navigateToPage("dashboard"));
+
+    const isAuth = useSelector((state) => state.auth.isAuth);
+    const token = Cookies.get("token");
 
     useEffect(() => {
-      if (isLoggedIn()) router.replace("/")
-    }, []);
+      if (isAuth && token) {
+        navigateToDashboard();
+      }
+    }, [isAuth, token]);
 
-    if (!isLoggedIn()) {
-      return <Component {...props} />;
-    }
-
-    return null;
+    return <Component {...props} />;
   };
 }

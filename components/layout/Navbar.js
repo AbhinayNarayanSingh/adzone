@@ -9,8 +9,8 @@ import { navigateToPage, navigateToSearch } from "@/utils/navigate/navigator";
 import DrawerHOC from "@/hoc/drawer/drawerHOC";
 import DialogHOC from "@/hoc/dialog/DialogHOC";
 import { useSession } from "next-auth/react";
-import { isLoggedIn } from "@/hoc/OAuth/authHelper";
 import Icon from "@/componentWrapper/image/Icon";
+import { useSelector } from "react-redux";
 
 const Navbar = (props) => {
 
@@ -34,7 +34,8 @@ const Navbar = (props) => {
 
   const pageActiveIndicator = (pages) => page === pages ? "active" : ""
 
-  const isUserLoggedIn = isLoggedIn()
+  const isUserLoggedIn = useSelector((state) => state.auth.isAuth);
+
 
   return (
     <div className="navbar-outer-container">

@@ -2,12 +2,12 @@ import withoutAuth from "@/hoc/OAuth/withoutAuth";
 import Form from "@/componentWrapper/input/Form";
 import router from "next/router";
 
-import { loginAction } from "@/store/slice/auth";
 import { useDispatch } from "react-redux";
 import endpoints from "@/utils/services/endpoints";
 import { services } from "@/utils/services/services";
 import Link from "next/link";
 import { navigateToPage } from "@/utils/navigate/navigator";
+import { signInAct } from "@/store/slice/authSlice";
 
 const Login = () => {
   const registerFormFeild = [
@@ -35,12 +35,16 @@ const Login = () => {
   const dispatch = useDispatch()
 
   const loginSubmitHandler = async (event) => {
-    event.preventDefault();
-    dispatch(loginAction("Abhinay Singh"))
+    // event.preventDefault();
+    dispatch(signInAct({
+      "email" : "byron@schwabs.ca",
+      "password" : "1234567890",
+      "phone" : "8795675599"
+  }))
     // router.push("/")
 
-    const {data} = await services.get(endpoints.getProductsList, {})
-    debugger
+    // const {data} = await services.get(endpoints.getProductsList, {})
+    // debugger
 
   }
   return (
@@ -62,6 +66,10 @@ const Login = () => {
           <button className="btn-link pl-05">Register Now</button>
         </Link>
       </p>
+
+      <div className="quick-signin-container">
+        <button className="social-login" onClick={loginSubmitHandler}>Continue as The Schwab Family</button>
+      </div>
 
       <button className="social-login google">Continue with Google</button>
       <button className="social-login facebook">Continue with Facebook</button>

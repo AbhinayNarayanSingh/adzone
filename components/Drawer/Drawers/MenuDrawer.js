@@ -1,14 +1,13 @@
 import Link from 'next/link'
 
 import { navigateToPage } from '@/utils/navigate/navigator'
-import { isLoggedIn } from '@/hoc/OAuth/authHelper'
 import Icon from '@/componentWrapper/image/Icon'
 import { MAP_ICON, SETTING_ICON } from '@/Environment'
 import DialogHOC from '@/hoc/dialog/DialogHOC'
 import DrawerHOC from '@/hoc/drawer/drawerHOC'
 
 const Menu = (props) => {
-  const isUserLoggedIn = isLoggedIn()
+  const isUserLoggedIn = useSelector((state) => state.auth.isAuth);
 
   const commonDrawerMenu = [
     {
