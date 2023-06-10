@@ -3,6 +3,7 @@ export const navigateToPage = (page="home", slug) => {
     home: "/",
     register: "/register",
     login: "/login",
+    resetPassword: "/reset-password",
     newAds : "/ad/new",
 
     listings: "/user/p/listings",

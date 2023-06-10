@@ -25,6 +25,19 @@ export const signInAct = createAsyncThunk("user/signin", async (body, { dispatch
   }
 })
 
+export const signUpAct = createAsyncThunk("user/signup", async (body, { dispatch }) => {
+  try {
+    dispatch(startLoaderAct())
+    const {data} = await services.post(endpoints.postSignUp, body)
+    console.log('+++ data', data);
+    dispatch(stopLoaderAct())
+    return data
+  } catch (error) {
+    dispatch(stopLoaderAct())
+    throw new Error(error?.response?.data?.message || error?.response?.status);    
+  }
+})
+
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -43,6 +56,8 @@ export const authSlice = createSlice({
         state.status = 'failed';
         state.error = action.error.message;
       });
+
+    // builder.addCase
   },
 })
 

@@ -25,6 +25,20 @@ const register = () => {
       helpText: "Please enter your email address",
     },
     {
+      label: "Phone number",
+      type: "text",
+      errorMsg: "",
+      name: "phone",
+      helpText: "Please enter your phone number",
+    },
+    {
+      label: "Telegram Chat ID",
+      type: "text",
+      errorMsg: "",
+      name: "name",
+      helpText: "Please enter your Telegram Chat ID",
+    },
+    {
       label: "Password",
       type: "password",
       name: "password",
@@ -36,6 +50,7 @@ const register = () => {
     {
       label: "Confirm password",
       type: "password",
+      name: "confirm-password",
       placeholder: "Re-enter Password",
       errorMsg: "",
       helpText: "Please re-enter your password to confirm it",
@@ -54,6 +69,7 @@ const register = () => {
       label: "Create account",
       className: "full-btn",
     },
+
     // {
     //     label : "",
     //     input : "",

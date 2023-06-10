@@ -5,6 +5,7 @@ import Icon from '@/componentWrapper/image/Icon'
 import { MAP_ICON, SETTING_ICON } from '@/Environment'
 import DialogHOC from '@/hoc/dialog/DialogHOC'
 import DrawerHOC from '@/hoc/drawer/drawerHOC'
+import { useSelector } from 'react-redux'
 
 const Menu = (props) => {
   const isUserLoggedIn = useSelector((state) => state.auth.isAuth);

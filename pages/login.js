@@ -1,16 +1,13 @@
 import withoutAuth from "@/hoc/OAuth/withoutAuth";
-import Form from "@/componentWrapper/input/Form";
-import router from "next/router";
 
 import { useDispatch } from "react-redux";
-import endpoints from "@/utils/services/endpoints";
-import { services } from "@/utils/services/services";
 import Link from "next/link";
 import { navigateToPage } from "@/utils/navigate/navigator";
 import { signInAct } from "@/store/slice/authSlice";
+import Input from "@/components/mainComponents/input/Input";
 
 const Login = () => {
-  const registerFormFeild = [
+  const loginFormFeild = [
     {
       label: "Email",
       type: "email",
@@ -24,6 +21,15 @@ const Login = () => {
       name: "password",
       placeholder: "Password",
       errorMsg: "",
+    },
+    {
+      type: "static",
+      jsx: <Link href={navigateToPage("resetPassword")}>
+        <button className="btn-link">
+          Forgot your password?
+        </button>
+      </Link>,
+      className: "forgot-password",
     },
     {
       type: "button",
@@ -54,11 +60,11 @@ const Login = () => {
         To enhance your AdZone experience and help you stay safe and secure
       </p>
 
-      <Form 
-        className="sign-form" 
-        formFeild={registerFormFeild} 
-        submitHandler={loginSubmitHandler}
-      />
+      <form className="sign-form">
+        {loginFormFeild.map((feild) => {
+          return (<Input formFeild={feild} />)
+        })}
+      </form>
 
       <p className="sign-option">
         Not registered yet?{" "}

@@ -40,8 +40,12 @@
         border-radius: $BORDER_RADIUS;
         border: 1px solid #cfcfcf;
         margin: .25rem 0;
-        width: 100%;
+        width: -webkit-fill-available;
         display: flex;
+    }
+    input {
+        width: -webkit-fill-available;
+
     }
     .options-container {
         position: absolute;
@@ -51,7 +55,9 @@
         border: 1px solid #cfcfcf;
         margin: .25rem 0;
         background-color: white;
-        width: calc(100% + 2rem);
+        // width: calc(100% + 2rem);
+        width: -webkit-fill-available;
+
         top: 2.6rem;
 
         
