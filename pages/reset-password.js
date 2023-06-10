@@ -69,7 +69,7 @@ const ResetPassword = () => {
 
               <form className="sign-form">
                   {verifyIdentityForm.map((feild) => {
-                      return (<Input formFeild={feild} />)
+                      return (<Input formFeild={feild} key={"input__"+feild.name}/>)
                   })}
               </form>
         </div> :
@@ -78,7 +78,7 @@ const ResetPassword = () => {
             <p  className="register-subline">An OTP has been sent. Please enter the OTP below, along with your new password, and confirm your new password to reset your password.</p>
             <form className="sign-form">
                 {resetpasswordForm.map((feild) => {
-                    return (<Input formFeild={feild} />)
+                    return (<Input formFeild={feild} key={"input__"+feild.name}/>)
                 })}
             </form>
         </div>}

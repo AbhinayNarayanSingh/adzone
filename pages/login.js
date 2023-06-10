@@ -62,7 +62,7 @@ const Login = () => {
 
       <form className="sign-form">
         {loginFormFeild.map((feild) => {
-          return (<Input formFeild={feild} />)
+          return (<Input formFeild={feild} key={"input__"+feild.name}/>)
         })}
       </form>
 
