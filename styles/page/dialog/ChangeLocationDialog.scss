@@ -71,3 +71,21 @@
         }
     }
 }
+
+
+.welcome-popup-dialog {
+    margin: 2rem;
+    * {
+        color: $TEXT_COLOR;
+    }
+    h2 {
+        font-size: 1rem;
+        font-weight: 600;
+    }
+    p, p span{
+        font-size: .9rem;
+    }
+    p span {
+        font-weight: 600;
+    }
+}
