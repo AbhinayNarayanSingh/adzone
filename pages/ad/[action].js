@@ -185,12 +185,22 @@ const AdPost = () => {
   const totalCostChangeHandler = (e, basePrice) => {
     const { name, value, checked, type} = e.target;
 
+    let adDurationBasePrice = listingOption.filter((i) => i.name === "ad-duration")
+    adDurationBasePrice = adDurationBasePrice[0]["basePrice"]
+
     const temp = {...listingCost}
     temp["cost"][name] = RoundToDecimal(value * basePrice)
     temp["validity"][name] = value
     temp["service"][name] = 1
+
+    if (name !== "ad-duration" && temp["validity"]["ad-duration"] < value) {
+      temp["cost"]["ad-duration"] = RoundToDecimal(value * adDurationBasePrice)
+      temp["validity"]["ad-duration"] = value
+      temp["service"]["ad-duration"] = 1
+    }
     setListingCost(temp)
   }
+
   const featureHandler = (e, basePrice) => {
     const { name, value, checked, type } = e.target;
     const temp = {...listingCost}
@@ -538,37 +548,38 @@ const AdPost = () => {
 
 
         <div className="section-detail-container">
-          <table className="w-100">
-            {listingOption.map((opt, index) => {
-              return (
-                <tr className="ad-promotion-container" key={"listingOption__" + index}>
-                  <td className="listingOption__checkout"><input 
-                    type="checkbox" 
-                    name={opt.name} 
-                    id={opt.name} 
-                    checked={listingCost["service"][opt.name]} 
-                    onChange={(e) => featureHandler(e, opt.basePrice)} 
-                  /></td>
-                  <td className="ad-options"><label htmlFor={opt.name}>{opt.label}</label></td>
-                  <td>
-                    <select name={opt.name} className="listingOption__select" value={listingCost["validity"][opt.name]} onChange={(e) => totalCostChangeHandler(e, opt.basePrice)}>
-                      <option value={1}>2 Week</option>
-                      <option value={2}>4 Week</option>
-                      <option value={3}>6 Week</option>
-                      <option value={6}>12 Week</option>
-                    </select>
-                  </td>
-                  <td className="listingOption__price"><p className="price">{opt.currency} {listingCost["cost"][opt.name] || opt.basePrice}</p></td>
-                </tr>
-              )
-            })}
-            <tr className="ad-promotion-container mt-1" >
-              <td className="listingOption__checkout"></td>
-              <td className="ad-options"></td>
-              <td className="listingOption__select"></td>
-              <td className="listingOption__price"><p className="price"><span>Total Price: </span> {"$"}{totalCost()}</p></td>
-            </tr>
-          </table>
+          <div className="w-100">
+            <table className="w-100">
+              {listingOption.map((opt, index) => {
+                return (
+                  <div className="ad-promotion-outer-container"  key={"listingOption__" + index}>
+                    <tr className="ad-promotion-container">
+                      <td className="listingOption__checkout"><input 
+                        type="checkbox" 
+                        name={opt.name} 
+                        id={opt.name} 
+                        checked={listingCost["service"][opt.name]} 
+                        onChange={(e) => featureHandler(e, opt.basePrice)} 
+                      /></td>
+                      <td className="ad-options"><label htmlFor={opt.name}>{opt.label}</label></td>
+                    </tr>
+                    <tr className="ad-promotion-container">
+                      <td>
+                        <select name={opt.name} className="listingOption__select" value={listingCost["validity"][opt.name]} onChange={(e) => totalCostChangeHandler(e, opt.basePrice)}>
+                          <option value={1}>2 Week</option>
+                          <option value={2}>4 Week</option>
+                          <option value={3}>6 Week</option>
+                          <option value={6}>12 Week</option>
+                        </select>
+                      </td>
+                      <td className="listingOption__price">{opt.currency} {listingCost["cost"][opt.name] || opt.basePrice}</td>
+                    </tr>
+                  </div>
+                )
+              })}
+            </table>
+            <p className="listingTotalPrice"><span>Total Price: </span> {"$"}{totalCost()}</p>
+          </div>
         </div>
 
       </div>

@@ -12,11 +12,26 @@ const initialState = {
   error: null 
 }
 
-export const signInAct = createAsyncThunk("user/signin", async (body, { dispatch }) => {
+export const signInAct = createAsyncThunk("user/signin", async (body,  { dispatch }) => {
   try {
     dispatch(startLoaderAct())
     const {data} = await services.post(endpoints.postSignIn, body)
     Cookies.set("token", data.token)
+    Cookies.set("reference_token", data.token)
+    dispatch(stopLoaderAct())
+    return data
+  } catch (error) {
+    dispatch(stopLoaderAct())
+    throw new Error(error?.response?.data?.message || error?.response?.status);    
+  }
+})
+
+export const quickSignInAct = createAsyncThunk("user/quick_signin", async (body,  { dispatch }) => {
+  try {
+    dispatch(startLoaderAct())
+    const {data} = await services.post(endpoints.postRefreshToken, body)
+    Cookies.set("token", data.token)
+    Cookies.set("reference_token", data.token)
     dispatch(stopLoaderAct())
     return data
   } catch (error) {
@@ -43,6 +58,7 @@ export const authSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+
     builder
       .addCase(signInAct.pending, (state) => {
         state.status = 'loading';
@@ -53,6 +69,20 @@ export const authSlice = createSlice({
         state.user = action.payload;
       })
       .addCase(signInAct.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      });
+
+    builder
+      .addCase(quickSignInAct.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(quickSignInAct.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.isAuth = true
+        state.user = action.payload;
+      })
+      .addCase(quickSignInAct.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
       });

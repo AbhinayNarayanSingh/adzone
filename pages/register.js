@@ -2,8 +2,9 @@ import Link from "next/link";
 import { signIn } from "next-auth/react";
 
 import withoutAuth from "@/hoc/OAuth/withoutAuth";
-import Form from "@/componentWrapper/input/Form";
 import { navigateToPage } from "@/utils/navigate/navigator";
+import Input from "@/components/mainComponents/input/Input";
+import UseAuth from "@/hooks/useAuth";
 
 
 const register = () => {
@@ -25,17 +26,10 @@ const register = () => {
       helpText: "Please enter your email address",
     },
     {
-      label: "Phone number",
-      type: "text",
-      errorMsg: "",
-      name: "phone",
-      helpText: "Please enter your phone number",
-    },
-    {
       label: "Telegram Chat ID",
       type: "text",
       errorMsg: "",
-      name: "name",
+      name: "telegram_chat_id",
       helpText: "Please enter your Telegram Chat ID",
     },
     {
@@ -56,35 +50,30 @@ const register = () => {
       helpText: "Please re-enter your password to confirm it",
     },
     {
-      type: "static",
-      jsx: (
-        <p className="t-and-c-string">
-          By Submitting in you agree to T&C and Privacy Policy
-        </p>
-      ),
-      className: "",
-    },
-    {
       type: "button",
       label: "Create account",
       className: "full-btn",
     },
-
-    // {
-    //     label : "",
-    //     input : "",
-    //     placeholder: "",
-    //     errorMsg: ""
-    // },
   ];
+
+  const {body, formChangeHandler} = UseAuth()
+
   return (
-    <div className="register-page-container">
+    <div className="auth-page-container">
       <h2>Create your free account</h2>
-      <p className="register-subline">
+      <p className="auth-subline">
         Register now to post, edit, and manage ads. It’s quick, easy, and free!
       </p>
 
-      <Form formFeild={registerFormFeild} className="sign-form" />
+      <form className="sign-form" >
+        {registerFormFeild.map((feild) => {
+          return (<Input 
+              formFeild={feild} 
+              key={"input__"+feild?.type+"__"+feild?.name}
+              changeHandler={formChangeHandler}
+            />)
+        })}
+      </form>
 
       <p className="sign-option">
         Already have an account?

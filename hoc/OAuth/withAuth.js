@@ -18,7 +18,6 @@ export default function withAuth(Component) {
     const token = Cookies.get('token');
 
     useEffect(() => {
-      console.log('+++ !isAuth || !token', !isAuth , !token);
       if (!isAuth || !token) {
         navigateToLoginPage()
         return

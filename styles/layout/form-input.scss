@@ -120,3 +120,21 @@ label {
     }
 
 }
+
+.password-input-outer-container {
+    position: relative;
+    .password-input {
+        width: -webkit-fill-available;
+    }
+    span {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        height: 100%;
+        padding: 0 1rem;
+        cursor: pointer;
+    }
+}

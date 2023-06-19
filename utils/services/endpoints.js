@@ -3,7 +3,8 @@ const endpoints = {
     getProduct: (id) => `/products/${id}`,  
 
     postSignIn : () => `/signin`,
-    postSignUp : () => `/signup`
+    postSignUp : () => `/signup`,
+    postRefreshToken : () => `/refresh-token`,
 };
 
 export default endpoints

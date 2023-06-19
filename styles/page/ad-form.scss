@@ -15,7 +15,6 @@
     .section {
         padding: 1rem;
         margin-bottom: 1.5rem;
-        // border: 1px solid #d2d3d7;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
         .section-heading {
@@ -100,45 +99,65 @@
                 }
             }
 
-            .ad-promotion-container {
+            .ad-promotion-outer-container {
                 display: flex;
                 justify-content: space-between;
-                align-items: center;
-                width: 100%;
-
-                select {
-                    width: 125px;
-                }
-
-                .ad-options {
+                .ad-promotion-container {
                     display: flex;
+                    // justify-content: space-between;
                     align-items: center;
-                    width: inherit;
-
-                    label {
-                        white-space: nowrap;
-                        margin-left: .5rem;
-                        font-size: 1rem;
+                    // width: 100%;
+    
+                    select {
+                        width: 125px;
                     }
-                }
-                .price {
-                    font-weight: 500;
-                    color: $AMOUNT_GREEN;
-                    & span {
+    
+                    .ad-options {
+                        display: flex;
+                        align-items: center;
+                        // width: inherit;
+    
+                        label {
+                            white-space: nowrap;
+                            margin-left: .5rem;
+                            font-size: 1rem;
+                        }
+                    }
+
+                    .listingOption__checkout {
+                        width: 25px;
+                    }
+                    .listingOption__price, .listingTotalPrice {
+                        text-align: end;
+                        margin-left: 1rem;
                         font-weight: 500;
-                        color: $TEXT_COLOR;
+                        color: $AMOUNT_GREEN;
+
+                        width: 100px;
+
+
+                        & span {
+                            font-weight: 500;
+                            color: $TEXT_COLOR;
+                        }
+                    }
+                    .listingOption__select {
+                        text-align: center;
                     }
                 }
-                .listingOption__checkout {
-                    width: 25px;
-                }
-                .listingOption__price {
-                    width: 200px;
-                    text-align: end;
+            }
 
-                }
-                .listingOption__select {
-                    text-align: center;
+            .listingTotalPrice {
+                text-align: end;
+                margin-left: 1rem;
+                font-weight: 500;
+                color: $AMOUNT_GREEN;
+                margin-top: 1rem;
+
+                & span {
+                    font-weight: 500;
+                    color: $TEXT_COLOR;
+                    margin-right: 0.5rem;
                 }
             }
         }
@@ -300,7 +319,8 @@
         .section {
             padding: 0;
             margin-bottom: 1.5rem;
-            border: none;
+            box-shadow: none;
+
     
             .section-heading {
                 font-size: .9rem;

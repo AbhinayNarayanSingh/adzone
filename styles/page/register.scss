@@ -1,5 +1,5 @@
 
-.register-page-container {
+.auth-page-container {
     min-height: 60vh;
     * {
         color: $TEXT_COLOR;
@@ -14,7 +14,7 @@
         font-size: 2rem;
         text-align: center;
     }
-    .register-subline{
+    .auth-subline{
         text-align: center;
     }
     .t-and-c-string {
@@ -24,12 +24,6 @@
 }
 .sign-form {
     margin: 1rem;
-
-    .full-btn {
-        width: 100%;
-        margin: .5rem 0;
-        padding: .5rem;
-    }
 
 }
 .sign-option {
@@ -59,14 +53,14 @@
 
 @media only screen and (max-width: 512px) {
 
-    .register-page-container {
+    .auth-page-container {
 
         margin: 1rem .5rem 0;
 
         h2 {
             font-size: 1.1rem;
         }
-        .register-subline{
+        .auth-subline{
             font-size: .9rem;
             line-height: 125%;
             margin: .25rem 0;
@@ -75,11 +69,6 @@
     }
     .sign-form {
         margin: 0;
-
-        .full-btn {
-            width: 100%;
-            margin: 0 0 .5rem;
-        }
 
     }
     .sign-option {

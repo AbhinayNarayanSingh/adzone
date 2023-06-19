@@ -28,7 +28,10 @@ export const MEMBERSHIP = "/images/icons/membership.svg";
 export const ADS_CREDIT = "/images/icons/ads-credit.svg";
 export const VERIFIED_BADGE_ICON = "/images/icons/verifiedBadge.svg";
 export const BACK_BTN_ICON = "/images/icons/backBtn.svg";
-export const MENU_ICON = "/images/icons/menu.svg"
+export const MENU_ICON = "/images/icons/menu.svg";
+export const CURRENT_LOCATION_ICON = "/images/icons/current-location.icon.svg";
+export const SHOW_PASSWORD_ICON = "/images/icons/show-password-icon.svg";
+export const HIDE_PASSWORD_ICON = "/images/icons/hide-password-icon.svg";
 
 export const TEST =
   "https://images.unsplash.com/photo-1499852848443-3004d6dc4cfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80";

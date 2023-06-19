@@ -1,9 +1,17 @@
 import React, { useState } from "react";
 import Select from "./Select";
 import Icon from "../image/Icon";
+import TelephoneInput from "./TelephoneInput";
+import { HIDE_PASSWORD_ICON, SHOW_PASSWORD_ICON } from "@/Environment";
 
 const Input = (props) => {
-  const {changeHandler=() => {}, value, formFeild : { type, label, name, helpText, className, jsx, optionsFilterHandler, options, optionJsxType=""}} = props
+  const {
+    changeHandler=() => {}, 
+    value, 
+    formFeild : { type, label, name="", helpText, className, jsx, optionsFilterHandler, options, optionJsxType="", button=[]}
+  } = props
+
+  const [showPassword, setShowPassword] = useState(false)
 
   const [isSelectSearchOptionOpen, setIsSelectSearchOptionOpen] = useState(false)
 
@@ -45,7 +53,7 @@ const Input = (props) => {
       return (
         <div className="form-feild"  key={type + "_input_" + name}>
           <label htmlFor="">{label}</label>
-          <input value={value} onChange={(e) => changeHandler(e)} type="text" name={name} id="" />
+          <input value={value?.[name]} onChange={(e) => changeHandler(e)} type="text" name={name} id={"email__" + name} />
           {helpText && <p className="help-text">{helpText}</p>}
         </div>
       );
@@ -54,7 +62,13 @@ const Input = (props) => {
       return (
         <div className="form-feild"  key={type + "_input_" + name}>
           <label htmlFor="">{label}</label>
-          <input value={value} onChange={(e) => changeHandler(e)} type="password" name={name} id="" />
+          <div className="password-input-outer-container">
+            <input value={value?.[name]} onChange={(e) => changeHandler(e)} type={showPassword ? "text" : "password"} name={name} id={"password__" + name} className="password-input"/>
+            <span onClick={() => setShowPassword((state) => !state)}>
+              {showPassword ? <Icon src={SHOW_PASSWORD_ICON} alt="show" /> :
+              <Icon src={HIDE_PASSWORD_ICON} alt="hide" />}
+            </span>
+          </div>
           {helpText && <p className="help-text">{helpText}</p>}
         </div>
       );
@@ -67,13 +81,14 @@ const Input = (props) => {
         <div className="form-feild">
         <label htmlFor="">{label}</label>
         <div className="select-input-container">
-          <input value={value} 
+          <input 
             onChange={(e) => {
               changeHandler(e)
               setIsSelectSearchOptionOpen(true)
             }} 
             type="text" 
             name={name} 
+            value={value?.[name]} 
           />
 
           {(isSelectSearchOptionOpen && options?.[0]) && (
@@ -97,11 +112,24 @@ const Input = (props) => {
         </div>
         )
 
+    case "button-group" : 
+      return <div key={type + "_input_" + name} className="button-group">
+        {button.map((btn, index) => {
+          return <button type="submit" className={`btn ${btn.className}`} key={type + "_input_" + index + "_index_"+ name}>
+            {btn.label}
+          </button>
+        })}
+        
+      </div>
+
+    case "phone" : 
+        return <TelephoneInput {...props}/>
+
     default:
       return (
         <div className="form-feild" key={type + "_input_" + name}>
           <label htmlFor="">{label}</label>
-          <input value={value} onChange={(e) => changeHandler(e)} type="text" name={name} />
+          <input value={value?.[name]} onChange={(e) => changeHandler(e)} type="text" name={name} />
           {helpText && <p className="help-text">{helpText}</p>}
         </div>
       );

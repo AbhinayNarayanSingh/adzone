@@ -1,12 +1,18 @@
-import withoutAuth from "@/hoc/OAuth/withoutAuth";
-
-import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 import Link from "next/link";
+
+
+import withoutAuth from "@/hoc/OAuth/withoutAuth";
 import { navigateToPage } from "@/utils/navigate/navigator";
-import { signInAct } from "@/store/slice/authSlice";
 import Input from "@/components/mainComponents/input/Input";
 
+// logic hooks
+import UseAuth from "@/hooks/useAuth";
+
+
 const Login = () => {
+  const {body, quickLoginUser, quickLogin, loginSubmitHandler, formChangeHandler, checkForQuickLoginFn} = UseAuth()
+
   const loginFormFeild = [
     {
       label: "Email",
@@ -37,32 +43,26 @@ const Login = () => {
       className: "full-btn",
     },
   ];
+  
+  useEffect(() => {
+    checkForQuickLoginFn()
+  }, [])
 
-  const dispatch = useDispatch()
-
-  const loginSubmitHandler = async (event) => {
-    // event.preventDefault();
-    dispatch(signInAct({
-      "email" : "byron@schwabs.ca",
-      "password" : "1234567890",
-      "phone" : "8795675599"
-  }))
-    // router.push("/")
-
-    // const {data} = await services.get(endpoints.getProductsList, {})
-    // debugger
-
-  }
   return (
-    <div className="register-page-container">
+    <div className="auth-page-container">
       <h2>Login to your account</h2>
-      <p className="register-subline">
+      <p className="auth-subline">
         To enhance your AdZone experience and help you stay safe and secure
       </p>
 
-      <form className="sign-form">
+      <form className="sign-form" onSubmit={loginSubmitHandler}>
         {loginFormFeild.map((feild) => {
-          return (<Input formFeild={feild} key={"input__"+feild.name}/>)
+          return (<Input 
+              formFeild={feild} 
+              key={"input__"+feild?.type+"__"+feild?.name}
+              changeHandler={formChangeHandler}
+              value={body}
+            />)
         })}
       </form>
 
@@ -73,9 +73,9 @@ const Login = () => {
         </Link>
       </p>
 
-      <div className="quick-signin-container">
-        <button className="social-login" onClick={loginSubmitHandler}>Continue as The Schwab Family</button>
-      </div>
+      {quickLoginUser?.email && <div className="quick-signin-container">
+        <button className="social-login" onClick={quickLogin}>Continue as {quickLoginUser?.email}</button>
+      </div>}
 
       <button className="social-login google">Continue with Google</button>
       <button className="social-login facebook">Continue with Facebook</button>

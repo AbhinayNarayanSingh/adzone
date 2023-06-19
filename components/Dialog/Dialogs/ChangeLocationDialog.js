@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import useGoogleMapServices from '@/hooks/useGoogleMapServices'
 import Icon from '@/components/mainComponents/image/Icon'
-import { SEARCH_ICON, SETTING_ICON } from '@/Environment'
+import { CURRENT_LOCATION_ICON, SEARCH_ICON } from '@/Environment'
 
 const ChangeLocationDialog = () => {
 
@@ -38,7 +38,7 @@ const ChangeLocationDialog = () => {
             setUserSelect(false)
             setQuery(e.target.value)
             }} placeholder='Address, city or province'/>
-          <Icon src={SETTING_ICON}/>
+          <Icon src={CURRENT_LOCATION_ICON}/>
         </div>
 
         {(predictionShow && predictions[0]) && <div className="predictions-outer-container">

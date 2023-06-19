@@ -14,10 +14,10 @@ const ResetPassword = () => {
           helpText : "Please provide your registered email address"
         },
         {
-          label: "Phone Number",
-          type: "password",
-          name: "password",
-          placeholder: "Password",
+          label: "Phone number",
+          type: "phone",
+          name: "phone",
+          placeholder: "phone",
           errorMsg: "",
           helpText : "Please provide your registered phone number"
         },
@@ -62,23 +62,23 @@ const ResetPassword = () => {
         },
       ];
   return (
-      <div  className="register-page-container align-center">
+      <div  className="auth-page-container align-center">
         {resetStep ? <div>
             <h2>Forgot Password</h2>
-            <p  className="register-subline">Please provide one of your information below. We will send you a OTP to verify your identity before you can reset your password.</p>
+            <p  className="auth-subline">Please provide one of your information below. We will send you a OTP to verify your identity before you can reset your password.</p>
 
               <form className="sign-form">
                   {verifyIdentityForm.map((feild) => {
-                      return (<Input formFeild={feild} key={"input__"+feild.name}/>)
+                      return (<Input formFeild={feild} key={"input__"+feild.type+"__"+feild.name}/>)
                   })}
               </form>
         </div> :
         <div>
             <h2>Password Reset</h2>
-            <p  className="register-subline">An OTP has been sent. Please enter the OTP below, along with your new password, and confirm your new password to reset your password.</p>
+            <p  className="auth-subline">An OTP has been sent. Please enter the OTP below, along with your new password, and confirm your new password to reset your password.</p>
             <form className="sign-form">
                 {resetpasswordForm.map((feild) => {
-                    return (<Input formFeild={feild} key={"input__"+feild.name}/>)
+                    return (<Input formFeild={feild} key={"input__"+feild.type+"__"+feild.name}/>)
                 })}
             </form>
         </div>}

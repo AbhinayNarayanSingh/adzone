@@ -87,6 +87,16 @@ button {
     }
 }
 
+.button-group {
+    display: flex;
+    gap: .5rem;
+}
+.full-btn {
+    width: 100%;
+    margin: .5rem 0;
+    padding: .5rem;
+}
+
 
 @media only screen and (max-width: 512px) {
 
@@ -133,6 +143,11 @@ button {
             margin-right: .5rem;
         }
 
+    }
+
+    .full-btn {
+        width: 100%;
+        margin: 0 0 .5rem;
     }
 
 }
