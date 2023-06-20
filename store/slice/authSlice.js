@@ -54,6 +54,12 @@ export const signUpAct = createAsyncThunk("user/signup", async (body, { dispatch
   }
 })
 
+export const logoutHandlerAct = createAsyncThunk("user/logout", async (_, {dispatch}) => {
+  dispatch(startLoaderAct())
+  Cookies.remove("token")
+  // other logic will come here
+  dispatch(stopLoaderAct())
+})
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -88,7 +94,12 @@ export const authSlice = createSlice({
         state.error = action.error.message;
       });
 
-    // builder.addCase
+    builder.addCase(logoutHandlerAct.fulfilled, (state) => {
+      state.user = {},
+      state.isAuth = false,
+      state.status = 'idle',
+      state.error = null
+    })
   },
 })
 

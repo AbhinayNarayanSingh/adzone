@@ -1,35 +1,46 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useRouter } from "next/router";
 import Cookies from "js-cookie";
 import jwtDecode from "jwt-decode";
 
-import { emailValidator, passwordValidator } from "@/utils/helper/inputValidatorHelper";
+import { emailValidator, passwordValidator, validationErrorMessage } from "@/utils/helper/inputValidatorHelper";
 
-import { quickSignInAct, signInAct } from "@/store/slice/authSlice";
+import { logoutHandlerAct, quickSignInAct, signInAct } from "@/store/slice/authSlice";
 import { showToastAct } from "@/store/slice/toastSlice";
+import { navigateToPage } from "@/utils/navigate/navigator";
 
 const UseAuth = () => {
     const dispatch = useDispatch()
+    const router = useRouter()
     const [body, setBody] = useState({})
     const [quickLoginUser, setQuickLoginUser] = useState({})
     const [validationError, setValidationError] = useState(null)
 
-
-    const checkForQuickLoginFn = async () => {
-        const referenceToken = Cookies.get("reference_token")
-
-        if (referenceToken) {
-            const token = await jwtDecode(referenceToken)
-            const expirationDate = new Date(token.exp * 1000); 
+    const validateToken = async (type="reference_token", autoLogin=false) => {
+        const token = Cookies.get(type)
+        if (token) {
+            const session = await jwtDecode(token)
+            const expirationDate = new Date(session.exp * 1000); 
             const currentDate = new Date();
           
-            if (expirationDate > currentDate) {
+            if (expirationDate > currentDate && session?.Source === "AdZone") {
                 setQuickLoginUser({
-                    email : token.Email,
-                    reference_token : referenceToken
+                    email : session.Email,
+                    reference_token : token
                 })
+                if (autoLogin) {
+                    dispatch(quickSignInAct({
+                        "reference_token": token
+                    }))
+                }
+                return true
+            } else {
+                Cookies.remove(type)
+                return false
             }
         }
+
     }
 
     const formChangeHandler = (e) => {
@@ -42,20 +53,20 @@ const UseAuth = () => {
     const loginSubmitHandler = async (event) => {
         event.preventDefault();
 
-        
         if (Object.keys(body).length) {
-            // if (emailValidator(body.email)) {
-            //     console.log('+++ valid');
-            // } else if (passwordValidator(body.passowrd)) {
-            //     console.log('+++ valid password');
-            // }
-            
+            if (!emailValidator(body.email)) {
+                dispatch(showToastAct({message : validationErrorMessage.email}))
+                return
+            } else if (!passwordValidator(body.password)) {
+                dispatch(showToastAct({message : validationErrorMessage.password}))
+                return
+            }
             if (body.email && body.password) {
                 dispatch(signInAct(body))
             }
             
         } else {
-            dispatch(showToastAct({message : "Please enter your email and password to proceed."}))
+            dispatch(showToastAct({message : validationErrorMessage.enterEmailPassword}))
         }
     }
 
@@ -67,7 +78,12 @@ const UseAuth = () => {
         }
     }
 
-    return {body, quickLoginUser, validationError, formChangeHandler, loginSubmitHandler, quickLogin, checkForQuickLoginFn }
+    const logoutHandler = () => {
+        dispatch(logoutHandlerAct())
+        // router.push(navigateToPage("login"))
+    }
+
+    return {body, quickLoginUser, validationError, formChangeHandler, loginSubmitHandler, quickLogin, validateToken, logoutHandler }
 }
 
 export default UseAuth

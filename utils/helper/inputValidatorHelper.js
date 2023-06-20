@@ -30,3 +30,8 @@ export const emailValidator = (email) => {
 
   };
 
+export const validationErrorMessage = {
+  email : "Invalid email address. Please enter a valid email address.",
+  password : "Invalid password format. Please make sure your password must contain at least 8 characters long, one uppercase & lowercase, one number and may include special characters.",
+  enterEmailPassword : "Please enter your email and password to proceed.",
+}

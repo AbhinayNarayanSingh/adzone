@@ -110,7 +110,7 @@ const BillingAddress = () => {
       {billingAddressFormFeild.map(feild => <Input 
         formFeild={feild} 
         key={feild.type + "_input_" + feild.name} 
-        value={responseState[feild.name]}
+        value={responseState}
         changeHandler={changeHandler} 
       />)}
     </div>

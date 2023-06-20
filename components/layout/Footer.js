@@ -1,6 +1,8 @@
 import { FOOTER_LOGO, PROJECT_DESCRIPTION } from "@/Environment";
 import Link from "next/link";
 import { navigateToPage } from "@/utils/navigate/navigator"
+import { useSelector } from "react-redux";
+import UseAuth from "@/hooks/useAuth";
 
 const Footer = () => {
   const footerBtns = [
@@ -25,6 +27,9 @@ const Footer = () => {
       navigateTo : "faq" 
     },
   ]
+  const {logoutHandler} = UseAuth()
+  const {isAuth, user} = useSelector((state) => state.auth);
+
   return (
     <div className="footer-outer-container">
       <div className="footer-brand-container">
@@ -41,9 +46,9 @@ const Footer = () => {
           )
         })}
       </div>
-      {true && <div className="footer-link-container">
-        <button className="btn-link-light">
-          Logout as Abhinay Narayan Singh
+      {isAuth && <div className="footer-link-container">
+        <button className="btn-link-light" onClick={logoutHandler}>
+          Logout as {user.firstname} {user.lastname}
         </button>
       </div>}
     </div>

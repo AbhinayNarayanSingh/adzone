@@ -1,19 +1,21 @@
-import { useRouter } from "next/router";
-import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import Link from "next/link";
+import { useSession } from "next-auth/react";
 
-import useIsMobile from "@/hooks/useIsMobile";
-
-import { LOGO, MAP_ICON, MENU_ICON, SETTING_ICON } from "@/Environment";
-import { navigateToPage, navigateToSearch } from "@/utils/navigate/navigator";
 import DrawerHOC from "@/hoc/drawer/drawerHOC";
 import DialogHOC from "@/hoc/dialog/DialogHOC";
-import { useSession } from "next-auth/react";
+import useIsMobile from "@/hooks/useIsMobile";
+import UseAuth from "@/hooks/useAuth";
+
+import { navigateToPage, navigateToSearch } from "@/utils/navigate/navigator";
+import { LOGO, MAP_ICON, MENU_ICON, SETTING_ICON } from "@/Environment";
 import Icon from "@/componentWrapper/image/Icon";
-import { useSelector } from "react-redux";
 
 const Navbar = (props) => {
 
+  const {validateToken} = UseAuth()
   const {data} = useSession()
 
   const exceptionObj = {
@@ -39,7 +41,11 @@ const Navbar = (props) => {
 
   const pageActiveIndicator = (pages) => page === pages ? "active" : ""
 
-  const isUserLoggedIn = useSelector((state) => state.auth.isAuth);
+  const {isAuth, user} = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    validateToken("token", true)
+  }, [])
 
 
   return (
@@ -69,7 +75,7 @@ const Navbar = (props) => {
           <>
             <button className="btn-link change-language">ES</button>
             <div className="sign-button">
-              {!isUserLoggedIn ? (
+              {!isAuth ? (
                 <>
                   <Link href={navigateToPage("register")}>
                     <button className="btn-link">Register</button>
@@ -82,7 +88,7 @@ const Navbar = (props) => {
               ) : (
                 <>
                   <Link href={navigateToPage("listings")}>
-                    <button className="btn-link">Abhinay Singh</button>
+                    <button className="btn-link">{user.firstname} {user.lastname}</button>
                   </Link>
                 </>
               )}

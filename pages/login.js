@@ -11,7 +11,7 @@ import UseAuth from "@/hooks/useAuth";
 
 
 const Login = () => {
-  const {body, quickLoginUser, quickLogin, loginSubmitHandler, formChangeHandler, checkForQuickLoginFn} = UseAuth()
+  const {body, quickLoginUser, quickLogin, loginSubmitHandler, formChangeHandler, validateToken} = UseAuth()
 
   const loginFormFeild = [
     {
@@ -45,7 +45,7 @@ const Login = () => {
   ];
   
   useEffect(() => {
-    checkForQuickLoginFn()
+    validateToken()
   }, [])
 
   return (
