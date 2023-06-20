@@ -1,18 +1,19 @@
-import { useDispatch } from "react-redux";
-
-import { quickSignInAct, signInAct } from "@/store/slice/authSlice";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
 import jwtDecode from "jwt-decode";
 
+import { emailValidator, passwordValidator } from "@/utils/helper/inputValidatorHelper";
+
+import { quickSignInAct, signInAct } from "@/store/slice/authSlice";
+import { showToastAct } from "@/store/slice/toastSlice";
+
 const UseAuth = () => {
     const dispatch = useDispatch()
-    const [body, setBody] = useState({
-        email : "abhi",
-        password : "123456"
-    })
+    const [body, setBody] = useState({})
     const [quickLoginUser, setQuickLoginUser] = useState({})
     const [validationError, setValidationError] = useState(null)
+
 
     const checkForQuickLoginFn = async () => {
         const referenceToken = Cookies.get("reference_token")
@@ -40,8 +41,22 @@ const UseAuth = () => {
 
     const loginSubmitHandler = async (event) => {
         event.preventDefault();
-        console.log('+++ body', body);
-        dispatch(signInAct(body))
+
+        
+        if (Object.keys(body).length) {
+            // if (emailValidator(body.email)) {
+            //     console.log('+++ valid');
+            // } else if (passwordValidator(body.passowrd)) {
+            //     console.log('+++ valid password');
+            // }
+            
+            if (body.email && body.password) {
+                dispatch(signInAct(body))
+            }
+            
+        } else {
+            dispatch(showToastAct({message : "Please enter your email and password to proceed."}))
+        }
     }
 
     const quickLogin = () => {

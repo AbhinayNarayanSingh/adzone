@@ -1,8 +1,8 @@
+import Head from "next/head";
 import { Provider } from 'react-redux'
 import { SessionProvider } from 'next-auth/react';
 
-import Head from "next/head";
-
+import Toast from '@/hoc/toast/Toast';
 import Loader from '@/components/layout/Loader';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -23,6 +23,8 @@ export default function App({ Component, pageProps }) {
       </Head>
 
       <Loader />
+      <Toast/>
+
       <Navbar />
       <Component {...pageProps} />
       <Footer />

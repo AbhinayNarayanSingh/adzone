@@ -18,7 +18,6 @@ export default function MembershipCheckout() {
         //   setClientSecret(clientSecret);
         // });
         setClientSecret("pi_3NFwEmSAIDSoJ9VZ0rV2Q7A5_secret_53bZfqU9dyqbASvtqr8ChWIXS");
-        console.log('+++ a',);
       }, []);
 
   return (
@@ -56,7 +55,6 @@ function CheckoutForm() {
       },
     });
 
-    console.log('+++  paymentIntent',  paymentIntent);
     if (paymentIntent?.status === "succeeded") {
         setMessage(paymentIntent.status);
     } else if (error?.type === "card_error" || error?.type === "validation_error") {

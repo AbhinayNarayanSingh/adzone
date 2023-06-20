@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import useIsMobile from "@/hooks/useIsMobile";
 
@@ -15,6 +15,11 @@ import { useSelector } from "react-redux";
 const Navbar = (props) => {
 
   const {data} = useSession()
+
+  const exceptionObj = {
+    "/register" : true,
+    "/login" : true,
+  }
 
   const router = useRouter();
   const { page, section } = router.query;
@@ -56,7 +61,7 @@ const Navbar = (props) => {
           )}
         </div>
 
-        <div className="navbar-right-col">
+        {!exceptionObj[router?.pathname] && <div className="navbar-right-col">
           {isMobile ? 
           <div className="navbar-menu-icon" onClick={() => props.open_drawer("MENU")}>
             <Icon src={MENU_ICON} alt="menu" />
@@ -88,7 +93,7 @@ const Navbar = (props) => {
               </Link>
             </div>
           </>}
-        </div>
+        </div>}
       </div>
 
       <span className="navbar-fill-span" />

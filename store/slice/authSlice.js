@@ -4,6 +4,7 @@ import endpoints from '@/utils/services/endpoints'
 import services from '@/utils/services/services'
 import { startLoaderAct, stopLoaderAct } from './loaderSlice'
 import Cookies from 'js-cookie'
+import { showToastAct } from './toastSlice'
 
 const initialState = {
   user : {},
@@ -22,6 +23,7 @@ export const signInAct = createAsyncThunk("user/signin", async (body,  { dispatc
     return data
   } catch (error) {
     dispatch(stopLoaderAct())
+    dispatch(showToastAct({message : error?.response?.data?.message}))
     throw new Error(error?.response?.data?.message || error?.response?.status);    
   }
 })
@@ -44,7 +46,6 @@ export const signUpAct = createAsyncThunk("user/signup", async (body, { dispatch
   try {
     dispatch(startLoaderAct())
     const {data} = await services.post(endpoints.postSignUp, body)
-    console.log('+++ data', data);
     dispatch(stopLoaderAct())
     return data
   } catch (error) {

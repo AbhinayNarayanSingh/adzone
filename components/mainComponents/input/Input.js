@@ -65,8 +65,8 @@ const Input = (props) => {
           <div className="password-input-outer-container">
             <input value={value?.[name]} onChange={(e) => changeHandler(e)} type={showPassword ? "text" : "password"} name={name} id={"password__" + name} className="password-input"/>
             <span onClick={() => setShowPassword((state) => !state)}>
-              {showPassword ? <Icon src={SHOW_PASSWORD_ICON} alt="show" /> :
-              <Icon src={HIDE_PASSWORD_ICON} alt="hide" />}
+              {showPassword ? <Icon src={SHOW_PASSWORD_ICON} alt="show" size={"1.25rem"}/> :
+              <Icon src={HIDE_PASSWORD_ICON} alt="hide" size={"1.25rem"}/>}
             </span>
           </div>
           {helpText && <p className="help-text">{helpText}</p>}

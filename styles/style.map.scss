@@ -7,6 +7,11 @@ $SKELTON_GREY : #bbbbbb;
 $TEXT_COLOR : #3e4153;
 $AMOUNT_GREEN : #37a864;
 
+$TOAST_ERROR_BCK : rgb(253, 237, 237);
+$TOAST_SUCCESS_BCK : rgb(237, 247, 237);
+$TOAST_ERROR_TEXT_COLOUR : #D32F2F;
+$TOAST_SUCCESS_TEXT_COLOUR : #2E7D32;
+
 $BORDER_RADIUS : .25rem;
 
 $CARD_BOX_SHADOW : rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
@@ -26,6 +31,7 @@ $CARD_BOX_SHADOW : rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px
 @import "./hoc/cards.scss";
 @import "./hoc/icons.scss";
 @import "./hoc/dialogs.scss";
+@import "./hoc/toast.scss";
 
 // input
 @import "./input/telephone-input.scss";

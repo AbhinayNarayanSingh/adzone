@@ -32,6 +32,8 @@ export const MENU_ICON = "/images/icons/menu.svg";
 export const CURRENT_LOCATION_ICON = "/images/icons/current-location.icon.svg";
 export const SHOW_PASSWORD_ICON = "/images/icons/show-password-icon.svg";
 export const HIDE_PASSWORD_ICON = "/images/icons/hide-password-icon.svg";
+export const SUCCESS_TOAST_ICON = "/images/icons/success-toast-icon.svg";
+export const ERROR_TOAST_ICON = "/images/icons/error-toast-icon.svg";
 
 export const TEST =
   "https://images.unsplash.com/photo-1499852848443-3004d6dc4cfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80";

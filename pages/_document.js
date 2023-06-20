@@ -20,6 +20,7 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
+        <div id="toast"></div>
         <div id="drawer"></div>
         <div id="dialog"></div>
       </body>

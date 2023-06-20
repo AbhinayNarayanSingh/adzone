@@ -11,6 +11,7 @@ const TelephoneInput = (props) => {
   });
   
   const label = props.label || props?.formFeild?.label 
+  const { formFeild } = props;
 
   const optionSelectHandlerFn = (item) => {
     setIsOptionOpen((state) => !state);
@@ -42,6 +43,9 @@ const TelephoneInput = (props) => {
             // onChange={(e) => set(e.target.value)}
           />
         </div>
+        {formFeild?.helpText && <p className="help-text">{formFeild?.helpText}</p>}
+
+
 
         {isOptionOpen && (
           <ClickAwayWrapper onClickAway={closeOption}>
