@@ -15,7 +15,7 @@ const register = () => {
       placeholder: "Name",
       errorMsg: "",
       name: "name",
-      helpText: "Your name will be displayed on your public profile",
+      helpText: "Please enter your full name, it will be displayed on your public profile",
     },
     {
       label: "Email",
@@ -71,6 +71,7 @@ const register = () => {
               formFeild={feild} 
               key={"input__"+feild?.type+"__"+feild?.name}
               changeHandler={formChangeHandler}
+              value={body}
             />)
         })}
       </form>
@@ -82,8 +83,8 @@ const register = () => {
         </Link>
       </p>
 
-      <button className="social-login google" type="button" onClick={() => signIn("google")}>Continue with Google</button>
-      <button className="social-login facebook" type="button" onClick={() => signIn("facebook")}>Continue with Facebook</button>
+      {/* <button className="social-login google" type="button" onClick={() => signIn("google")}>Continue with Google</button>
+      <button className="social-login facebook" type="button" onClick={() => signIn("facebook")}>Continue with Facebook</button> */}
     </div>
   );
 };

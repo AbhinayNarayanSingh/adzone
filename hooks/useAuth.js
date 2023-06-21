@@ -10,13 +10,25 @@ import { logoutHandlerAct, quickSignInAct, signInAct } from "@/store/slice/authS
 import { showToastAct } from "@/store/slice/toastSlice";
 import { navigateToPage } from "@/utils/navigate/navigator";
 
+/**
+ * UseAuth hook provides a convenient interface for authentication-related functionality
+ */
 const UseAuth = () => {
     const dispatch = useDispatch()
     const router = useRouter()
-    const [body, setBody] = useState({})
+    const [body, setBody] = useState({
+        email : "byron@schwabs.ca",
+        phone : "8883184582",
+        password : "P@$$w0rd"
+    })
     const [quickLoginUser, setQuickLoginUser] = useState({})
     const [validationError, setValidationError] = useState(null)
 
+    /**
+     * function provides a convenient way to check the validity of a token and perform related actions. 
+     * @param {string} type "reference_token" or "token"
+     * @param {boolean} autoLogin true or false
+     */
     const validateToken = async (type="reference_token", autoLogin=false) => {
         const token = Cookies.get(type)
         if (token) {

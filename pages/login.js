@@ -77,8 +77,8 @@ const Login = () => {
         <button className="social-login" onClick={quickLogin}>Continue as {quickLoginUser?.email}</button>
       </div>}
 
-      <button className="social-login google">Continue with Google</button>
-      <button className="social-login facebook">Continue with Facebook</button>
+      {/* <button className="social-login google">Continue with Google</button>
+      <button className="social-login facebook">Continue with Facebook</button> */}
     </div>
   );
 };

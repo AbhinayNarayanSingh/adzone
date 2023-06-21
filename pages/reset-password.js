@@ -25,7 +25,7 @@ const ResetPassword = () => {
         {
           type: "button",
           label: "Send OTP",
-          className: "full-btn",
+          className: "full-btn mt-1",
         },
       ];
 
@@ -58,7 +58,7 @@ const ResetPassword = () => {
         {
           type: "button",
           label: "Reset Password",
-          className: "full-btn",
+          className: "full-btn mt-1",
         },
       ];
   return (

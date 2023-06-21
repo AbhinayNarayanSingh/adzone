@@ -88,7 +88,7 @@ const Navbar = (props) => {
               ) : (
                 <>
                   <Link href={navigateToPage("listings")}>
-                    <button className="btn-link">{user.firstname} {user.lastname}</button>
+                    <button className="btn-link">{user.name}</button>
                   </Link>
                 </>
               )}
