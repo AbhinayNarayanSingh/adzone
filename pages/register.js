@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { signIn } from "next-auth/react";
 
 import withoutAuth from "@/hoc/OAuth/withoutAuth";
 import { navigateToPage } from "@/utils/navigate/navigator";
@@ -26,13 +25,6 @@ const register = () => {
       helpText: "Please enter your email address",
     },
     {
-      label: "Telegram Chat ID",
-      type: "text",
-      errorMsg: "",
-      name: "telegram_chat_id",
-      helpText: "Please enter your Telegram Chat ID",
-    },
-    {
       label: "Password",
       type: "password",
       name: "password",
@@ -44,10 +36,17 @@ const register = () => {
     {
       label: "Confirm password",
       type: "password",
-      name: "confirm-password",
+      name: "confirm_password",
       placeholder: "Re-enter Password",
       errorMsg: "",
       helpText: "Please re-enter your password to confirm it",
+    },
+    {
+      label: "Telegram Chat ID",
+      type: "text",
+      errorMsg: "",
+      name: "telegram_chat_id",
+      helpText: "Please enter your Telegram Chat ID",
     },
     {
       type: "button",
@@ -56,7 +55,7 @@ const register = () => {
     },
   ];
 
-  const {body, formChangeHandler} = UseAuth()
+  const {body, formChangeHandler, registerSubmitHandler} = UseAuth()
 
   return (
     <div className="auth-page-container">
@@ -64,8 +63,9 @@ const register = () => {
       <p className="auth-subline">
         Register now to post, edit, and manage ads. It’s quick, easy, and free!
       </p>
+      {JSON.stringify(body)}
 
-      <form className="sign-form" >
+      <form className="sign-form" onSubmit={registerSubmitHandler}>
         {registerFormFeild.map((feild) => {
           return (<Input 
               formFeild={feild} 
@@ -90,4 +90,4 @@ const register = () => {
 };
 
 // export default withoutAuth(register);
-export default register;
+export default withoutAuth(register);

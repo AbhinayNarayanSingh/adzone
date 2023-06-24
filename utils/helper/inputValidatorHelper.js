@@ -34,4 +34,6 @@ export const validationErrorMessage = {
   email : "Invalid email address. Please enter a valid email address.",
   password : "Invalid password format. Please make sure your password must contain at least 8 characters long, one uppercase & lowercase, one number and may include special characters.",
   enterEmailPassword : "Please enter your email and password to proceed.",
+  passwordConfirm : "Password and Confirm Password fields must match. Please ensure that both fields contain the same password for confirmation.",
+  name : "Please enter your name. This field is required.",
 }

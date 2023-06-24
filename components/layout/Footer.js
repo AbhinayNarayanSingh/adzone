@@ -48,7 +48,7 @@ const Footer = () => {
       </div>
       {isAuth && <div className="footer-link-container">
         <button className="btn-link-light" onClick={logoutHandler}>
-          Logout as {user.name}
+          Logout as {user?.name}
         </button>
       </div>}
     </div>

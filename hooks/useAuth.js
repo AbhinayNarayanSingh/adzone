@@ -1,28 +1,38 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Cookies from "js-cookie";
 import jwtDecode from "jwt-decode";
 
 import { emailValidator, passwordValidator, validationErrorMessage } from "@/utils/helper/inputValidatorHelper";
 
-import { logoutHandlerAct, quickSignInAct, signInAct } from "@/store/slice/authSlice";
+import { logoutHandlerAct, quickSignInAct, setQuickLoginUser, signInAct, signUpAct } from "@/store/slice/authSlice";
 import { showToastAct } from "@/store/slice/toastSlice";
-import { navigateToPage } from "@/utils/navigate/navigator";
 
 /**
  * UseAuth hook provides a convenient interface for authentication-related functionality
  */
 const UseAuth = () => {
     const dispatch = useDispatch()
-    const router = useRouter()
-    const [body, setBody] = useState({
-        email : "byron@schwabs.ca",
-        phone : "8883184582",
-        password : "P@$$w0rd"
-    })
-    const [quickLoginUser, setQuickLoginUser] = useState({})
-    const [validationError, setValidationError] = useState(null)
+    const [body, setBody] = useState()
+    const { quickLoginUser } = useSelector((state) => state.auth)
+
+    useEffect(() => {
+        if (window.location.pathname === "/register") {
+            setBody({
+                name : null,
+                email : null,
+                password : null,
+                telegram_chat_id : null,
+                confirm_password : null
+            })
+        } else if (window.location.pathname === "/login") {
+            setBody({
+                email : null,
+                password : null,
+            })
+        }
+    }, [])
+
 
     /**
      * function provides a convenient way to check the validity of a token and perform related actions. 
@@ -37,10 +47,11 @@ const UseAuth = () => {
             const currentDate = new Date();
           
             if (expirationDate > currentDate && session?.Source === "AdZone") {
-                setQuickLoginUser({
+                dispatch(setQuickLoginUser({
                     email : session.Email,
                     reference_token : token
-                })
+                }))
+
                 if (autoLogin) {
                     dispatch(quickSignInAct({
                         "reference_token": token
@@ -66,15 +77,49 @@ const UseAuth = () => {
         event.preventDefault();
 
         if (Object.keys(body).length) {
-            if (!emailValidator(body.email)) {
+            if (!emailValidator(body.email || "")) {
                 dispatch(showToastAct({message : validationErrorMessage.email}))
                 return
-            } else if (!passwordValidator(body.password)) {
+            } else if (!passwordValidator(body.password || "")) {
                 dispatch(showToastAct({message : validationErrorMessage.password}))
                 return
             }
             if (body.email && body.password) {
                 dispatch(signInAct(body))
+            }
+            
+        } else {
+            dispatch(showToastAct({message : validationErrorMessage.enterEmailPassword}))
+        }
+    }
+
+    const registerSubmitHandler = async (event) => {
+        event.preventDefault();
+
+        let payload = JSON.parse(JSON.stringify(body));
+
+        if (Object.keys(payload).length) {
+
+            if (!emailValidator(payload.email)) {
+                dispatch(showToastAct({message : validationErrorMessage.email}))
+                // debugger
+                return
+            } else if (!passwordValidator(payload.password)) {
+                dispatch(showToastAct({message : validationErrorMessage.password}))
+                // debugger
+                return
+            } else 
+            if (payload.password !== payload.confirm_password) {
+                dispatch(showToastAct({message : validationErrorMessage.passwordConfirm}))
+                debugger
+                return
+            } 
+            else if (!payload.name || !payload?.name?.length) {
+                dispatch(showToastAct({message : validationErrorMessage.name}))
+                return
+            }
+            if (payload.email && payload.password && payload.name) {
+                dispatch(signUpAct(payload))
             }
             
         } else {
@@ -95,7 +140,16 @@ const UseAuth = () => {
         // router.push(navigateToPage("login"))
     }
 
-    return {body, quickLoginUser, validationError, formChangeHandler, loginSubmitHandler, quickLogin, validateToken, logoutHandler }
+    const passwordResetOTPHandler = () => {
+        
+    }
+
+    const passwordResetOTPValidationHandler = () => {
+
+    }
+
+
+    return {body, quickLoginUser, formChangeHandler, loginSubmitHandler, registerSubmitHandler, quickLogin, validateToken, logoutHandler }
 }
 
 export default UseAuth

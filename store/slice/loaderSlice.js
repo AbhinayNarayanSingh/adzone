@@ -9,7 +9,9 @@ const loaderSlice = createSlice({
     initialState,
     reducers: {
         startLoaderAct : (state) => {
-            state.loader = true
+            if (!state.loader) {
+                state.loader = true
+            }
         },
         stopLoaderAct : (state) => {
             state.loader = false
