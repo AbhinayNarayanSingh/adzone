@@ -63,7 +63,6 @@ const register = () => {
       <p className="auth-subline">
         Register now to post, edit, and manage ads. It’s quick, easy, and free!
       </p>
-      {JSON.stringify(body)}
 
       <form className="sign-form" onSubmit={registerSubmitHandler}>
         {registerFormFeild.map((feild) => {

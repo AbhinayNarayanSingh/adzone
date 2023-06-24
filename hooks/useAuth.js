@@ -30,6 +30,11 @@ const UseAuth = () => {
                 email : null,
                 password : null,
             })
+        } else if (window.location.pathname === "/reset-password") {
+            setBody({
+                email : null,
+                phone : null,
+            })
         }
     }, [])
 
