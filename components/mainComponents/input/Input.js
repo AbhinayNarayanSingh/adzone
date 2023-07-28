@@ -5,10 +5,11 @@ import TelephoneInput from "./TelephoneInput";
 import { HIDE_PASSWORD_ICON, SHOW_PASSWORD_ICON } from "@/Environment";
 
 const Input = (props) => {
+  // Input takes 3 params changeHandler function, value & formFeild object
   const {
     changeHandler=() => {}, 
     value, 
-    formFeild : { type, label, name="", helpText, className, jsx, optionsFilterHandler, options, optionJsxType="", button=[]}
+    formFeild : { type="", label="", name="", helpText, className, jsx, optionsFilterHandler, options, optionJsxType="", button=[]}
   } = props
 
   const [showPassword, setShowPassword] = useState(false)
@@ -73,13 +74,13 @@ const Input = (props) => {
         </div>
       );
     
-    case "select" : 
-      return <Select {...props}/>
+    // case "select" : 
+    //   return <Select {...props}/>
 
     case "selectSearch" : 
       return (
         <div className="form-feild">
-        <label htmlFor="">{label}</label>
+        {label && <label htmlFor="">{label}</label>}
         <div className="select-input-container">
           <input 
             onChange={(e) => {

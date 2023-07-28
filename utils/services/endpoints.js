@@ -5,6 +5,9 @@ const endpoints = {
     postSignIn : () => `/signin`,
     postSignUp : () => `/signup`,
     postRefreshToken : () => `/refresh-token`,
+
+    otpInitiator : () => `/otp`,
+    postResetPasswordConfirm : () => `/password-reset`,
 };
 
 export default endpoints

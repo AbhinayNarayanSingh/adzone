@@ -1,40 +1,18 @@
 import { useEffect, useState } from "react";
 
-import Select from "@/componentWrapper/input/Select";
 import TelephoneInput from "@/componentWrapper/input/TelephoneInput";
 import { categoryData } from "@/store/staticStore";
 import TextEditor from "@/componentWrapper/input/Editor";
-import { getCroppedImage } from "@/utils/helper/imageCroper";
 import withAuth from "@/hoc/OAuth/withAuth";
 import BannersMap from "@/components/Banners/BannersMap";
-import { RoundToDecimal } from "@/utils/helper/numberHelper";
+import NewSelect from "@/components/mainComponents/input/NewSelect";
+import Icon from "@/components/mainComponents/image/Icon";
 
-const listingOption = [
-  {
-    name : "ad-duration",
-    label : "Ad Duration",
-    basePrice : 2.49,
-    currency : "CAD"
-  },
-  {
-    name : "feature-ad",
-    label : "Feature Ad",
-    basePrice : 4.49,
-    currency : "CAD"
-  },
-  {
-    name : "highlight-ad",
-    label : "Highlight Ad",
-    basePrice : 4.49,
-    currency : "CAD"
-  },
-  {
-    name : "bump-ad",
-    label : "Bump Ad",
-    basePrice : 7.49,
-    currency : "CAD"
-  },
-]
+import TagsInput from "@/components/Ad/TagsInput";
+import AdDurationAndPromotion from "@/components/Ad/AdDurationPromotion";
+import LisingImages from "@/components/Ad/LisingImages";
+import YoutubeVideo from "@/components/Ad/YoutubeVideo";
+import ListingAddress from "@/components/Ad/ListingAddress";
 
 const AdPost = () => {
   const [responseState, setResponseState] = useState({
@@ -77,73 +55,12 @@ const AdPost = () => {
     phone: "",
     email: ""
   });
-  const [listingCost, setListingCost] = useState({
-    cost : {
-      "ad-duration": 2.49,
-      "feature-ad": 0,
-      "highlight-ad": 0,
-      "bump-ad": 0,
-    },
-    validity : {
-      "ad-duration": 1,
-      "feature-ad": 0,
-      "highlight-ad": 0,
-      "bump-ad": 0,
-    },
-    service : {
-      "ad-duration": 1,
-      "feature-ad": 0,
-      "highlight-ad": 0,
-      "bump-ad": 0,
-    }
-  })
-
-  const [thumbnailUrl, setThumbnailUrl] = useState(""); // only for preview
-
-
-  const handleFileInputChange = async (event) => {
-    try {
-      const croppedImages = responseState["images"];
-      const state = {...responseState}
-
-      const files = Array.from(event.target.files);
-
-      for (const imageUrl of files) {
-        const croppedImage = await getCroppedImage(imageUrl, "4:3");
-        const obj = {
-          url : "",
-          public_id : "",
-          path : croppedImage,
-          preview : URL.createObjectURL(croppedImage) 
-        }
-        croppedImages.push(obj);
-      }
-      state["images"] = croppedImages
-      setResponseState(state)
-    } catch (error) {
-      console.log("+++ error", error);
-    }
-  };
-
-  const youtubeVideoPreviewHandler = (e) => {
-    const videoUrl = e.target.value;
-
-    // Regex pattern to match the video ID parameter in the URL
-    const regex = /(?:\?|&)v=([a-zA-Z0-9_-]{11})(?:&|$)/;
-
-    const match = videoUrl.match(regex);
-
-    if (match) {
-      const videoId = match[1];
-      setThumbnailUrl(`https://img.youtube.com/vi/${videoId}/0.jpg`);
-    }
-  };
 
   const valueHandlerFn = (name) => responseState[name];
 
   const onChangeHandlerFn = (e) => {
     const { name, value, checked, type } = e.target;
-    const prevState = { ...responseState };
+    let prevState = { ...responseState };
 
     switch (type) {
       case "checkbox":
@@ -163,64 +80,39 @@ const AdPost = () => {
       case "listing_for":
         if (value !== "for_sale") prevState["amount"] = "";
         break;
-    
+        
+      case "location" : 
+        prevState = { ...responseState, ...value };
+
+        break;
       default:
         break;
     }
 
     setResponseState(prevState);
   };
-
-  const tagsHandlerFn = (e) => {
-    e.preventDefault();
-    e.target.value
-  }
-
-  const totalCost = () => {
-    let arr = Object.values(listingCost.cost)
-    arr = arr.reduce((accumulator, i) => accumulator + i).toFixed(2)
-    return RoundToDecimal(arr) 
-  }
-
-  const totalCostChangeHandler = (e, basePrice) => {
-    const { name, value, checked, type} = e.target;
-
-    let adDurationBasePrice = listingOption.filter((i) => i.name === "ad-duration")
-    adDurationBasePrice = adDurationBasePrice[0]["basePrice"]
-
-    const temp = {...listingCost}
-    temp["cost"][name] = RoundToDecimal(value * basePrice)
-    temp["validity"][name] = value
-    temp["service"][name] = 1
-
-    if (name !== "ad-duration" && temp["validity"]["ad-duration"] < value) {
-      temp["cost"]["ad-duration"] = RoundToDecimal(value * adDurationBasePrice)
-      temp["validity"]["ad-duration"] = value
-      temp["service"]["ad-duration"] = 1
-    }
-    setListingCost(temp)
-  }
-
-  const featureHandler = (e, basePrice) => {
-    const { name, value, checked, type } = e.target;
-    const temp = {...listingCost}
-
-    if (checked) {
-      temp["cost"][name] = RoundToDecimal(basePrice)
-      temp["validity"][name] = 1
-      temp["service"][name] = 1
-    } else {
-      temp["cost"][name] = 0
-      temp["validity"][name] = 0
-      temp["service"][name] = 0
-    }
-    setListingCost(temp)
-  }
   
+  // select options
+  const categoryOptions = () => {
+    const options = [];
+    categoryData.map((item) => {
+      options.push({
+        jsx: <>
+              <Icon src={item.icon} />
+              <p className="pl-1">{item.name}</p>
+            </>,
+        value: item
+      })
+    })
+    return options
+  }
 
   return (
     <div className="ad-form-outer-container">
-      {BannersMap("BULK_LISTING_BANNER")}
+      {/* {BannersMap("BULK_LISTING_BANNER")} */}
+      {JSON.stringify(responseState)}
+
+
       <h2 className="page-heading">Post Your Ad and Find Your Buyer</h2>
 
       {/* Ad details */}
@@ -238,13 +130,14 @@ const AdPost = () => {
           <h2 className="left-col">Select Category :</h2>
           <div className="right-col">
             <div className="inner-container">
-              <Select
-                options={categoryData}
-                name={"category"}
-                valueHandlerFn={valueHandlerFn}
-                onChangeHandlerFn={onChangeHandlerFn}
-                className="pl-1"
+
+              <NewSelect 
+                options={categoryOptions()}
+                value={valueHandlerFn}
+                changeHandler={onChangeHandlerFn}
+                name="category"
               />
+
             </div>
           </div>
         </div>
@@ -360,16 +253,11 @@ const AdPost = () => {
           <h2 className="left-col">Tags :</h2>
           <div className="right-col">
             <div className="inner-container">
-              <form action=""><input type="text" name="tags" /></form>
-              <p className="help-text">
-                Increase your ad exposure. Enter up to 5 keywords someone could
-                search to find your ad.
-              </p>
-              <div className="tags-container">
-                <p>#Westmount London</p>
-                <p>#Auburn Park</p>
-                <p>#Apartment</p>
-              </div>
+              <TagsInput
+                name="tags"
+                value={responseState}
+                changeHandler={onChangeHandlerFn}
+              />
             </div>
           </div>
         </div>
@@ -388,7 +276,7 @@ const AdPost = () => {
                   onChange={(e) => onChangeHandlerFn(e)}
                 />
                 <label htmlFor="link-to-website">
-                  Link to your website ($4.95)
+                  Link to your website
                 </label>
               </div>
               <input
@@ -409,49 +297,16 @@ const AdPost = () => {
       <div className="section">
         <h2 className="section-heading">
           Media :{" "}
-          <span>
-            Make sure to upload high-quality images or videos that accurately
-            depict your listing.
-          </span>
+          <span>Make sure to upload high-quality images or videos that accurately depict your listing.</span>
         </h2>
 
         {/* Photos */}
         <div className="section-detail-container">
           <h2 className="left-col">Photos :</h2>
-          <div
-            className={`right-col listing-image-container ${responseState["images"].length > 10 && "disable-image"
-              }`}
-          >
-            <div className="inner-container">
-              <label htmlFor="image-input-listing">
-                <h2>Choose from your computer or device</h2>
-                <p>(up to 10 images)</p>
-              </label>
-
-              <input
-                type="file"
-                multiple
-                accept="image/*"
-                onChange={handleFileInputChange}
-                id="image-input-listing"
-                disabled={responseState["images"].length > 10}
-              />
-
-              <p className="help-text help-text-margin">
-                Include pictures with different angles and details. You can
-                upload a maximum of 10 photos, that are at least 300px wide or
-                tall (we recommend at least 1000px).
-              </p>
-
-              {responseState["images"].length > 0 && (
-                <div className="image-preview-container">
-                  {responseState["images"].map((url) => (
-                    <img key={url.preview} src={url.preview} alt="Preview" />
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
+          <LisingImages
+            value={responseState}
+            changeHandler={onChangeHandlerFn}
+          />
         </div>
 
         {/* Youtube Video */}
@@ -459,22 +314,11 @@ const AdPost = () => {
           <h2 className="left-col">YouTube Video :</h2>
           <div className="right-col">
             <div className="inner-container">
-              <input
-                type="text"
-                name="youtubeVideoURL"
-                onBlur={youtubeVideoPreviewHandler}
-                value={valueHandlerFn("youtubeVideoURL")}
-                onChange={(e) => onChangeHandlerFn(e)}
+              <YoutubeVideo
+                name={"youtubeVideoURL"}
+                value={responseState}
+                changeHandler={onChangeHandlerFn}
               />
-              <p className="help-text">
-                Add a YouTube video to your listing e.g.
-                http://www.youtube.com/watch?v=:id
-              </p>
-              {thumbnailUrl && (
-                <div className="youtube-video-thumbnail">
-                  <img src={thumbnailUrl} alt="Video thumbnail" />
-                </div>
-              )}
             </div>
           </div>
         </div>
@@ -494,7 +338,11 @@ const AdPost = () => {
           <h2 className="left-col">Location :</h2>
           <div className="right-col">
             <div className="inner-container">
-              <input type="text" />
+              <ListingAddress
+                name="location"
+                value={responseState}
+                changeHandler={onChangeHandlerFn}
+              />
               <p className="help-text">Postal code or street address</p>
             </div>
           </div>
@@ -513,7 +361,16 @@ const AdPost = () => {
         <div className="section-detail-container">
           <h2 className="left-col">Phone number :</h2>
           <div className="right-col">
-            <TelephoneInput />
+            <TelephoneInput 
+              formFeild={{
+                // label: "Phone number",
+              type: "phone",
+              name: "phone",
+              // placeholder: "phone",
+              errorMsg: "",
+              // helpText : "Please provide your registered phone number"
+           }}
+            />
             <p className="help-text">
               Your phone number will show up on your listing.
             </p>
@@ -549,36 +406,7 @@ const AdPost = () => {
 
         <div className="section-detail-container">
           <div className="w-100">
-            <table className="w-100">
-              {listingOption.map((opt, index) => {
-                return (
-                  <div className="ad-promotion-outer-container"  key={"listingOption__" + index}>
-                    <tr className="ad-promotion-container">
-                      <td className="listingOption__checkout"><input 
-                        type="checkbox" 
-                        name={opt.name} 
-                        id={opt.name} 
-                        checked={listingCost["service"][opt.name]} 
-                        onChange={(e) => featureHandler(e, opt.basePrice)} 
-                      /></td>
-                      <td className="ad-options"><label htmlFor={opt.name}>{opt.label}</label></td>
-                    </tr>
-                    <tr className="ad-promotion-container">
-                      <td>
-                        <select name={opt.name} className="listingOption__select" value={listingCost["validity"][opt.name]} onChange={(e) => totalCostChangeHandler(e, opt.basePrice)}>
-                          <option value={1}>2 Week</option>
-                          <option value={2}>4 Week</option>
-                          <option value={3}>6 Week</option>
-                          <option value={6}>12 Week</option>
-                        </select>
-                      </td>
-                      <td className="listingOption__price">{opt.currency} {listingCost["cost"][opt.name] || opt.basePrice}</td>
-                    </tr>
-                  </div>
-                )
-              })}
-            </table>
-            <p className="listingTotalPrice"><span>Total Price: </span> {"$"}{totalCost()}</p>
+            <AdDurationAndPromotion/>
           </div>
         </div>
 

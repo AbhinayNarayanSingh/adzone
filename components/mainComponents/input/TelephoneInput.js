@@ -1,8 +1,13 @@
 import ClickAwayWrapper from "@/hoc/dialog/ClickAwayWrapper";
 import { CountryCode } from "@/utils/country-code";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const TelephoneInput = (props) => {
+  const {
+    changeHandler=() => {}, 
+    value, 
+    formFeild : { label=props.label, name="", helpText, className,} } = props
+
   const [isOptionOpen, setIsOptionOpen] = useState(false);
   const [optionSelcted, setOptionSelcted] = useState({
     name: "India",
@@ -10,17 +15,32 @@ const TelephoneInput = (props) => {
     code: "IN",
   });
   
-  const label = props.label || props?.formFeild?.label 
-  const { formFeild } = props;
 
   const optionSelectHandlerFn = (item) => {
     setIsOptionOpen((state) => !state);
     setOptionSelcted(item);
+    changeHandler({
+      target :{
+      name : "country",
+      value : item
+    }})
   };
 
   const closeOption = () => {
     setIsOptionOpen(false)
   }
+
+  useEffect(() => {
+    if (value?.country) {
+      setOptionSelcted(value?.country)
+    } else {
+      changeHandler({
+        target :{
+        name : "country",
+        value : optionSelcted
+      }})
+    }
+  },[])
 
   return (
     <>
@@ -39,11 +59,12 @@ const TelephoneInput = (props) => {
           <input
             type="text"
             className="telephone-input-container__telephone-input"
-            // value={8795675599}
-            // onChange={(e) => set(e.target.value)}
+            value={value?.[name]} 
+            onChange={(e) => changeHandler(e)}
+            name={name}
           />
         </div>
-        {formFeild?.helpText && <p className="help-text">{formFeild?.helpText}</p>}
+        {helpText && <p className="help-text">{helpText}</p>}
 
 
 

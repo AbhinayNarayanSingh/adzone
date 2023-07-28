@@ -34,7 +34,7 @@
 }
 
 .social-login{
-    width: -webkit-fill-available;
+    @extend .webkit-fill;
     margin: 0 1rem 1rem;
     padding: 1rem;
     border-radius: $BORDER_RADIUS;

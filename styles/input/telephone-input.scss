@@ -28,6 +28,8 @@
         }
 
         .telephone-input-container__telephone-input {
+            @extend .webkit-fill;
+
             letter-spacing: 1px;
 
             font-size: 1rem;
@@ -35,7 +37,6 @@
             border-radius: 0.25rem;
             border: 1px solid #cfcfcf;
             margin: 0.25rem 0;
-            width: -webkit-fill-available;
 
         }
     }

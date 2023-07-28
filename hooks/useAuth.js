@@ -34,6 +34,7 @@ const UseAuth = () => {
             setBody({
                 email : null,
                 phone : null,
+                country : null
             })
         }
     }, [])
@@ -145,7 +146,7 @@ const UseAuth = () => {
         // router.push(navigateToPage("login"))
     }
 
-    const passwordResetOTPHandler = () => {
+    const otpInitiator = () => {
         
     }
 

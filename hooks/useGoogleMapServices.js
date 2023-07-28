@@ -39,6 +39,7 @@ const useGoogleMapServices = () => {
 
     const getLatLng = (placeId) => {
         try {
+            let temp = {};
             const fields = ["geometry"]
             placesService(placeId, fields, (status, result) => {
                 if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -47,9 +48,11 @@ const useGoogleMapServices = () => {
                         lat: geometry.location.lat(),
                         lng: geometry.location.lng()
                     }
+                    temp = latLng
                     setLatLng(latLng)
                 }
             })
+            return temp
         } catch (error) {
             console.error('+++ error', error);
         }

@@ -42,7 +42,12 @@
                 width: 80%;
 
                 .inner-container {
-                    padding: 0 2rem 0 0;
+                    // padding: 0 2rem 0 0;
+
+                    input{
+                        @extend .webkit-fill;
+
+                    }
                 }
             }
 
@@ -76,7 +81,7 @@
 
             textarea {
                 border: 1px solid #cfcfcf;
-                width: 100%;
+                width: calc(100% - 2rem);
                 padding: .5rem 1rem;
                 resize: none;
                 border-radius: $BORDER_RADIUS;
@@ -84,6 +89,8 @@
 
             .tags-container {
                 display: flex;
+                align-items: flex-start;
+                flex-wrap: wrap;
                 margin-top: 1rem;
                 gap: .5rem;
 
@@ -193,8 +200,9 @@
     }
 
     label {
+        @extend .webkit-fill;
+
         display: block;
-        width: 100%;
         text-align: center;
         padding: 2rem 1rem;
         background: #0080001c;
@@ -256,7 +264,7 @@
 }
 
 .price-input {
-    width: calc(100% - 2rem) !important;
+    width: calc(25%) !important;
     margin-left: 2rem !important;
 }
 

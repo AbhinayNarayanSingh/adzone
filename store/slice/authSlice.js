@@ -14,12 +14,16 @@ const initialState = {
   error: null 
 }
 
+const setUserCookies = (token) => {
+  Cookies.set("token", token)
+  Cookies.set("reference_token", token)
+}
+
 export const signInAct = createAsyncThunk("user/signin", async (body,  { dispatch }) => {
   try {
     dispatch(startLoaderAct())
     const {data} = await services.post(endpoints.postSignIn, body)
-    Cookies.set("token", data.token)
-    Cookies.set("reference_token", data.token)
+    setUserCookies(data.token)
     dispatch(stopLoaderAct())
     return data
   } catch (error) {
@@ -33,8 +37,7 @@ export const quickSignInAct = createAsyncThunk("user/quick_signin", async (body,
   try {
     dispatch(startLoaderAct())
     const {data} = await services.post(endpoints.postRefreshToken, body)
-    Cookies.set("token", data.token)
-    Cookies.set("reference_token", data.token)
+    setUserCookies(data.token)
     dispatch(stopLoaderAct())
     return data
   } catch (error) {
@@ -58,8 +61,7 @@ export const signUpAct = createAsyncThunk("user/signup", async (payload, { dispa
     payload.is_active = true
 
     const {data} = await services.post(endpoints.postSignUp, payload)
-    Cookies.set("token", data.user.token)
-    Cookies.set("reference_token", data.user.token)
+    setUserCookies(data.token)
     dispatch(stopLoaderAct())
     return data.user
 

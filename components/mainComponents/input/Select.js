@@ -6,9 +6,10 @@ const Select = ({
   className,
   name="select",
   onChangeHandlerFn,
+  optionJsxType,
 }) => {
   const [isOptionOpen, setIsOptionOpen] = useState(false);
-  const [optionSelcted, setOptionSelcted] = useState(options[0] || {});
+  const [optionSelcted, setOptionSelcted] = useState(options?.[0] || {});
   
   const optionSelectHandlerFn = (item) => {
     setIsOptionOpen((state) => !state);
@@ -43,8 +44,8 @@ const Select = ({
 
       {isOptionOpen && (
         <div className="options-container">
-          {options.map((item, index) => {
-            let selectOptionType = "CATEGORY_SELECT"
+          {options?.[0] && options.map((item, index) => {
+            let selectOptionType = optionJsxType || "CATEGORY_SELECT"
             return (
               <div
                 onClick={() => optionSelectHandlerFn(item)}
