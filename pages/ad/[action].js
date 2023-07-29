@@ -1,208 +1,21 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import withAuth from "@/hoc/OAuth/withAuth";
 
 import TelephoneInput from "@/componentWrapper/input/TelephoneInput";
 import TextEditor from "@/componentWrapper/input/Editor";
-import withAuth from "@/hoc/OAuth/withAuth";
 import BannersMap from "@/components/Banners/BannersMap";
 import NewSelect from "@/components/mainComponents/input/NewSelect";
-import Icon from "@/components/mainComponents/image/Icon";
-
 import TagsInput from "@/components/Ad/TagsInput";
 import AdDurationAndPromotion from "@/components/Ad/AdDurationPromotion";
 import LisingImages from "@/components/Ad/LisingImages";
 import YoutubeVideo from "@/components/Ad/YoutubeVideo";
 import ListingAddress from "@/components/Ad/ListingAddress";
 import LinkToWebsite from "@/components/Ad/LinkToWebsite";
-import UseAdCost from "@/components/Ad/useAdCost";
 import ListingFor from "@/components/Ad/ListingFor";
-import { slugfy, uuidGenerator } from "@/utils/helper/slug";
-import { postNewListing } from "@/store/slice/listingSlice";
+import useListing from "@/components/Ad/Hooks/useListing";
 
 const AdPost = () => {
-  const dispatch = useDispatch()
-  const {auth, config} = useSelector((state) => state)
-  const { user } = auth
-  const {categories, currency} = config
 
-  const [responseState, setResponseState] = useState({
-    category: "",
-
-    title: "",
-    description: "",
-    listing_for: "for_sale",
-
-    amount: 0,
-
-    images: [],
-
-    isActiveAd: true,
-    isFeaturedAd: true,
-    isHighlightAd: true,
-    isWebsiteLinkedAd: false,
-
-    tags: [],
-    websiteURL: "",
-    youtubeVideoURL: "",
-
-    formatted_address: "",
-    short_formatted_address: "",
-    place_id: "",
-    lat: "",
-    lng: "",
-
-    country_code: "",
-    phone: "",
-    email: user?.email || ""
-  });
-
-  const valueHandlerFn = (name) => responseState[name];
-  const AdCostHook = UseAdCost()
-
-  const onChangeHandlerFn = (e) => {
-    const { name, value, checked, type } = e.target;
-    let prevState = { ...responseState };
-
-    // name
-    // debugger
-
-    switch (type) {
-      case "checkbox":
-        prevState[name] = checked;
-        break;
-      default:
-        prevState[name] = value;
-        break;
-      }
-      
-    switch (name) {
-      // case "category":
-      //   prevState["category"] = value.name;
-      //   prevState["category_id"] = value._id;
-      //   break;
-      
-      case "listing_for":
-        if (value !== "for_sale") prevState["amount"] = 0;
-        break;
-
-      case "amount" :
-        prevState["listing_for"] = "for_sale"
-        break;
-        
-      case "location" : 
-        prevState = { ...responseState, ...value };
-        break;
-
-      case "isWebsiteLinkedAd" : 
-        if (!checked) prevState["websiteURL"] = "";  
-      default:
-        break;
-    }
-
-    setResponseState(prevState);
-  };
-  
-  // select options
-  const categoryOptionsFn = () => {
-    const options = [];
-    categories.map((item) => {
-      options.push({
-        jsx: <>
-              <Icon src={item.icon} />
-              <p className="pl-1">{item.name}</p>
-            </>,
-        value: item
-      })
-    })
-    return options
-  }
-  const categoryOptions = categoryOptionsFn()
-
-  const sumbitHandler = () => {
-
-    let body = {...responseState}
-    const {title, tags, images, category} = body
-
-    // first short category
-    body["category"] = category.name
-    body["category_id"] = category._id
-
-    // form data validation
-
-    const requiredFeilds = [ "amount", "images", "title", "description", "place_id", "country_code", "phone" ]
-
-    for (let i = 0; i < requiredFeilds.length; i++) {
-      const element = requiredFeilds[i];
-
-      if (element == "amount" && body[element] == 0) {
-        if (body["listing_for"] == "for_sale") {
-          return alert("enter amount")
-        }
-      } else if (element == "images") {
-        if (!body[element].length) {
-          return alert("upload image")
-        }
-      } else {
-        if (body[element] == "") {
-          return alert("please enter ", element)
-        }
-      }
-    }
-
-    // add extra data
-    let uid = uuidGenerator();
-    let slug = slugfy(uid, title, tags);
-    let seller = user.name;
-    let seller_id = user._id;
-
-    const {listingCost} = AdCostHook
-
-    for (const [k,v] of Object.entries(listingCost["service"])) {
-      body[k] = v ? true : false;
-    }
-
-    // upload image
-    const uploadImage = []
-
-    images.map((img) => {
-      if (img?.url && img?.public_id) {
-        uploadImage.push({url : img?.url, public_id : img?.public_id})
-      } else {
-        // upload image and get url & public_id
-        uploadImage.push({url : img?.preview, public_id : "public_id"})
-      }
-    })
-
-    body["images"] = uploadImage
-
-    // update body and call api
-    body = {...body, uid, slug, seller, seller_id, currency}
-    dispatch(postNewListing(body))
-
-  }
-
-  // const lookForCat = () => {
-  //   let category;
-  //   let category_id = "6468c5c23d2fe40af7b9c050";
-
-  //   for (let i = 0; i < categoryOptions.length; i++) {
-  //     const element = categoryOptions[i];
-  //     // debugger
-  //     if (element?.value?.["_id"] == category_id) {
-  //       category = element
-  //       break
-  //     }
-  //   }
-
-  //   return category
-  // }
-
-  // useEffect(() => {
-  //   console.log('+++ lookForCat()', lookForCat().jsx);
-
-
-  // }, [])
-
+  const {categoryOptions, responseState, AdCostHook, onChangeHandlerFn, sumbitHandler} = useListing()
 
   return (
     <div className="ad-form-outer-container">
@@ -230,7 +43,7 @@ const AdPost = () => {
 
               <NewSelect 
                 options={categoryOptions}
-                value={valueHandlerFn}
+                value={responseState}
                 changeHandler={onChangeHandlerFn}
                 name="category"
               />
@@ -246,7 +59,7 @@ const AdPost = () => {
             <div className="inner-container">
               <textarea
                 name="title"
-                value={valueHandlerFn("title")}
+                value={responseState["title"]}
                 onChange={(e) => onChangeHandlerFn(e)}
               ></textarea>
               <p className="help-text">
@@ -263,7 +76,7 @@ const AdPost = () => {
           <div className="right-col">
             <TextEditor
               name="description"
-              value={valueHandlerFn}
+              value={responseState}
               setValue={onChangeHandlerFn}
             />
             <p className="help-text help-text-margin">
