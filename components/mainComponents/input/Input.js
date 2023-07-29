@@ -54,7 +54,7 @@ const Input = (props) => {
       return (
         <div className="form-feild"  key={type + "_input_" + name}>
           <label htmlFor="">{label}</label>
-          <input value={value?.[name]} onChange={(e) => changeHandler(e)} type="text" name={name} id={"email__" + name} />
+          <input value={value?.[name] || ""} onChange={(e) => changeHandler(e)} type="text" name={name} id={"email__" + name} />
           {helpText && <p className="help-text">{helpText}</p>}
         </div>
       );
@@ -64,7 +64,7 @@ const Input = (props) => {
         <div className="form-feild"  key={type + "_input_" + name}>
           <label htmlFor="">{label}</label>
           <div className="password-input-outer-container">
-            <input value={value?.[name]} onChange={(e) => changeHandler(e)} type={showPassword ? "text" : "password"} name={name} id={"password__" + name} className="password-input"/>
+            <input value={value?.[name] || ""} onChange={(e) => changeHandler(e)} type={showPassword ? "text" : "password"} name={name} id={"password__" + name} className="password-input"/>
             <span onClick={() => setShowPassword((state) => !state)}>
               {showPassword ? <Icon src={SHOW_PASSWORD_ICON} alt="show" size={"1.25rem"}/> :
               <Icon src={HIDE_PASSWORD_ICON} alt="hide" size={"1.25rem"}/>}
@@ -89,7 +89,7 @@ const Input = (props) => {
             }} 
             type="text" 
             name={name} 
-            value={value?.[name]} 
+            value={value?.[name] || ""} 
           />
 
           {(isSelectSearchOptionOpen && options?.[0]) && (
@@ -130,7 +130,7 @@ const Input = (props) => {
       return (
         <div className="form-feild" key={type + "_input_" + name}>
           <label htmlFor="">{label}</label>
-          <input value={value?.[name]} onChange={(e) => changeHandler(e)} type="text" name={name} />
+          <input value={value?.[name] || ""} onChange={(e) => changeHandler(e)} type="text" name={name} />
           {helpText && <p className="help-text">{helpText}</p>}
         </div>
       );

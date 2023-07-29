@@ -53,13 +53,13 @@ const AccountActivation = () => {
 
             {1 ? <form className="sign-form">
                   {accountActivationForm.map((feild) => {
-                      return (<Input formFeild={feild} key={"input__"+feild.type+"__"+feild.name}/>)
+                      return (<Input value="" formFeild={feild} key={"input__"+feild.type+"__"+feild.name}/>)
                   })}
             </form> 
             :
             <form className="sign-form">
                 {accountActivationVerifyForm.map((feild) => {
-                    return (<Input formFeild={feild} key={"input__"+feild.type+"__"+feild.name}/>)
+                    return (<Input value="" formFeild={feild} key={"input__"+feild.type+"__"+feild.name}/>)
                 })}
             </form>}
         </div>

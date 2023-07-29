@@ -6,7 +6,7 @@ const Form = ({ formFeild, className, submitHandler}) => {
       {formFeild.map((feild, index) => {
         return (
           <>
-            <Input formFeild={feild} />
+            <Input formFeild={feild} value=""/>
           </>
         );
       })}

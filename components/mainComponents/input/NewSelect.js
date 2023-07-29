@@ -21,13 +21,14 @@ const NewSelect = ({
             target:
             {
                 name: name,
-                value: item.value || ""
+                value: item?.value
             }
         }
         )
     };
 
     useEffect(() => {
+        // find out which cat is that
         optionSelectHandlerFn(value?.jsx ? value : options?.[0] || {})
     }, [])
 

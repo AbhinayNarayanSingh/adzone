@@ -62,10 +62,10 @@ const PersonalDetails = () => {
   return (
     <div>
       <form>
-        {personalDetailsFormFeild.map(feild => <Input formFeild={feild} key={feild.type + "_input_" + feild.name}/>)}
+        {personalDetailsFormFeild.map(feild => <Input value="" formFeild={feild} key={feild.type + "_input_" + feild.name}/>)}
       </form>
       <form className='mt-2'>
-        {passwordUpdatedFormFeild.map(feild => <Input formFeild={feild} key={feild.type + "_input_" + feild.name}/>)}
+        {passwordUpdatedFormFeild.map(feild => <Input value="" formFeild={feild} key={feild.type + "_input_" + feild.name}/>)}
       </form>
     </div>
   )

@@ -11,7 +11,7 @@ const AdDurationAndPromotion = ({AdCostHook}) => {
             <table className="w-100">
                 {listingOption.map((opt, index) => {
                     return (
-                        <div className="ad-promotion-outer-container" key={"listingOption__" + index}>
+                        <tbody className="ad-promotion-outer-container" key={"listingOption__" + index}>
                             <tr className="ad-promotion-container">
                                 <td className="listingOption__checkout">
                                     <input
@@ -27,18 +27,15 @@ const AdDurationAndPromotion = ({AdCostHook}) => {
                             <tr className="ad-promotion-container">
                                 <td>
                                     <select name={opt.name} className="listingOption__select" value={listingCost["validity"][opt.name]} onChange={(e) => totalCostChangeHandler(e, opt.basePrice)}>
-                                        <option value={1}>2 Week</option>
-                                        <option value={2}>4 Week</option>
-                                        <option value={3}>6 Week</option>
-                                        <option value={6}>12 Week</option>
+                                        {opt.vadility.map((vadility) => <option value={vadility} key={opt.name+"__vadility__"+vadility}>{vadility} week</option>)}
                                     </select>
                                 </td>
                                 <td className="listingOption__price">{currency} {listingCost["cost"][opt.name] || opt.basePrice}</td>
                             </tr>
-                        </div>
+                        </tbody>
                     )
                 })}
-                <div className="ad-promotion-outer-container">
+                <tbody className="ad-promotion-outer-container">
                     <tr className="ad-promotion-container">
                         <td className="listingOption__checkout">
                             <input
@@ -55,7 +52,7 @@ const AdDurationAndPromotion = ({AdCostHook}) => {
                         <td></td>
                         <td className="listingOption__price">{currency} {listingCost["cost"][isWebsiteLinkedAdName] || isWebsiteLinkedAd}</td>
                     </tr>
-                </div>
+                </tbody>
             </table>
             <p className="listingTotalPrice"><span>Total Price: </span> {currency} {totalCost}</p>
         </>

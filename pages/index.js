@@ -1,23 +1,23 @@
-import Link from "next/link";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import Link from "next/link";
 
 import Icon from "@/componentWrapper/image/Icon";
 
 import { navigateToSearch } from "@/utils/navigate/navigator";
 
-import { categoryData } from "@/store/staticStore";
 import { products } from "@/store/product";
 
-import HeroBanner from "@/components/Banners/Banner/HeroBanner";
 import BannersMap from "@/components/Banners/BannersMap";
 import ProductCards from "@/componentWrapper/cards/ProductCards";
 
 export default function Home() {
+  const {categories} = useSelector(state => state.config)
   const [loading, setLoading] = useState(false);
   return (
     <div className="homepage-outer-container">
       <div className="category-container">
-        {categoryData.slice(0, 11).map((item, index) => {
+        {categories.slice(0, 11).map((item, index) => {
           return (
             <div
               key={item.name + "__" + index}

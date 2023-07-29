@@ -1,9 +1,11 @@
 import { DEFAULT_CURRENCY, DEFAULT_CURRENCY_WORD } from "@/Environment";
 import { postData } from "@/store/staticStore";
+import { uuidGenerator } from "@/utils/helper/slug";
 import { navigateToPage } from "@/utils/navigate/navigator";
 import Link from "next/link";
 
-const ProductCards = ({ data, isSkelton = false, key=0 }) => {
+const ProductCards = (props) => {
+  const { data, isSkelton = false } = props
   const {
     images,
     slug="2-bedroom-fully-renovated-close-to-fanshawe-western-1633679888",
@@ -19,8 +21,10 @@ const ProductCards = ({ data, isSkelton = false, key=0 }) => {
     seller,
     isFeatured,
   } = data || postData;
+
+  const uid = uuidGenerator()
   return (
-    <Link href={navigateToPage("pdp", slug)} legacyBehavior key={key}>
+    <Link href={navigateToPage("pdp", slug)} legacyBehavior key={uid}>
       <div
         className={`product-outer-card-container ${isSkelton && "skelton"}`}
       >

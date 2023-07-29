@@ -30,13 +30,15 @@ const ListingAddress = (props) => {
     }, [query])
     
     useEffect(() => {
-        changeHandler({
-            target:
-            {
-                name: name,
-                value: {...listingLocation, ...latLng}
-            }
-        })
+        if (listingLocation?.place_id) {
+            changeHandler({
+                target:
+                {
+                    name: name,
+                    value: {...listingLocation, ...latLng}
+                }
+            })
+        }
       }, [latLng])
 
     return (

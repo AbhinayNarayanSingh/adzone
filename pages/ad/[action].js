@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import TelephoneInput from "@/componentWrapper/input/TelephoneInput";
-import { categoryData } from "@/store/staticStore";
 import TextEditor from "@/componentWrapper/input/Editor";
 import withAuth from "@/hoc/OAuth/withAuth";
 import BannersMap from "@/components/Banners/BannersMap";
@@ -15,25 +15,26 @@ import YoutubeVideo from "@/components/Ad/YoutubeVideo";
 import ListingAddress from "@/components/Ad/ListingAddress";
 import LinkToWebsite from "@/components/Ad/LinkToWebsite";
 import UseAdCost from "@/components/Ad/useAdCost";
+import ListingFor from "@/components/Ad/ListingFor";
+import { slugfy, uuidGenerator } from "@/utils/helper/slug";
+import { postNewListing } from "@/store/slice/listingSlice";
 
 const AdPost = () => {
-  const [responseState, setResponseState] = useState({
-    _id: "",
-    uid: "1633679888",
-    slug: "",
+  const dispatch = useDispatch()
+  const {auth, config} = useSelector((state) => state)
+  const { user } = auth
+  const {categories, currency} = config
 
+  const [responseState, setResponseState] = useState({
     category: "",
-    category_id: "",
 
     title: "",
     description: "",
     listing_for: "for_sale",
 
-    amount: "",
-    currency: "CAD",
+    amount: 0,
 
     images: [],
-    posted_on: "",
 
     isActiveAd: true,
     isFeaturedAd: true,
@@ -44,9 +45,6 @@ const AdPost = () => {
     websiteURL: "",
     youtubeVideoURL: "",
 
-    seller: "",
-    seller_id: "",
-
     formatted_address: "",
     short_formatted_address: "",
     place_id: "",
@@ -55,7 +53,7 @@ const AdPost = () => {
 
     country_code: "",
     phone: "",
-    email: ""
+    email: user?.email || ""
   });
 
   const valueHandlerFn = (name) => responseState[name];
@@ -64,6 +62,9 @@ const AdPost = () => {
   const onChangeHandlerFn = (e) => {
     const { name, value, checked, type } = e.target;
     let prevState = { ...responseState };
+
+    // name
+    // debugger
 
     switch (type) {
       case "checkbox":
@@ -75,13 +76,17 @@ const AdPost = () => {
       }
       
     switch (name) {
-      case "category":
-        prevState["category"] = value.name;
-        prevState["category_id"] = value._id;
-        break;
+      // case "category":
+      //   prevState["category"] = value.name;
+      //   prevState["category_id"] = value._id;
+      //   break;
       
       case "listing_for":
-        if (value !== "for_sale") prevState["amount"] = "";
+        if (value !== "for_sale") prevState["amount"] = 0;
+        break;
+
+      case "amount" :
+        prevState["listing_for"] = "for_sale"
         break;
         
       case "location" : 
@@ -98,9 +103,9 @@ const AdPost = () => {
   };
   
   // select options
-  const categoryOptions = () => {
+  const categoryOptionsFn = () => {
     const options = [];
-    categoryData.map((item) => {
+    categories.map((item) => {
       options.push({
         jsx: <>
               <Icon src={item.icon} />
@@ -111,11 +116,98 @@ const AdPost = () => {
     })
     return options
   }
+  const categoryOptions = categoryOptionsFn()
+
+  const sumbitHandler = () => {
+
+    let body = {...responseState}
+    const {title, tags, images, category} = body
+
+    // first short category
+    body["category"] = category.name
+    body["category_id"] = category._id
+
+    // form data validation
+
+    const requiredFeilds = [ "amount", "images", "title", "description", "place_id", "country_code", "phone" ]
+
+    for (let i = 0; i < requiredFeilds.length; i++) {
+      const element = requiredFeilds[i];
+
+      if (element == "amount" && body[element] == 0) {
+        if (body["listing_for"] == "for_sale") {
+          return alert("enter amount")
+        }
+      } else if (element == "images") {
+        if (!body[element].length) {
+          return alert("upload image")
+        }
+      } else {
+        if (body[element] == "") {
+          return alert("please enter ", element)
+        }
+      }
+    }
+
+    // add extra data
+    let uid = uuidGenerator();
+    let slug = slugfy(uid, title, tags);
+    let seller = user.name;
+    let seller_id = user._id;
+
+    const {listingCost} = AdCostHook
+
+    for (const [k,v] of Object.entries(listingCost["service"])) {
+      body[k] = v ? true : false;
+    }
+
+    // upload image
+    const uploadImage = []
+
+    images.map((img) => {
+      if (img?.url && img?.public_id) {
+        uploadImage.push({url : img?.url, public_id : img?.public_id})
+      } else {
+        // upload image and get url & public_id
+        uploadImage.push({url : img?.preview, public_id : "public_id"})
+      }
+    })
+
+    body["images"] = uploadImage
+
+    // update body and call api
+    body = {...body, uid, slug, seller, seller_id, currency}
+    dispatch(postNewListing(body))
+
+  }
+
+  // const lookForCat = () => {
+  //   let category;
+  //   let category_id = "6468c5c23d2fe40af7b9c050";
+
+  //   for (let i = 0; i < categoryOptions.length; i++) {
+  //     const element = categoryOptions[i];
+  //     // debugger
+  //     if (element?.value?.["_id"] == category_id) {
+  //       category = element
+  //       break
+  //     }
+  //   }
+
+  //   return category
+  // }
+
+  // useEffect(() => {
+  //   console.log('+++ lookForCat()', lookForCat().jsx);
+
+
+  // }, [])
+
 
   return (
     <div className="ad-form-outer-container">
       {/* {BannersMap("BULK_LISTING_BANNER")} */}
-      {/* {JSON.stringify(responseState)} */}
+      {/* {JSON.stringify(responseState["category"])} */}
 
 
       <h2 className="page-heading">Post Your Ad and Find Your Buyer</h2>
@@ -137,7 +229,7 @@ const AdPost = () => {
             <div className="inner-container">
 
               <NewSelect 
-                options={categoryOptions()}
+                options={categoryOptions}
                 value={valueHandlerFn}
                 changeHandler={onChangeHandlerFn}
                 name="category"
@@ -185,71 +277,11 @@ const AdPost = () => {
           <h2 className="left-col">Price : </h2>
           <div className="right-col">
             <div className="inner-container">
-              <div>
-                <div className="radio-input">
-                  <input
-                    type="radio"
-                    name="listing_for"
-                    id="for-sale"
-                    className="radio-input_input"
-                    value="for_sale"
-                    checked={true}
-                    onChange={(e) => onChangeHandlerFn(e)}
-                  />
-                  <label htmlFor="for-sale">For Sale</label>
-                </div>
-                <input
-                  type="text"
-                  className="price-input"
-                  name="amount"
-                  value={valueHandlerFn("amount")}
-                  onChange={(e) => onChangeHandlerFn(e)}
-                />
-              </div>
-              <div className="radio-input">
-                <input
-                  type="radio"
-                  name="listing_for"
-                  id="for-free"
-                  className="radio-input_input"
-                  value="for_free"
-                  onChange={(e) => onChangeHandlerFn(e)}
-                />
-                <label htmlFor="for-free">Free Stuff</label>
-              </div>
-              <div className="radio-input">
-                <input
-                  type="radio"
-                  name="listing_for"
-                  id="for-swap-trade"
-                  className="radio-input_input"
-                  value="for_swap_trade"
-                  onChange={(e) => onChangeHandlerFn(e)}
-                />
-                <label htmlFor="for-swap-trade">Swap/Trade</label>
-              </div>
-              <div className="radio-input">
-                <input
-                  type="radio"
-                  name="listing_for"
-                  id="contact"
-                  className="radio-input_input"
-                  value="contact"
-                  onChange={(e) => onChangeHandlerFn(e)}
-                />
-                <label htmlFor="contact">Contact</label>
-              </div>
-              <div className="radio-input">
-                <input
-                  type="radio"
-                  name="listing_for"
-                  id="wanted"
-                  className="radio-input_input"
-                  value="wanted"
-                  onChange={(e) => onChangeHandlerFn(e)}
-                />
-                <label htmlFor="wanted">Wanted</label>
-              </div>
+              <ListingFor
+                name="listing_for"
+                value={responseState}
+                changeHandler={onChangeHandlerFn}
+              />
             </div>
           </div>
         </div>
@@ -353,13 +385,10 @@ const AdPost = () => {
           <div className="right-col">
             <TelephoneInput 
               formFeild={{
-                // label: "Phone number",
-              type: "phone",
-              name: "phone",
-              // placeholder: "phone",
-              errorMsg: "",
-              // helpText : "Please provide your registered phone number"
-           }}
+                name: "phone",
+              }}
+              value={responseState}
+              changeHandler={onChangeHandlerFn}
             />
             <p className="help-text">
               Your phone number will show up on your listing.
@@ -373,8 +402,8 @@ const AdPost = () => {
             <div className="inner-container">
               <input
                 type="text"
-                value=""
-                disabled
+                value={responseState["email"]}
+                readOnly={true}
               />
               <p className="help-text">
                 Your email address will not be shared with others.
@@ -413,8 +442,8 @@ const AdPost = () => {
       </div>
 
       <div className="submit-btn-container">
-        <button className="btn">Checkout & Post</button>
-        <button className="btn-outline">Preview</button>
+        <button className="btn" onClick={sumbitHandler}>Checkout & Post</button>
+        {/* <button className="btn-outline">Preview</button> */}
       </div>
     </div>
   );

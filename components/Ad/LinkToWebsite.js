@@ -12,13 +12,16 @@ const LinkToWebsite = (props) => {
 
 
     useEffect(() => {
-        changeHandler({
-            target : {
-                name : name,
-                checked : listingCost["service"][name] ? true : false,
-                type : "checkbox"
-            }
-        })
+        let boolValue = listingCost["service"][name] ? true : false
+        if (value[name] !== boolValue) {
+            changeHandler({
+                target : {
+                    name : name,
+                    checked : boolValue,
+                    type : "checkbox"
+                }
+            })
+        }
     }, [listingCost["service"][name]])
 
     return (

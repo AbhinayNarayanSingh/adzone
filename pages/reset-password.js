@@ -90,7 +90,7 @@ const ResetPassword = () => {
             <p  className="auth-subline">An OTP has been sent. Please enter the OTP below, along with your new password, and confirm your new password to reset your password.</p>
             <form className="sign-form">
                 {resetpasswordForm.map((feild) => {
-                    return (<Input formFeild={feild} key={"input__"+feild.type+"__"+feild.name}/>)
+                    return (<Input value="" formFeild={feild} key={"input__"+feild.type+"__"+feild.name}/>)
                 })}
             </form>
         </div>}

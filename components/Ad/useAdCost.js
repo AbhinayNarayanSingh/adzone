@@ -8,28 +8,30 @@ const UseAdCost = () => {
 
     const [listingCost, setListingCost] = useState({
         cost: {
-            "ad-duration": 2.49,
-            "feature-ad": 0,
-            "highlight-ad": 0,
-            "bump-ad": 0,
+            "isActiveAd": 2.49,
+            "isFeaturedAd": 0,
+            "isHighlightAd": 0,
+            "isBumpAd": 0,
             "isWebsiteLinkedAd": 0
         },
         validity: {
-            "ad-duration": 1,
-            "feature-ad": 0,
-            "highlight-ad": 0,
-            "bump-ad": 0,
+            "isActiveAd": 1,
+            "isFeaturedAd": 0,
+            "isHighlightAd": 0,
+            "isBumpAd": 0,
             "isWebsiteLinkedAd": 0
         },
         service: {
-            "ad-duration": 1,
-            "feature-ad": 0,
-            "highlight-ad": 0,
-            "bump-ad": 0,
+            "isActiveAd": 1,
+            "isFeaturedAd": 0,
+            "isHighlightAd": 0,
+            "isBumpAd": 0,
             "isWebsiteLinkedAd": 0
         }
     })
     const [totalCost, setTotalCost] = useState(0)
+
+    const num = (n) => n*1;
 
     const totalCostFn = () => {
         let arr = Object.values(listingCost.cost)
@@ -39,9 +41,10 @@ const UseAdCost = () => {
     }
 
     const totalCostChangeHandler = (e, basePrice) => {
-        const { name, value, checked, type } = e.target;
+        let { name, value } = e.target;
+        value = num(value)
 
-        let adDurationBasePrice = listingOption.filter((i) => i.name === "ad-duration")
+        let adDurationBasePrice = listingOption.filter((i) => i.name === "isActiveAd")
         adDurationBasePrice = adDurationBasePrice[0]["basePrice"]
 
         const temp = { ...listingCost }
@@ -49,10 +52,10 @@ const UseAdCost = () => {
         temp["validity"][name] = value
         temp["service"][name] = 1
 
-        if (name !== "ad-duration" && temp["validity"]["ad-duration"] < value) {
-            temp["cost"]["ad-duration"] = RoundToDecimal(value * adDurationBasePrice)
-            temp["validity"]["ad-duration"] = value
-            temp["service"]["ad-duration"] = 1
+        if (name !== "isActiveAd" && temp["validity"]["isActiveAd"] < value) {
+            temp["cost"]["isActiveAd"] = RoundToDecimal(value * adDurationBasePrice)
+            temp["validity"]["isActiveAd"] = value
+            temp["service"]["isActiveAd"] = 1
         }
         setListingCost(temp)
     }

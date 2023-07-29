@@ -3,8 +3,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import endpoints from '@/utils/services/endpoints'
 import services from '@/utils/services/services'
 import { startLoaderAct, stopLoaderAct } from './loaderSlice'
-import Cookies from 'js-cookie'
 import { showToastAct } from './toastSlice'
+import Cookies from 'js-cookie'
 
 const initialState = {
   user : {},

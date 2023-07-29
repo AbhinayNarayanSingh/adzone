@@ -12,8 +12,8 @@ export default function withAuth(Component) {
   return function AuthenticatedComponent(props) {
 
     const router = useRouter();
-    console.log('+++ router', router);
-    const navigateToLoginPage = () => router.push(navigateToPage("login") + "?next="+ router.asPath)
+    let path = router.asPath
+    const navigateToLoginPage = () => router.push(navigateToPage("login") + "?next="+ path)
 
     const isAuth = useSelector((state) => state.auth.isAuth);
     const token = Cookies.get('token');

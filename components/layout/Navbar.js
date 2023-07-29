@@ -114,7 +114,7 @@ const Navbar = (props) => {
             <input
               type="text"
               placeholder="What are you looking for?"
-              value={searchString}
+              value={searchString || ""}
               onChange={(e) => setSearchString(e.target.value)}
               onClick={() => setIsSuggetionsBoxOpen(true)}
             />

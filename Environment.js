@@ -38,18 +38,3 @@ export const ERROR_TOAST_ICON = "/images/icons/error-toast-icon.svg";
 export const TEST =
   "https://images.unsplash.com/photo-1499852848443-3004d6dc4cfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80";
 
-// category
-
-export const Books_category = "/images/category/Books.svg";
-export const Cars_category = "/images/category/Cars.svg";
-export const Commercial_category = "/images/category/Commercial.svg";
-export const Electronics_category = "/images/category/Electronics.svg";
-export const Furniture_category = "/images/category/Furniture.svg";
-export const Jobs_category = "/images/category/Jobs.svg";
-export const Mobiles_category = "/images/category/Mobiles.svg";
-export const Others_category = "/images/category/Others.svg";
-export const Pets_category = "/images/category/Pets.svg";
-export const Properties_category = "/images/category/Properties.svg";
-export const Services_category = "/images/category/Services.svg";
-export const Games_category = "/images/category/Games.svg";
-export const Sports_category = "/images/category/Sports.svg";

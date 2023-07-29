@@ -64,7 +64,7 @@ const SwitchToProfessional = () => {
   return (
     <div>
       <form>
-        {switchToProfessionalFormFeild.map(feild => <Input formFeild={feild} key={feild.type + "_input_" + feild.name}/>)}
+        {switchToProfessionalFormFeild.map(feild => <Input  value="" formFeild={feild} key={feild.type + "_input_" + feild.name}/>)}
       </form>
     </div>
   )

@@ -8,6 +8,8 @@ const endpoints = {
 
     otpInitiator : () => `/otp`,
     postResetPasswordConfirm : () => `/password-reset`,
+
+    postListing : () => `/listing`,
 };
 
 export default endpoints
