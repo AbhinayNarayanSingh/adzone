@@ -1,7 +1,6 @@
 import { getCroppedImage } from '@/utils/helper/imageCroper';
-import React from 'react'
 
-const LisingImages = (props) => {
+const ListingImages = (props) => {
     const { name = "images", value, changeHandler } = props;
 
     const handleFileInputChange = async (event) => {
@@ -73,4 +72,4 @@ const LisingImages = (props) => {
     )
 }
 
-export default LisingImages
+export default ListingImages

@@ -6,7 +6,7 @@ import BannersMap from "@/components/Banners/BannersMap";
 import NewSelect from "@/components/mainComponents/input/NewSelect";
 import TagsInput from "@/components/Ad/TagsInput";
 import AdDurationAndPromotion from "@/components/Ad/AdDurationPromotion";
-import LisingImages from "@/components/Ad/LisingImages";
+import ListingImages from "@/components/Ad/ListingImages";
 import YoutubeVideo from "@/components/Ad/YoutubeVideo";
 import ListingAddress from "@/components/Ad/ListingAddress";
 import LinkToWebsite from "@/components/Ad/LinkToWebsite";
@@ -138,7 +138,7 @@ const AdPost = () => {
         {/* Photos */}
         <div className="section-detail-container">
           <h2 className="left-col">Photos :</h2>
-          <LisingImages
+          <ListingImages
             value={responseState}
             changeHandler={onChangeHandlerFn}
           />
