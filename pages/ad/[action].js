@@ -13,6 +13,8 @@ import AdDurationAndPromotion from "@/components/Ad/AdDurationPromotion";
 import LisingImages from "@/components/Ad/LisingImages";
 import YoutubeVideo from "@/components/Ad/YoutubeVideo";
 import ListingAddress from "@/components/Ad/ListingAddress";
+import LinkToWebsite from "@/components/Ad/LinkToWebsite";
+import UseAdCost from "@/components/Ad/useAdCost";
 
 const AdPost = () => {
   const [responseState, setResponseState] = useState({
@@ -25,7 +27,7 @@ const AdPost = () => {
 
     title: "",
     description: "",
-    listing_for: "",
+    listing_for: "for_sale",
 
     amount: "",
     currency: "CAD",
@@ -57,6 +59,7 @@ const AdPost = () => {
   });
 
   const valueHandlerFn = (name) => responseState[name];
+  const AdCostHook = UseAdCost()
 
   const onChangeHandlerFn = (e) => {
     const { name, value, checked, type } = e.target;
@@ -83,8 +86,10 @@ const AdPost = () => {
         
       case "location" : 
         prevState = { ...responseState, ...value };
-
         break;
+
+      case "isWebsiteLinkedAd" : 
+        if (!checked) prevState["websiteURL"] = "";  
       default:
         break;
     }
@@ -110,7 +115,7 @@ const AdPost = () => {
   return (
     <div className="ad-form-outer-container">
       {/* {BannersMap("BULK_LISTING_BANNER")} */}
-      {JSON.stringify(responseState)}
+      {/* {JSON.stringify(responseState)} */}
 
 
       <h2 className="page-heading">Post Your Ad and Find Your Buyer</h2>
@@ -188,6 +193,7 @@ const AdPost = () => {
                     id="for-sale"
                     className="radio-input_input"
                     value="for_sale"
+                    checked={true}
                     onChange={(e) => onChangeHandlerFn(e)}
                   />
                   <label htmlFor="for-sale">For Sale</label>
@@ -267,27 +273,11 @@ const AdPost = () => {
           <h2 className="left-col">Website URL :</h2>
           <div className="right-col">
             <div className="inner-container">
-              <div className="link-to-website-container">
-                <input
-                  type="checkbox"
-                  name="isWebsiteLinkedAd"
-                  id="link-to-website"
-                  value={valueHandlerFn("isWebsiteLinkedAd")}
-                  onChange={(e) => onChangeHandlerFn(e)}
-                />
-                <label htmlFor="link-to-website">
-                  Link to your website
-                </label>
-              </div>
-              <input
-                type="text"
-                name="websiteURL"
-                value={valueHandlerFn("websiteURL")}
-                onChange={(e) => onChangeHandlerFn(e)}
+            <LinkToWebsite
+                value={responseState}
+                changeHandler={onChangeHandlerFn}
+                AdCostHook={AdCostHook}
               />
-              <p className="help-text">
-                Website URL feature drives buyers directly to your own site.
-              </p>
             </div>
           </div>
         </div>
@@ -406,7 +396,9 @@ const AdPost = () => {
 
         <div className="section-detail-container">
           <div className="w-100">
-            <AdDurationAndPromotion/>
+            <AdDurationAndPromotion
+              AdCostHook={AdCostHook}
+            />
           </div>
         </div>
 

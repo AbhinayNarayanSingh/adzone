@@ -1,34 +1,10 @@
 import { RoundToDecimal } from '@/utils/helper/numberHelper'
-import { useState } from 'react'
-
-const listingOption = [
-    {
-        name: "ad-duration",
-        label: "Ad Duration",
-        basePrice: 2.49,
-        currency: "CAD"
-    },
-    {
-        name: "feature-ad",
-        label: "Feature Ad",
-        basePrice: 4.49,
-        currency: "CAD"
-    },
-    {
-        name: "highlight-ad",
-        label: "Highlight Ad",
-        basePrice: 4.49,
-        currency: "CAD"
-    },
-    {
-        name: "bump-ad",
-        label: "Bump Ad",
-        basePrice: 7.49,
-        currency: "CAD"
-    },
-]
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 
 const UseAdCost = () => {
+
+    const {listingOption} = useSelector((state) => state.config)
 
     const [listingCost, setListingCost] = useState({
         cost: {
@@ -53,11 +29,13 @@ const UseAdCost = () => {
             "isWebsiteLinkedAd": 0
         }
     })
+    const [totalCost, setTotalCost] = useState(0)
 
-    const totalCost = () => {
+    const totalCostFn = () => {
         let arr = Object.values(listingCost.cost)
         arr = arr.reduce((accumulator, i) => accumulator + i).toFixed(2)
-        return RoundToDecimal(arr)
+        arr = RoundToDecimal(arr)
+        setTotalCost(arr)
     }
 
     const totalCostChangeHandler = (e, basePrice) => {
@@ -94,6 +72,10 @@ const UseAdCost = () => {
         }
         setListingCost(temp)
     }
+
+    useEffect(() => {
+        totalCostFn()
+    }, [listingCost])
 
     return {listingOption, listingCost, totalCost, totalCostChangeHandler, featureHandler}
 }

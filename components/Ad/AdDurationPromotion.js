@@ -1,8 +1,11 @@
-import UseAdCost from "./useAdCost"
+import { useSelector } from "react-redux"
 
-const AdDurationAndPromotion = () => {
-    const {listingOption, listingCost, totalCost, totalCostChangeHandler, featureHandler} = UseAdCost()
+const AdDurationAndPromotion = ({AdCostHook}) => {
+    const {listingOption, listingCost, totalCost, totalCostChangeHandler, featureHandler} = AdCostHook
     
+    const isWebsiteLinkedAdName = "isWebsiteLinkedAd"
+
+    const {isWebsiteLinkedAd, currency} = useSelector((state) => state.config)
     return (
         <>
             <table className="w-100">
@@ -30,13 +33,31 @@ const AdDurationAndPromotion = () => {
                                         <option value={6}>12 Week</option>
                                     </select>
                                 </td>
-                                <td className="listingOption__price">{opt.currency} {listingCost["cost"][opt.name] || opt.basePrice}</td>
+                                <td className="listingOption__price">{currency} {listingCost["cost"][opt.name] || opt.basePrice}</td>
                             </tr>
                         </div>
                     )
                 })}
+                <div className="ad-promotion-outer-container">
+                    <tr className="ad-promotion-container">
+                        <td className="listingOption__checkout">
+                            <input
+                                type="checkbox"
+                                name={isWebsiteLinkedAdName}
+                                id={isWebsiteLinkedAdName}
+                                checked={listingCost["service"][isWebsiteLinkedAdName]}
+                                onChange={(e) => featureHandler(e, isWebsiteLinkedAd)}
+                            />
+                        </td>
+                        <td className="ad-options"><label htmlFor={isWebsiteLinkedAdName}>{"Website Linked Ad"}</label></td>
+                    </tr>
+                    <tr className="ad-promotion-container">
+                        <td></td>
+                        <td className="listingOption__price">{currency} {listingCost["cost"][isWebsiteLinkedAdName] || isWebsiteLinkedAd}</td>
+                    </tr>
+                </div>
             </table>
-            <p className="listingTotalPrice"><span>Total Price: </span> {"$"}{totalCost()}</p>
+            <p className="listingTotalPrice"><span>Total Price: </span> {currency} {totalCost}</p>
         </>
     )
 }

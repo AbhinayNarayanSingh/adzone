@@ -57,6 +57,7 @@ const TagsInput = (props) => {
                 value={Tags}
                 onChange={(e) => tagsHandlerFn(e)} 
                 className="tags-input"
+                readOnly={value[name].length >=5 ? true : false}
             />
             <p className="help-text">
                 Increase your ad exposure. Enter up to 5 keywords someone could
