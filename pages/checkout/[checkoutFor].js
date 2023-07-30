@@ -21,13 +21,23 @@ export default function MembershipCheckout() {
       }, []);
 
   return (
-    <div style={{maxWidth: "500px", margin : "5rem"}}>
-      <h1>React Stripe and the Payment Element</h1>
-      {clientSecret && stripePromise && (
-        <Elements stripe={stripePromise} options={{ clientSecret }}>
-          <CheckoutForm />
-        </Elements>
-      )}
+    <div className="checkout-outer-container">
+    <div className="checkout-container">
+      <div className="col">
+      <h3>Paid Membership Service</h3>
+      <h1>CAD 24.99</h1>
+      {/* <h2>Paid Listing & Promotion - Visibility for 2 Weeks</h2> */}
+      <h2>Paid Membership - Visibility for 3 Month</h2>
+
+      </div>
+      <div className="col">
+        {clientSecret && stripePromise && (
+          <Elements stripe={stripePromise} options={{ clientSecret }}>
+            <CheckoutForm />
+          </Elements>
+        )}
+      </div>
+    </div>
     </div>
   );
 }
@@ -68,7 +78,7 @@ function CheckoutForm() {
   return (
     <form id="payment-form" onSubmit={handleSubmit}>
       <PaymentElement id="payment-element" />
-      <button disabled={isProcessing || !stripe || !elements} id="submit">
+      <button disabled={isProcessing || !stripe || !elements} id="submit" className="btn mt-1">
         <span id="button-text">
           {isProcessing ? "Processing ... " : "Pay now"}
         </span>

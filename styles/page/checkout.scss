@@ -1,0 +1,30 @@
+.checkout-outer-container {
+    // min-height: 61vh;
+    
+    .checkout-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        margin: 5rem;
+
+        .col {
+            width: 30%;
+            color: $TEXT_COLOR;
+            h1 {
+                font-size: 3rem;
+                font-weight: 600;
+            }
+
+            h3 {
+                font-size: 1.1rem;
+                font-weight: 500;
+            }
+            h2 {
+                font-weight: 500;
+            }
+
+
+        }
+    }
+}

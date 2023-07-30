@@ -97,7 +97,25 @@ const useListing = () => {
     }
     const categoryOptions = categoryOptionsFn()
 
-    const sumbitHandler = () => {
+    const uploadImageFn = async (images) => {
+        try {
+            const uploadPromises = images.map(async (img) => {
+                if (img?.url && img?.public_id) {
+                    return { url: img?.url, public_id: img?.public_id };
+                } else {
+                    return await uploadImageToCloudinary(img.path);
+                }
+            });
+    
+            const uploadImage = await Promise.all(uploadPromises);
+            return uploadImage;
+        } catch (error) {
+            console.error(error);
+            return [];
+        }
+    };
+    
+    const sumbitHandler = async () => {
 
         let body = { ...responseState }
         const { title, tags, images, category } = body
@@ -141,19 +159,7 @@ const useListing = () => {
         }
 
         // upload image
-        const uploadImage = []
-
-        images.map(async (img) => {
-            if (img?.url && img?.public_id) {
-                uploadImage.push({ url: img?.url, public_id: img?.public_id })
-            } else {
-                // upload image and get url & public_id
-                let data = uploadImageToCloudinary(img.path)
-                data = await data
-                uploadImage.push(data)
-            }
-        })
-
+        const uploadImage = await uploadImageFn(images)
         body["images"] = uploadImage
 
         // update body and call api
