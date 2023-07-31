@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    loader : false
+    loader : false,
+    redirectTo : ""
 }
 
 const loaderSlice = createSlice({
@@ -15,9 +16,15 @@ const loaderSlice = createSlice({
         },
         stopLoaderAct : (state) => {
             state.loader = false
+        },
+        redirectToAct : (state, action) => {
+            state.redirectTo = action.payload
+        },
+        redirectResetAct : (state) => {
+            state.redirectTo = ""
         }
       },
 })
 
-export const { startLoaderAct, stopLoaderAct } = loaderSlice.actions
+export const { startLoaderAct, stopLoaderAct, redirectToAct, redirectResetAct } = loaderSlice.actions
 export default loaderSlice.reducer

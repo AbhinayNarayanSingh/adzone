@@ -12,6 +12,7 @@ const initialState = {
     },
 
     isWebsiteLinkedAd: 4.49,
+    listingDuration : "Week",
 
     listingOption: [
         {
@@ -37,6 +38,27 @@ const initialState = {
             label: "Bump Ad",
             basePrice: 7.49,
             vadility : [1,2]
+        },
+    ],
+
+    membershipOption : [
+        {
+            label: "Basic Plan",
+            name: "basicPlan",
+            amount: 4.99,
+            validity: 30
+        },
+        {
+            label: "Individual Plan",
+            name: "individualPlan",
+            amount: 9.99,
+            validity: 90
+        },
+        {
+            label: "Business Plan",
+            name: "businessPlan",
+            amount: 14.99,
+            validity: 180
         },
     ],
 

@@ -2,11 +2,13 @@ import Head from "next/head";
 import { Provider } from 'react-redux'
 import { SessionProvider } from 'next-auth/react';
 
+import store from '@/store/store';
+
 import Toast from '@/hoc/toast/Toast';
 import Loader from '@/components/layout/Loader';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import store from '@/store/store';
+import Redirect from "@/components/layout/Redirect";
 
 import "@/styles/style.map.scss";
 import "@/styles/globals.css";
@@ -24,6 +26,7 @@ export default function App({ Component, pageProps }) {
 
       <Loader />
       <Toast/>
+      <Redirect/>
 
       <Navbar />
       <Component {...pageProps} />

@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 import endpoints from '@/utils/services/endpoints'
 import services from '@/utils/services/services'
-import { startLoaderAct, stopLoaderAct } from './loaderSlice'
+import { redirectToAct, startLoaderAct, stopLoaderAct } from './loaderSlice'
 import { showToastAct } from './toastSlice'
 
 const initialState = {
@@ -16,7 +16,8 @@ const initialState = {
 export const postNewListing = createAsyncThunk("listing/postNewListing", async (body, { dispatch }) => {
     try {
         dispatch(startLoaderAct())
-        const { data } = await services.post(endpoints.postListing, body)
+        dispatch(redirectToAct("setting"))
+        // const { data } = await services.post(endpoints.postListing, body)
         dispatch(stopLoaderAct())
         return data
     } catch (error) {

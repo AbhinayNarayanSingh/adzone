@@ -5,7 +5,7 @@ const AdDurationAndPromotion = ({AdCostHook}) => {
     
     const isWebsiteLinkedAdName = "isWebsiteLinkedAd"
 
-    const {isWebsiteLinkedAd, currency} = useSelector((state) => state.config)
+    const {isWebsiteLinkedAd, currency, listingDuration} = useSelector((state) => state.config)
     return (
         <>
             <table className="w-100">
@@ -27,7 +27,7 @@ const AdDurationAndPromotion = ({AdCostHook}) => {
                             <tr className="ad-promotion-container">
                                 <td>
                                     <select name={opt.name} className="listingOption__select" value={listingCost["validity"][opt.name]} onChange={(e) => totalCostChangeHandler(e, opt.basePrice)}>
-                                        {opt.vadility.map((vadility) => <option value={vadility} key={opt.name+"__vadility__"+vadility}>{vadility} week</option>)}
+                                        {opt.vadility.map((vadility) => <option value={vadility} key={opt.name+"__vadility__"+vadility}>{vadility} {listingDuration}</option>)}
                                     </select>
                                 </td>
                                 <td className="listingOption__price">{currency} {listingCost["cost"][opt.name] || opt.basePrice}</td>

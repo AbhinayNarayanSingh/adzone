@@ -9,6 +9,13 @@ export default function MembershipCheckout() {
     const [clientSecret, setClientSecret] = useState("");
     const stripePromise = loadStripe(process.env.STRIP_PUBLISH_KEY);
 
+    const data = {
+      amount : 25.99,
+      currency : "CAD",
+      service : "Paid Membership Service",
+      description : "Paid Listing & Promotion - Visibility for 2 Weeks"
+    }
+
     useEffect(() => {
         // fetch("http://localhost:9090/create-payment-intent", {
         //   method: "POST",
@@ -23,20 +30,18 @@ export default function MembershipCheckout() {
   return (
     <div className="checkout-outer-container">
     <div className="checkout-container">
-      <div className="col">
-      <h3>Paid Membership Service</h3>
-      <h1>CAD 24.99</h1>
-      {/* <h2>Paid Listing & Promotion - Visibility for 2 Weeks</h2> */}
-      <h2>Paid Membership - Visibility for 3 Month</h2>
-
+      <div className="mb-3">
+        <h3>{data?.service}</h3>
+        <h1>{data?.currency} {data?.amount}</h1>
+        <h2>{data?.description}</h2>
+        {/* <h2>Paid Membership - Visibility for 3 Month</h2> */}
       </div>
-      <div className="col">
+
         {clientSecret && stripePromise && (
           <Elements stripe={stripePromise} options={{ clientSecret }}>
             <CheckoutForm />
           </Elements>
         )}
-      </div>
     </div>
     </div>
   );
@@ -78,7 +83,7 @@ function CheckoutForm() {
   return (
     <form id="payment-form" onSubmit={handleSubmit}>
       <PaymentElement id="payment-element" />
-      <button disabled={isProcessing || !stripe || !elements} id="submit" className="btn mt-1">
+      <button disabled={isProcessing || !stripe || !elements} id="submit" className="btn mt-2">
         <span id="button-text">
           {isProcessing ? "Processing ... " : "Pay now"}
         </span>
