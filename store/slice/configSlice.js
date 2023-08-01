@@ -15,29 +15,62 @@ const initialState = {
     listingDuration : "Week",
 
     listingOption: [
-        {
-            name: "isActiveAd",
-            label: "Ad Duration",
-            basePrice: 2.49,
-            vadility : [2,4,8,12]
+         {
+            "_id": "64c8ba555fc2c79f31469dae",
+            "name": "isActiveAd",
+            "basePrice": 2.490000009536743,
+            "label": "Ad Duration",
+            "type": "LISTING",
+            "unitOfMeasure": "Week",
+            "vadility": [
+                1,
+                2,
+                4,
+                8,
+                12
+            ]
         },
         {
-            name: "isFeaturedAd",
-            label: "Feature Ad",
-            basePrice: 2.99,
-            vadility : [2,4,8,12]
+            "_id": "64c8bac6e4b4073a45d7567c",
+            "basePrice": 2.990000009536743,
+            "label": "Feature Ad",
+            "name": "isFeaturedAd",
+            "type": "LISTING",
+            "unitOfMeasure": "Week",
+            "vadility": [
+                1,
+                2,
+                4,
+                8,
+                12
+            ]
         },
         {
-            name: "isHighlightAd",
-            label: "Highlight Ad",
-            basePrice: 1.99,
-            vadility : [1,2,4,8,12]
+            "_id": "64c8bc5be4b4073a45d7567d",
+            "basePrice": 1.9900000095367432,
+            "label": "Highlight Ad",
+            "name": "isHighlightAd",
+            "type": "LISTING",
+            "unitOfMeasure": "Week",
+            "vadility": [
+                1,
+                2,
+                4,
+                8,
+                12
+            ]
         },
         {
-            name: "isBumpAd",
-            label: "Bump Ad",
-            basePrice: 7.49,
-            vadility : [1,2]
+            "_id": "64c8bc79e4b4073a45d7567e",
+            "basePrice": 7.489999771118164,
+            "label": "Bump Ad",
+            "name": "isBumpAd",
+            "type": "LISTING",
+            "unitOfMeasure": "Week",
+            "vadility": [
+                1,
+                2
+            ]
         },
     ],
 

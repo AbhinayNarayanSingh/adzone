@@ -1,3 +1,4 @@
+import { RoundToDecimal } from "@/utils/helper/numberHelper"
 import { useSelector } from "react-redux"
 
 const AdDurationAndPromotion = ({AdCostHook}) => {
@@ -19,7 +20,7 @@ const AdDurationAndPromotion = ({AdCostHook}) => {
                                         name={opt.name}
                                         id={opt.name}
                                         checked={listingCost["service"][opt.name]}
-                                        onChange={(e) => featureHandler(e, opt.basePrice)}
+                                        onChange={(e) => featureHandler(e, opt.basePrice, opt.vadility[0])}
                                     />
                                 </td>
                                 <td className="ad-options"><label htmlFor={opt.name}>{opt.label}</label></td>
@@ -30,7 +31,7 @@ const AdDurationAndPromotion = ({AdCostHook}) => {
                                         {opt.vadility.map((vadility) => <option value={vadility} key={opt.name+"__vadility__"+vadility}>{vadility} {listingDuration}</option>)}
                                     </select>
                                 </td>
-                                <td className="listingOption__price">{currency} {listingCost["cost"][opt.name] || opt.basePrice}</td>
+                                <td className="listingOption__price">{currency} {RoundToDecimal(listingCost["cost"][opt.name] || opt.basePrice)}</td>
                             </tr>
                         </tbody>
                     )

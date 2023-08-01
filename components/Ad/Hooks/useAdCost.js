@@ -60,13 +60,13 @@ const UseAdCost = () => {
         setListingCost(temp)
     }
 
-    const featureHandler = (e, basePrice) => {
+    const featureHandler = (e, basePrice, baseValidity=1) => {
         const { name, value, checked, type } = e.target;
         const temp = { ...listingCost }
 
         if (checked) {
-            temp["cost"][name] = RoundToDecimal(basePrice)
-            temp["validity"][name] = 1
+            temp["cost"][name] = RoundToDecimal(basePrice * baseValidity)
+            temp["validity"][name] = baseValidity
             temp["service"][name] = 1
         } else {
             temp["cost"][name] = 0
