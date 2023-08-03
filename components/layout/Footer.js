@@ -3,6 +3,7 @@ import Link from "next/link";
 import { navigateToPage } from "@/utils/navigate/navigator"
 import { useSelector } from "react-redux";
 import UseAuth from "@/hooks/useAuth";
+import { useRouter } from "next/router";
 
 const Footer = () => {
   const footerBtns = [
@@ -29,6 +30,17 @@ const Footer = () => {
   ]
   const {logoutHandler} = UseAuth()
   const {isAuth, user} = useSelector((state) => state.auth);
+  const route = useRouter()
+  
+  const skipObj = {
+    "/checkout/success" : true,
+    "/checkout/[checkoutFor]" : true
+  }
+
+  if (skipObj[route.pathname]) {
+    return <></>
+  }
+  
 
   return (
     <div className="footer-outer-container">

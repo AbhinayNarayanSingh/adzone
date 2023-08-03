@@ -8,6 +8,21 @@ import Cookies from 'js-cookie'
 
 const initialState = {
   user : {},
+  billingAddress : {
+    _id: "64cbd819fb5a96675d7ad1e8",
+    user_id: "6497145caa941f8a727ef1ab",
+    name: "Abhinay Singh",
+    address: "130 Weber St W",
+    city: "Kitchener",
+    state: "ON",
+    country: "Canada",
+    countryCode: "+1",
+    postalCode: "N2H4A2",
+    email: "abhinay@adzone.com",
+    phone: "9999955555",
+    created_at: "2023-08-03T22:08:49+05:30",
+    updated_at: "0001-01-01T00:00:00Z"
+  },
   quickLoginUser : {},
   isAuth: false,
   status: 'idle', 

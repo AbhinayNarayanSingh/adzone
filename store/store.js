@@ -5,6 +5,7 @@ import loaderSlice from './slice/loaderSlice'
 import toastSlice from './slice/toastSlice'
 import configSlice from './slice/configSlice'
 import listingSlice from './slice/listingSlice'
+import checkoutSlice from './slice/checkoutSlice'
 
 
 const rootReducer = combineReducers({
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
     
     config : configSlice,
     auth : authReducer,
-    listing : listingSlice
+    listing : listingSlice,
+    checkout : checkoutSlice
 })
 
 const store = configureStore({

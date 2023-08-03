@@ -11,9 +11,6 @@ const initialState = {
         code: "CA",
     },
 
-    isWebsiteLinkedAd: 4.49,
-    listingDuration : "Week",
-
     listingOption: [
          {
             "_id": "64c8ba555fc2c79f31469dae",
@@ -72,6 +69,15 @@ const initialState = {
                 2
             ]
         },
+        {
+            "_id": "64cb85fb06960837a2de5f62",
+            "basePrice": 4.489999771118164,
+            "label": "Website Linked Ad",
+            "name": "isWebsiteLinkedAd",
+            "type": "FEATURE",
+            "unitOfMeasure": "",
+            "vadility": []
+        }
     ],
 
     membershipOption : [

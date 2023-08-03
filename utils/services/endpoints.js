@@ -10,6 +10,9 @@ const endpoints = {
     postResetPasswordConfirm : () => `/password-reset`,
 
     postListing : () => `/listing`,
+
+    postPaymentIntent : () => `/create-payment-intent`,
+    deletePaymentIntent : () => `/cancel-payment-intent`,
 };
 
 export default endpoints

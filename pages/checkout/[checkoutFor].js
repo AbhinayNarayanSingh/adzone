@@ -1,39 +1,46 @@
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 import { loadStripe } from "@stripe/stripe-js";
 import { useStripe, useElements, PaymentElement, Elements } from "@stripe/react-stripe-js";
+import { useDispatch, useSelector } from "react-redux";
+import { showToastAct } from "@/store/slice/toastSlice";
 
 
+const stripePromise = loadStripe(process.env.STRIP_PUBLISH_KEY);
 
 export default function MembershipCheckout() {
-    const [clientSecret, setClientSecret] = useState("");
-    const stripePromise = loadStripe(process.env.STRIP_PUBLISH_KEY);
+  const router = useRouter()
 
-    const data = {
-      amount : 25.99,
-      currency : "CAD",
-      service : "Paid Membership Service",
-      description : "Paid Listing & Promotion - Visibility for 2 Weeks"
+  const {checkout : { _id, clientSecret, paymentIntentID, totalCost, type, narration,
+  }} = useSelector(state => state)
+
+  useEffect(() => {
+    if (router.query.checkoutFor == "success" && router?.query?.payment_intent) {
+      alert(router?.query?.payment_intent)
+      
+
     }
+  }, [])
 
-    useEffect(() => {
-        // fetch("http://localhost:9090/create-payment-intent", {
-        //   method: "POST",
-        //   body: JSON.stringify({}),
-        // }).then(async (result) => {
-        //   var { clientSecret } = await result.json();
-        //   setClientSecret(clientSecret);
-        // });
-        setClientSecret("pi_3NFwEmSAIDSoJ9VZ0rV2Q7A5_secret_53bZfqU9dyqbASvtqr8ChWIXS");
-      }, []);
+  if (router.query.checkoutFor == "success") {
+    return (
+      <div className="checkout-outer-container">
+        <div className="checkout-container">
+          <h1>Payment Successful</h1>
+        </div>
+      </div>
+    )
+  }
 
+    
   return (
     <div className="checkout-outer-container">
     <div className="checkout-container">
       <div className="mb-3">
-        <h3>{data?.service}</h3>
-        <h1>{data?.currency} {data?.amount}</h1>
-        <h2>{data?.description}</h2>
+        <h3>{type}</h3>
+        <h1>{"CAD"} {totalCost}</h1>
+        <h2>{narration}</h2>
         {/* <h2>Paid Membership - Visibility for 3 Month</h2> */}
       </div>
 
@@ -52,8 +59,8 @@ export default function MembershipCheckout() {
 function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
+  const dispatch = useDispatch()
 
-  const [message, setMessage] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -66,17 +73,29 @@ function CheckoutForm() {
     const { error, paymentIntent } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: `${window.location.origin}/checkout/success`,
+        return_url: `${window.location.origin}/checkout/secure`,
       },
     });
+    // debugger
+    console.log('+++ error, paymentIntent', error, paymentIntent);
 
-    if (paymentIntent?.status === "succeeded") {
-        setMessage(paymentIntent.status);
-    } else if (error?.type === "card_error" || error?.type === "validation_error") {
-      setMessage(error.message);
-    } else {
-      setMessage("An unexpected error occured.");
+    // charge : "ch_3Nb53gSAIDSoJ9VZ1djcmQNb"
+    // code : "card_declined"
+    // decline_code: "generic_decline"
+    // doc_url: "https://stripe.com/docs/error-codes/card-declined"
+    // message: "Your card has been declined."
+    if (error?.code) {
+      dispatch(showToastAct({message : error?.message + " decline_code " + error?.decline_code}))
     }
+    debugger
+    
+    // if (paymentIntent?.status === "succeeded") {
+    //     setMessage(paymentIntent.status);
+    // } else if (error?.type === "card_error" || error?.type === "validation_error") {
+    //   setMessage(error.message);
+    // } else {
+    //   setMessage("An unexpected error occured.");
+    // }
     setIsProcessing(false);
   };
 
@@ -89,8 +108,6 @@ function CheckoutForm() {
         </span>
       </button>
 
-      {/* Show any error or success messages */}
-      {message && <div id="payment-message">{message}</div>}
     </form>
   );
 }

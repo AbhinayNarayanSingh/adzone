@@ -11,7 +11,7 @@ import { postNewListing } from "@/store/slice/listingSlice";
 
 const useListing = () => {
     const dispatch = useDispatch()
-    const { auth: { user }, config: { categories, currency } } = useSelector((state) => state)
+    const { auth: { user, billingAddress }, config: { categories, currency, listingOption } } = useSelector((state) => state)
     const AdCostHook = UseAdCost()
 
 
@@ -125,26 +125,29 @@ const useListing = () => {
         body["category_id"] = category._id
 
         // form data validation
-
-        const requiredFeilds = ["amount", "images", "title", "description", "place_id", "country_code", "phone"]
-
-        for (let i = 0; i < requiredFeilds.length; i++) {
-            const element = requiredFeilds[i];
-
-            if (element == "amount" && body[element] == 0) {
-                if (body["listing_for"] == "for_sale") {
-                    return alert("enter amount")
-                }
-            } else if (element == "images") {
-                if (!body[element].length) {
-                    return alert("upload image")
-                }
-            } else {
-                if (body[element] == "") {
-                    return alert("please enter ", element)
+        const formValidation = () => {
+            const requiredFeilds = ["amount", "images", "title", "description", "place_id", "country_code", "phone"]
+    
+            for (let i = 0; i < requiredFeilds.length; i++) {
+                const element = requiredFeilds[i];
+    
+                if (element == "amount" && body[element] == 0) {
+                    if (body["listing_for"] == "for_sale") {
+                        return alert("enter amount")
+                    }
+                } else if (element == "images") {
+                    if (!body[element].length) {
+                        return alert("upload image")
+                    }
+                } else {
+                    if (body[element] == "") {
+                        return alert("please enter ", element)
+                    }
                 }
             }
         }
+        formValidation()
+
 
         // add extra data
         let uid = uuidGenerator();
@@ -153,9 +156,46 @@ const useListing = () => {
         let seller_id = user._id;
 
         const { listingCost } = AdCostHook
+        const services = []
 
         for (const [k, v] of Object.entries(listingCost["service"])) {
             body[k] = v ? true : false;
+            if ( v ) services.push({
+                name : k,
+                validity : listingCost["validity"][k]
+            })
+        }
+
+        const paymentIntentBody = {
+            listing_id : "",
+            seller_id : user._id,
+            type : "LISTING",
+            narration : "",
+            services : [],
+            billingAddress : billingAddress
+        }
+
+        let listingDuration = 1;
+
+        for (const service of services) {
+            for (const option of listingOption) {
+                if (service.name == option.name) {
+                    paymentIntentBody?.services.push({
+                        _id: option._id,
+                        name: option.name,
+                        duration : service.validity
+                    })
+
+                    if (option.name == "isActiveAd") {
+                        listingDuration = service.validity;
+                        paymentIntentBody.narration = `Paid Listing - Visibility for ${listingDuration} ${option.unitOfMeasure}`
+                    } else {
+                        paymentIntentBody.type = "LISTING_AND_PROMOTION"
+                        paymentIntentBody.narration = `Paid Listing & Promotion - Visibility for ${listingDuration} ${option.unitOfMeasure}`
+                    }
+                    continue
+                }
+            }
         }
 
         // upload image
@@ -164,7 +204,10 @@ const useListing = () => {
 
         // update body and call api
         body = { ...body, uid, slug, seller, seller_id, currency }
-        dispatch(postNewListing(body))
+        dispatch(postNewListing({
+            body,
+            paymentIntentBody
+        }))
 
     }
 

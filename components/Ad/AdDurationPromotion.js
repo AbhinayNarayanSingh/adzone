@@ -4,9 +4,7 @@ import { useSelector } from "react-redux"
 const AdDurationAndPromotion = ({AdCostHook}) => {
     const {listingOption, listingCost, totalCost, totalCostChangeHandler, featureHandler} = AdCostHook
     
-    const isWebsiteLinkedAdName = "isWebsiteLinkedAd"
-
-    const {isWebsiteLinkedAd, currency, listingDuration} = useSelector((state) => state.config)
+    const { currency } = useSelector((state) => state.config)
     return (
         <>
             <table className="w-100">
@@ -27,16 +25,20 @@ const AdDurationAndPromotion = ({AdCostHook}) => {
                             </tr>
                             <tr className="ad-promotion-container">
                                 <td>
-                                    <select name={opt.name} className="listingOption__select" value={listingCost["validity"][opt.name]} onChange={(e) => totalCostChangeHandler(e, opt.basePrice)}>
-                                        {opt.vadility.map((vadility) => <option value={vadility} key={opt.name+"__vadility__"+vadility}>{vadility} {listingDuration}</option>)}
-                                    </select>
+                                    {opt.vadility?.[0] ? (
+                                        <select name={opt.name} className="listingOption__select" value={listingCost["validity"][opt.name]} onChange={(e) => totalCostChangeHandler(e, opt.basePrice)}>
+                                            {opt.vadility.map((vadility) => <option value={vadility} key={opt.name+"__vadility__"+vadility}>{vadility} {opt?.unitOfMeasure}</option>)}
+                                        </select>
+                                    ) : (
+                                        <></>
+                                    )}
                                 </td>
                                 <td className="listingOption__price">{currency} {RoundToDecimal(listingCost["cost"][opt.name] || opt.basePrice)}</td>
                             </tr>
                         </tbody>
                     )
                 })}
-                <tbody className="ad-promotion-outer-container">
+                {/* <tbody className="ad-promotion-outer-container">
                     <tr className="ad-promotion-container">
                         <td className="listingOption__checkout">
                             <input
@@ -53,7 +55,7 @@ const AdDurationAndPromotion = ({AdCostHook}) => {
                         <td></td>
                         <td className="listingOption__price">{currency} {listingCost["cost"][isWebsiteLinkedAdName] || isWebsiteLinkedAd}</td>
                     </tr>
-                </tbody>
+                </tbody> */}
             </table>
             <p className="listingTotalPrice"><span>Total Price: </span> {currency} {totalCost}</p>
         </>

@@ -2,8 +2,9 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 import endpoints from '@/utils/services/endpoints'
 import services from '@/utils/services/services'
-import { redirectToAct, startLoaderAct, stopLoaderAct } from './loaderSlice'
+import { startLoaderAct, stopLoaderAct } from './loaderSlice'
 import { showToastAct } from './toastSlice'
+import { createPaymentIntentAct } from './checkoutSlice'
 
 const initialState = {
     status: 'idle',
@@ -13,12 +14,15 @@ const initialState = {
 }
 
 
-export const postNewListing = createAsyncThunk("listing/postNewListing", async (body, { dispatch }) => {
+export const postNewListing = createAsyncThunk("listing/postNewListing", async ({body, paymentIntentBody}, { dispatch }) => {
     try {
         dispatch(startLoaderAct())
-        dispatch(redirectToAct("setting"))
-        // const { data } = await services.post(endpoints.postListing, body)
-        dispatch(stopLoaderAct())
+        const { data, status=404 } = await services.post(endpoints.postListing, body)
+        if (status == 201) {
+            paymentIntentBody["listing_id"] = data?._id
+            dispatch(createPaymentIntentAct(paymentIntentBody))
+        } 
+        // dispatch(stopLoaderAct())
         return data
     } catch (error) {
         dispatch(stopLoaderAct())

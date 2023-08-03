@@ -23,7 +23,9 @@ export const navigateToPage = (page="home", slug) => {
     terms : "/helpdesk/terms-and-condition",
     privacy : "/helpdesk/privacy-and-policy",
     faq : "/helpdesk/faq",
+
     // membership : "/helpdesk/membership",
+    checkout : "/checkout/secure"
   }
   return (pathObj[page] || "/")
 };
