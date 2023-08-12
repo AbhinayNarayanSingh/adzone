@@ -10,18 +10,23 @@ import { navigateToPage } from "@/utils/navigate/navigator";
 
 export default function withAuth(Component) {
   return function AuthenticatedComponent(props) {
-
     const router = useRouter();
+    const { isAuth, initialSessionStatus } = useSelector((state) => state.auth);
+
     let path = router.asPath
+
+    // validateToken("token", true)
+
     const navigateToLoginPage = () => router.push(navigateToPage("login") + "?next="+ path)
 
-    const isAuth = useSelector((state) => state.auth.isAuth);
     const token = Cookies.get('token');
 
     useEffect(() => {
-      if (!isAuth || !token) {
-        navigateToLoginPage()
-        return
+      if (initialSessionStatus == "COMPLETE") {
+        if (!isAuth || !token) {
+          navigateToLoginPage()
+          return
+        }
       }
     }, [isAuth, token])
 

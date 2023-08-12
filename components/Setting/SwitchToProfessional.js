@@ -5,13 +5,6 @@ const SwitchToProfessional = () => {
 
   const switchToProfessionalFormFeild = [
     {
-      label: "Switch to Professional Account ($4.99)",
-      type: "checkbox",
-      placeholder: "Switch to Professional Account",
-      errorMsg: "",
-      name: "isProfessionalAccount",
-    },
-    {
       label: "Logo",
       type: "image",
       placeholder: "Logo",

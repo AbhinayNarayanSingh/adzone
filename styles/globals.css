@@ -121,3 +121,10 @@ input, select, option {
 .w-100 {
   width: 100%;
 }
+
+.ww-75 {
+  max-width: 75% !important;
+}
+.ww-50 {
+  max-width: 50% !important;
+}

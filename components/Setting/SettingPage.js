@@ -27,7 +27,7 @@ const SettingPage = () => {
       <div className="left-col">
         <Link href={navigateToPage("setting")}><button className='btn-link'>Personal details</button></Link>
         <Link href={navigateToPage("billingAddress")}><button className='btn-link'>Billing address</button></Link>
-        <Link href={navigateToPage("switchProfessinal")}><button className='btn-link'>Switch to professinal</button></Link>
+        <Link href={navigateToPage("switchProfessinal")}><button className='btn-link'>Business Account</button></Link>
       </div>
       <div className="right-col">{page}</div>
     </div>

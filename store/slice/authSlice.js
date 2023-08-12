@@ -26,7 +26,8 @@ const initialState = {
   quickLoginUser : {},
   isAuth: false,
   status: 'idle', 
-  error: null 
+  error: null,
+  initialSessionStatus : "VALIDATING"  // VALIDATING or COMPLETE
 }
 
 const setUserCookies = (token) => {
@@ -103,6 +104,9 @@ export const authSlice = createSlice({
     },
     removeQuickLoginUser : (state) => {
       state.quickLoginUser = {}
+    },
+    initialSessionCheckup : (state) => {
+      state.initialSessionStatus = "COMPLETE"
     }
   },
   extraReducers: (builder) => {
@@ -162,5 +166,5 @@ export const authSlice = createSlice({
 })
 
 
-export const { setQuickLoginUser, removeQuickLoginUser } = authSlice.actions
+export const { setQuickLoginUser, removeQuickLoginUser, initialSessionCheckup } = authSlice.actions
 export default authSlice.reducer

@@ -16,12 +16,12 @@ const initialState = {
     // type : "",
     // narration : "",
 
-    "_id": "64cbdfc49a8ffccc54c99502",
-    "clientSecret": "pi_3Nb53gSAIDSoJ9VZ1qkTYE14_secret_PQnzFrsdKjPQYhUhJs518Zogt",
-    "narration": "Paid Listing & Promotion - Visibility for 2 Weeks",
-    "paymentIntentID": "pi_3Nb53gSAIDSoJ9VZ1qkTYE14",
-    "totalCost": 2.49,
-    "type": "LISTING"
+    "_id": "64cd270f6d1d79b82312b335",
+    "clientSecret": "pi_3NbQr5SAIDSoJ9VZ0346lMfM_secret_ZXjomHJ76aZFG3S2IOI9MIWSg",
+    "narration": "Paid Membership - for 3 Month",
+    "paymentIntentID": "pi_3NbQr5SAIDSoJ9VZ0346lMfM",
+    "totalCost": 24.99,
+    "type": "MEMBERSHIP"
 }
 
 

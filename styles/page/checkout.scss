@@ -23,4 +23,27 @@
         }
 
     }
+
+    .checkout-success-container {
+        max-width: 60%;
+        width: 100%;
+        margin: 5rem 1rem;
+        color: $TEXT_COLOR;
+        text-align: center;
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: $PRIMARY_COLOR;
+        }
+        
+        p{
+            margin-top: .5rem;
+        }
+
+        .success-icon {
+            height: 6rem;
+            margin-bottom: 2rem;
+        }
+    }
 }

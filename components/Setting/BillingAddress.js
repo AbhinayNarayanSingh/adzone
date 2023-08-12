@@ -41,20 +41,6 @@ const BillingAddress = () => {
       name: "name",
     },
     {
-      label: "Email address",
-      type: "email",
-      name: "email",
-      placeholder: "Email",
-      errorMsg: "Email is required",
-    },
-    {
-      label: "Phone number",
-      type: "text",
-      placeholder: "Phone number",
-      errorMsg: "",
-      name: "phoneNumber",
-    },
-    {
       label: "Postal code",
       type: "selectSearch",
       placeholder: "Postal code",
@@ -90,6 +76,20 @@ const BillingAddress = () => {
       placeholder: "Country",
       errorMsg: "",
       name: "country",
+    },
+    {
+      label: "Email address",
+      type: "email",
+      name: "email",
+      placeholder: "Email",
+      errorMsg: "Email is required",
+    },
+    {
+      label: "Phone number",
+      type: "text",
+      placeholder: "Phone number",
+      errorMsg: "",
+      name: "phoneNumber",
     },
     {
       type: "button",

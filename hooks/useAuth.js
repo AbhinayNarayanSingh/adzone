@@ -5,7 +5,7 @@ import jwtDecode from "jwt-decode";
 
 import { emailValidator, passwordValidator, validationErrorMessage } from "@/utils/helper/inputValidatorHelper";
 
-import { logoutHandlerAct, quickSignInAct, setQuickLoginUser, signInAct, signUpAct } from "@/store/slice/authSlice";
+import { initialSessionCheckup, logoutHandlerAct, quickSignInAct, setQuickLoginUser, signInAct, signUpAct } from "@/store/slice/authSlice";
 import { showToastAct } from "@/store/slice/toastSlice";
 
 /**
@@ -69,7 +69,7 @@ const UseAuth = () => {
                 return false
             }
         }
-
+        dispatch(initialSessionCheckup())
     }
 
     const formChangeHandler = (e) => {

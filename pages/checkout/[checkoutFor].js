@@ -5,6 +5,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { useStripe, useElements, PaymentElement, Elements } from "@stripe/react-stripe-js";
 import { useDispatch, useSelector } from "react-redux";
 import { showToastAct } from "@/store/slice/toastSlice";
+import { SUCCESS_TOAST_ICON } from "@/Environment";
 
 
 const stripePromise = loadStripe(process.env.STRIP_PUBLISH_KEY);
@@ -18,17 +19,54 @@ export default function MembershipCheckout() {
   useEffect(() => {
     if (router.query.checkoutFor == "success" && router?.query?.payment_intent) {
       alert(router?.query?.payment_intent)
-      
-
     }
   }, [])
 
+  const successMsg = {
+    LISTING : {
+      heading : "Congratulations! Your paid listing payment has been successfully processed.",
+      para : "Your listing will be live and visible to users within the next 30 seconds. If you have any questions or need further assistance, feel free to contact our support team.",
+      btn : "Happy selling!",
+      navigateTo : ""
+    },
+    PROMOTION : {
+      heading : "Congratulations! Your listing promotion payment has been successfully processed.",
+      para : "Thank you for choosing our platform to promote your listing. If you have any questions or need assistance, feel free to contact our support team.",
+      btn : "Happy selling!",
+      navigateTo : ""
+    },
+    LISTING_AND_PROMOTION : {
+      heading : "Congratulations! Your paid listing and promotion payment has been successfully processed.",
+      para : "Thank you for choosing our platform to promote and list your listing, it will be live and visible to users within the next 30 seconds. If you have any questions or need assistance, feel free to contact our support team.",
+      btn : "Happy selling!",
+      navigateTo : ""
+    },
+    MEMBERSHIP : {
+      heading : "Congratulations! Your membership payment has been successfully processed.",
+      para : "We're thrilled to have you as part of our community and look forward to providing you with an exceptional experience. You now have access to all the premium features and benefits.",
+      btn : "Start Exploring Now",
+      navigateTo : ""
+    },
+    MEMBERSHIP_RENEWAL : {
+      heading : "Congratulations! Your membership renewal payment has been successfully processed.",
+      para : "We appreciate your continued support and loyalty to our community. By renewing your membership, you can continue to enjoy all the exclusive benefits and features.",
+      btn : "Start Exploring Now",
+      navigateTo : ""
+    },
+  }
+
   if (router.query.checkoutFor == "success") {
+    let data = successMsg[router?.query?.type || "LISTING"]
     return (
       <div className="checkout-outer-container">
-        <div className="checkout-container">
-          <h1>Payment Successful</h1>
+
+        <div className="checkout-success-container">
+          <img src={SUCCESS_TOAST_ICON} alt="SUCCESS_TOAST_ICON" className="success-icon"/>
+          <h1>{data["heading"]}</h1>
+          <p>{data["para"]}</p>
+          <button className="btn mt-1">{data["btn"]}</button>
         </div>
+
       </div>
     )
   }
@@ -46,7 +84,7 @@ export default function MembershipCheckout() {
 
         {clientSecret && stripePromise && (
           <Elements stripe={stripePromise} options={{ clientSecret }}>
-            <CheckoutForm />
+            <CheckoutForm type={type}/>
           </Elements>
         )}
     </div>
@@ -56,7 +94,7 @@ export default function MembershipCheckout() {
 
 
 
-function CheckoutForm() {
+function CheckoutForm({type}) {
   const stripe = useStripe();
   const elements = useElements();
   const dispatch = useDispatch()
@@ -73,7 +111,7 @@ function CheckoutForm() {
     const { error, paymentIntent } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: `${window.location.origin}/checkout/secure`,
+        return_url: `${window.location.origin}/checkout/success?type=${type}`,
       },
     });
     // debugger
